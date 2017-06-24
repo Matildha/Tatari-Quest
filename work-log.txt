@@ -2,4 +2,5 @@ WORKLOG OF PROJECT in
    1dv437 - Introduction to Game Programming
    
 24/6 17
-Created git repo and work-log, planning doc. Added some milestones.
+Created git repo and work-log, planning doc. Added some milestones. 
+Finished milestones 1-7. 
