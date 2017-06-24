@@ -1,8 +1,9 @@
 1. Create plane and a wall/obstacle OK
 2. Create basic fp-controller OK
-3. Test to put something resembling lantern in front of camera
-4. Experiment with light source behind player / on lantern
-5. Implement functionality to turn on/off lantern light
+3. Test to put something resembling lantern in front of camera OK
+3.2 Create shape which casts appropriate shadow from player character OK
+4. Experiment with light source behind player / on lantern OK
+5. Implement functionality to turn on/off lantern light OK
 6. Expand/add player hitbox
 7. Detect collission with object
 8. Detect collission with moving object (demon)
