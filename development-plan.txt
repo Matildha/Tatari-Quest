@@ -1,5 +1,5 @@
-1. Create plane and a wall/obstacle
-2. Create fp-controller
+1. Create plane and a wall/obstacle OK
+2. Create basic fp-controller OK
 3. Test to put something resembling lantern in front of camera
 4. Experiment with light source behind player / on lantern
 5. Implement functionality to turn on/off lantern light
