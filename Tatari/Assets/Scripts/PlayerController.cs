@@ -22,13 +22,10 @@ public class PlayerController : MonoBehaviour {
 
         float rotationY = Input.GetAxis("Mouse X") * mouseSensitivity;
         rotationX = Mathf.Clamp(rotationX + Input.GetAxis("Mouse Y") * mouseSensitivity, -20, 20);
-        //playerCamera.gameObject.transform.localEulerAngles.Set(Mathf.Clamp(rotationX, -60, 60), 0, 0);
-        //playerCamera.gameObject.transform.localEulerAngles.Set(-rotationX, 0, 0);
         playerCamera.gameObject.transform.localEulerAngles = new Vector3(-rotationX, 0, 0);
 
         transform.Translate(moveLR * Time.deltaTime, 0, moveFB * Time.deltaTime);
         transform.Rotate(0, rotationY, 0);
-        //playerCamera.gameObject.transform.Rotate(-rotationX, 0, 0);
 
         if(Input.GetKeyDown("escape"))
         {

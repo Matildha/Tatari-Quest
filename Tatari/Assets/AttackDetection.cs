@@ -9,6 +9,7 @@ public class AttackDetection : MonoBehaviour {
         if(other.gameObject.tag == "Demon")
         {
             print("Player attacked by demon!");
+
         }
         print("Collision trigger enter!");
     }

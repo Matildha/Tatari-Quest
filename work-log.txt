@@ -1,6 +1,15 @@
 WORKLOG OF PROJECT in 
    1dv437 - Introduction to Game Programming
    
-24/6 17
+24/6 17:
 Created git repo and work-log, planning doc. Added some milestones. 
 Finished milestones 1-7. 
+
+25/6 17:
+Learned a little about bezier curves. Made demon objects move. Both
+with animation and with script. The script constatly updates the player
+position and lerps towards it. (REALLY SCARY!) 
+TODO: Spawn the demon at some random position. 
+IDEA: Spawn demons with varying speed. Enable several to be alive at the
+same time. PROBLEM: Collisions between demons??? Have on stop and move
+slightly aside? (will resolve nicely if different speed right?)
