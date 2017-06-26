@@ -78,8 +78,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AttackDetection.cs" />
-    <Compile Include="Assets\DemonMotion.cs" />
+    <Compile Include="Assets\Scripts\AttackDetection.cs" />
+    <Compile Include="Assets\Scripts\DemonBezMotionWithCollision.cs" />
+    <Compile Include="Assets\Scripts\DemonMotion.cs" />
     <Compile Include="Assets\Scripts\Lantern.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>

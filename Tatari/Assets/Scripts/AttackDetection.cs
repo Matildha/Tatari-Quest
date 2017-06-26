@@ -11,6 +11,6 @@ public class AttackDetection : MonoBehaviour {
             print("Player attacked by demon!");
 
         }
-        print("Collision trigger enter!");
+        //print("Collision trigger enter!");
     }
 }

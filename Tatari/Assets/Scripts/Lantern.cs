@@ -31,4 +31,6 @@ public class Lantern : MonoBehaviour {
         }
 		
 	}
+
+    public void test() { }
 }

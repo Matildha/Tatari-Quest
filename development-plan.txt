@@ -7,7 +7,6 @@
 6. Expand/add player hitbox OK
 7. Detect collission with object OK
 8. Detect collission with moving object (demon) OK
-8.2 OPT: Make demon fly a non predetermined path
 9. Detect getting in to range / faacing towards an object (scroll)
 10. Show prompting message to interact with scroll
 11. Implement picking up scroll (making it disappear)

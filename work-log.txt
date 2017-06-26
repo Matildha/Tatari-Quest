@@ -13,3 +13,12 @@ TODO: Spawn the demon at some random position.
 IDEA: Spawn demons with varying speed. Enable several to be alive at the
 same time. PROBLEM: Collisions between demons??? Have on stop and move
 slightly aside? (will resolve nicely if different speed right?)
+
+26/6 17:
+Experimented with bezier curves and collision dodging algorithms for 
+demons. I DON'T think we will make demons able to dodge objects like walls.
+But possibly we can make them avoid other demons like explained above.
+But we shouldn't prioritize it until later. 
+IDEA: Have fized control points for bezier curves in each corridor/room.
+Let the demon find the corridor/room and the associated control points
+in it. 
