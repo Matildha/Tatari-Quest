@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         this.playerCamera = this.transform.Find("Player Camera").gameObject;
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 	
 	// Update is called once per frame
@@ -22,15 +21,10 @@ public class PlayerController : MonoBehaviour {
         float moveFB = Input.GetAxis("Vertical") * speed;  // Front, back movement
 
         float rotationY = Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotationX = Mathf.Clamp(rotationX + Input.GetAxis("Mouse Y") * mouseSensitivity, -20, 20);
+        rotationX = Mathf.Clamp(rotationX + Input.GetAxis("Mouse Y") * mouseSensitivity, -40, 20);
         playerCamera.gameObject.transform.localEulerAngles = new Vector3(-rotationX, 0, 0);
 
         transform.Translate(moveLR * Time.deltaTime, 0, moveFB * Time.deltaTime);
         transform.Rotate(0, rotationY, 0);
-
-        if(Input.GetKeyDown("escape"))
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
     }
 }

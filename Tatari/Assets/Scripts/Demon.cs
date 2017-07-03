@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DemonMotion : MonoBehaviour {
+public class Demon : MonoBehaviour {
 
     public GameObject player;
     public float percSpeed;
@@ -25,7 +25,7 @@ public class DemonMotion : MonoBehaviour {
 	
 	void Update () {
 
-        if ((Time.time - startTime) < 2)
+        if ((Time.time - startTime) < 1.25f)
         {
             transform.position = start;
             return;
@@ -47,15 +47,20 @@ public class DemonMotion : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             print("Demon found player, selfdestruct");
-            stop = true;
-            //Destroy(gameObject);
+            stop = true;     
         }
+        else
+        {
+            print("Demon found obstacle in trigger, selfdestruct");
+        }
+        Destroy(gameObject);
     }
 
+    // TODO: Remove!
     private void OnCollisionEnter(Collision collision)
     {
         print("Demon found obstacle in collision, selfdestruct");
         stop = true;
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

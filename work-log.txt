@@ -22,3 +22,11 @@ But we shouldn't prioritize it until later.
 IDEA: Have fized control points for bezier curves in each corridor/room.
 Let the demon find the corridor/room and the associated control points
 in it. 
+
+3/7 17:
+TODO: Make InteractableManager a singelton.
+   Managed to implement walking up to a scroll, being prompted to press
+a button and then succesfully interacting with it. Yay! 
+   Scrolls now disappear when being picked up. (destroyed) Info is
+transferred to player inventory. NOTE: This might currently cause a
+problem with the struct just being a reference or something!! 
