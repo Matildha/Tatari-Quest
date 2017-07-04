@@ -7,6 +7,7 @@ public class InteractableManager : MonoBehaviour {
 
     public Camera playerCamera;
     public GameObject interactionPrompt;
+    public GameObject Doors;
     
     public Interactable inRangeInteractable;
     LinkedList<Interactable> interactables;
@@ -20,6 +21,11 @@ public class InteractableManager : MonoBehaviour {
         inRangeInteractable = null;
         promptIsDisplayed = false;
         interactables = new LinkedList<Interactable>();
+
+        foreach(Transform door in Doors.transform)
+        {
+            interactables.AddLast(door.gameObject.GetComponent<Door>());
+        }
     }
 
     /* Asynchronsouly adds a new interactable item to the InteractableManager update list.

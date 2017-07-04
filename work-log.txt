@@ -39,3 +39,6 @@ Fixed some problems that occured when removing interactables. Everything
 should be working now! 
    Created basic graphical displaying for interaction prompts and scroll 
 content.
+   Implemented moving of one door.
+   Created the demon spawner class. Created an algorithm for increasing chance
+of demon spawn while the player has the lantern lit.

@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour {
     
     float rotationX = 0f;
 
-	void Start () {
+	void Start ()
+    {
         this.playerCamera = this.transform.Find("Player Camera").gameObject;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         float moveLR = Input.GetAxis("Horizontal") * speed; // Left, right movement
         float moveFB = Input.GetAxis("Vertical") * speed;  // Front, back movement
 

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
     public InteractableManager interactManager;
     public Inventory inventory;
+    public Lantern lantern;
 
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -28,6 +29,10 @@ public class Player : MonoBehaviour {
         else if(Input.GetButtonDown("Read"))
         {
             inventory.ReadSelected();
+        }
+        else if (Input.GetKeyDown("space"))
+        {
+            lantern.ToggleLight();
         }
     }
 }

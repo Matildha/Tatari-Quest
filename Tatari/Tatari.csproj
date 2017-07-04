@@ -80,6 +80,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Demon.cs" />
     <Compile Include="Assets\Scripts\DemonBezMotionWithCollision.cs" />
+    <Compile Include="Assets\Scripts\DemonSpawn.cs" />
+    <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractableManager.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />

@@ -15,9 +15,9 @@
   - With randomized positions  OK
 13. Implement reading / displaying of scroll content (graphical)  OK
 14. Show interaction prompting message in UI  OK
-. Implement moving a door
+15. Implement moving a door  OK
 . Create a "demon-spawner"
-  - With increased change while lantern is lit
+  - With increased chance while lantern is lit
   - Randomize the demon start position
 . Implement the variation of demon that does NOT lock on target
   - Add to "demon-spawner"

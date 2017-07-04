@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class Lantern : MonoBehaviour {
 
+    public bool isLit;
+
     GameObject lanternLight;
-    bool lightToggle = true;
     Material lanternGlow;
     Color defaultColor;
 
+    
     private void Start()
     {
         lanternLight = this.transform.Find("Lantern Light").gameObject;
         lanternGlow = GetComponent<Renderer>().material;
         defaultColor = lanternGlow.GetColor("_EmissionColor");
+        lanternGlow.SetColor("_EmissionColor", Color.black);  //TODO: Remove or change later!!
+        isLit = false;
     }
 
-    // Update is called once per frame
-    void Update () {
-        if(Input.GetKeyDown("space"))
+    public void ToggleLight()
+    {
+        lanternGlow.EnableKeyword("_EMISSION");
+        if (isLit)
         {
-            lanternLight.SetActive(!lightToggle);
-            lanternGlow.EnableKeyword("_EMISSION");
-            if (lightToggle)
-                lanternGlow.SetColor("_EmissionColor", Color.black);
-            else
-                lanternGlow.SetColor("_EmissionColor", defaultColor);
-            lightToggle ^= true; // xor
-            print("Pressed space");
+            lanternLight.SetActive(false);
+            lanternGlow.SetColor("_EmissionColor", Color.black);
         }
-		
-	}
-
-    public void test() { }
+        else
+        {
+            lanternLight.SetActive(true);
+            lanternGlow.SetColor("_EmissionColor", defaultColor);
+        }
+        isLit ^= true;  // xor
+    }
 }

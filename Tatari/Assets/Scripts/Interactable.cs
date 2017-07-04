@@ -6,7 +6,5 @@ public abstract class Interactable : MonoBehaviour{
 
     public abstract string PromptMessage { get; }
 
-    //public abstract void InteractPrompt(bool toggle);
-
     public abstract void Interact();
 }
