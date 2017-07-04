@@ -24,9 +24,18 @@ Let the demon find the corridor/room and the associated control points
 in it. 
 
 3/7 17:
-TODO: Make InteractableManager a singelton.
+TODO: Make InteractableManager a singelton. EDIT: Maybe not... 
    Managed to implement walking up to a scroll, being prompted to press
 a button and then succesfully interacting with it. Yay! 
    Scrolls now disappear when being picked up. (destroyed) Info is
 transferred to player inventory. NOTE: This might currently cause a
 problem with the struct just being a reference or something!! 
+
+Created a file to read from in ScrollFactory, to store all symptom
+combinations in.
+
+4/7 17:
+Fixed some problems that occured when removing interactables. Everything
+should be working now! 
+   Created basic graphical displaying for interaction prompts and scroll 
+content.

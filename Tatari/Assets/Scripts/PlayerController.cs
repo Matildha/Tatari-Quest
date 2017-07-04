@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 2.5f;
     public float mouseSensitivity = 2.0f;
+
     GameObject playerCamera;
     
     float rotationX = 0f;
 
-	// Use this for initialization
 	void Start () {
         this.playerCamera = this.transform.Find("Player Camera").gameObject;
     }

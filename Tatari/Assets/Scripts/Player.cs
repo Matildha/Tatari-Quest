@@ -19,16 +19,15 @@ public class Player : MonoBehaviour {
         }
         else if(Input.GetButtonDown("Interact") && (interactManager.inRangeInteractable != null))
         {
-            print("Player interacts with interactable");
             interactManager.inRangeInteractable.Interact();
         }
         else if(Input.GetButtonDown("Select"))
         {
             inventory.Browse();
         }
-
-
-
-
+        else if(Input.GetButtonDown("Read"))
+        {
+            inventory.ReadSelected();
+        }
     }
 }

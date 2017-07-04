@@ -10,3 +10,14 @@
 9. Detect getting in to range / faacing towards an object (scroll) OK
 10. Show prompting message to interact with scroll OK
 11. Implement picking up scroll (making it disappear) OK
+
+12. Implement the "scroll-factory"  OK
+  - With randomized positions  OK
+13. Implement reading / displaying of scroll content (graphical)  OK
+14. Show interaction prompting message in UI  OK
+. Implement moving a door
+. Create a "demon-spawner"
+  - With increased change while lantern is lit
+  - Randomize the demon start position
+. Implement the variation of demon that does NOT lock on target
+  - Add to "demon-spawner"
