@@ -42,3 +42,8 @@ content.
    Implemented moving of one door.
    Created the demon spawner class. Created an algorithm for increasing chance
 of demon spawn while the player has the lantern lit.
+
+5/7 17:
+Addded things to WorldManager and continuted with the demon spawn. Demons can
+now spawn on random start position and being either homing or not. Demon spawn
+gets demon control points from WorldManager. 

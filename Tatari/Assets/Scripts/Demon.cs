@@ -5,36 +5,39 @@ using UnityEngine;
 public class Demon : MonoBehaviour {
 
     public GameObject player;
+    public DemonSpawn demonSpawn;
     public float percSpeed;
 
-    Vector3 start;
+    public Vector3 start;
     public GameObject controlP1;
     public GameObject controlP2;
     Vector3 end;
+
+    public bool autoHoming;  // Will make the demon update the player position
 
     float t;
     bool stop;
     float startTime;
 
     void Start () {
-        start = transform.position;
         stop = false;
         t = 0f;
         startTime = Time.time;
+        end = player.transform.position;
 	}
 	
 	void Update () {
 
-        if ((Time.time - startTime) < 1.25f)
+        /*if ((Time.time - startTime) < 1.25f)
         {
             transform.position = start;
             return;
-        }
+        }*/
 
 
         if (!stop)
         {
-            end = player.transform.position;
+            if(autoHoming) end = player.transform.position;
             t += percSpeed * Time.deltaTime;
             // Bezier curve movement towards end position
             transform.position = Mathf.Pow(1 - t, 3) * start + 3 * Mathf.Pow(1 - t, 2) * t * controlP1.transform.position +
@@ -53,6 +56,7 @@ public class Demon : MonoBehaviour {
         {
             print("Demon found obstacle in trigger, selfdestruct");
         }
+        demonSpawn.activeDemon = false;
         Destroy(gameObject);
     }
 
@@ -61,6 +65,7 @@ public class Demon : MonoBehaviour {
     {
         print("Demon found obstacle in collision, selfdestruct");
         stop = true;
+        demonSpawn.activeDemon = false;
         Destroy(gameObject);
     }
 }

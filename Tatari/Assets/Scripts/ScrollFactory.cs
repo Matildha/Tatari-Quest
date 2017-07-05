@@ -71,8 +71,8 @@ public class ScrollFactory : MonoBehaviour {
 
             intManager.AddInteractable(newScroll);
 
-            print("Created scroll " + newScroll + " " + newScroll.info.content + " " + 
-                                            newScroll.info.color + " " + newScroll.transform.position);
+            //print("Created scroll " + newScroll + " " + newScroll.info.content + " " + 
+            //                                newScroll.info.color + " " + newScroll.transform.position);
         }
     }
 }
