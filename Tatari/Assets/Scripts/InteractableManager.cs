@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class InteractableManager : MonoBehaviour {
 
+    public WorldManager worldMan;
     public Camera playerCamera;
     public GameObject interactionPrompt;
     public GameObject Doors;
     
     public Interactable inRangeInteractable;
-    LinkedList<Interactable> interactables;
 
     bool promptIsDisplayed;
     int rayLayerMask;
@@ -20,26 +20,20 @@ public class InteractableManager : MonoBehaviour {
     {   rayLayerMask = 1 << 9;  // Bit mask, shift index of Interactable layer (9)
         inRangeInteractable = null;
         promptIsDisplayed = false;
-        interactables = new LinkedList<Interactable>();
-
-        foreach(Transform door in Doors.transform)
-        {
-            interactables.AddLast(door.gameObject.GetComponent<Door>());
-        }
     }
 
-    /* Asynchronsouly adds a new interactable item to the InteractableManager update list.
+    /* Adds a new interactable item to the InteractableManager update list.
     It is not safe to call this function after the cycles of update calls starts!
     (no interactables are suppose to be added during gameplay) */
-    public void AddInteractable(Interactable item)
+    /*public void AddInteractable(Interactable item)
     {
-        interactables.AddLast(item);
-    }
+        worldMan.worldAreas[worldMan.currentWorldArea].interactables.AddLast(item);
+    }*/
 
     /* Removes an item from InteractableManager's update list. */
     public void RemoveInteractable(Interactable item)
     {
-        interactables.Remove(item);
+        worldMan.worldAreas[worldMan.currentWorldArea].interactables.Remove(item);
     }
 
     /* Sets the inRangeInteractable to null. */
@@ -53,7 +47,7 @@ public class InteractableManager : MonoBehaviour {
     {
         if (inRangeInteractable == null)
         {
-            foreach (Interactable other in interactables)
+            foreach (Interactable other in worldMan.worldAreas[worldMan.currentWorldArea].interactables)
             {
                 float newRange = Range(other);
                 if (newRange < Mathf.Infinity)
@@ -75,10 +69,10 @@ public class InteractableManager : MonoBehaviour {
     /* Displays an interaction prompt with a message from the current inRangeInteractable. */
     void ToggleInteractionPrompt(bool toggle)
     {
-        if (toggle  && inRangeInteractable != null)  // Safety check
+        if (toggle && inRangeInteractable != null)  // Safety check
         {
             interactionPrompt.GetComponent<Text>().text = inRangeInteractable.PromptMessage;
-            print(inRangeInteractable.PromptMessage);
+            //print(inRangeInteractable.PromptMessage);
             interactionPrompt.SetActive(true);
         }
         else

@@ -34,14 +34,14 @@ public class DemonSpawn : MonoBehaviour {
         GameObject newDemonGameObject = Instantiate(orgDemon) as GameObject;
         Demon newDemon = newDemonGameObject.GetComponent<Demon>();
 
-        newDemon.controlP1 = worldMan.demonBezCP[0];
-        newDemon.controlP2 = worldMan.demonBezCP[1];
+        newDemon.controlP1 = worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP[0];
+        newDemon.controlP2 = worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP[1];
 
         Random.InitState(System.DateTime.Now.Millisecond);
 
         // Spawn the demon somewhehere between the two start control points given by WorldManager
-        Vector3 startCP1 = worldMan.demonStart[0].transform.position;
-        Vector3 startCP2 = worldMan.demonStart[1].transform.position;
+        Vector3 startCP1 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[0].transform.position;
+        Vector3 startCP2 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[1].transform.position;
         newDemon.start = new Vector3(Random.Range(startCP1.x, startCP2.x),
                                         Random.Range(startCP1.y, startCP2.y),
                                         Random.Range(startCP1.z, startCP2.z));

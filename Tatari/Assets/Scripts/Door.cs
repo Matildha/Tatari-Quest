@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Door : Interactable{
 
+    public int worldAreaID;
+
     public float speed = 1f;
-    //Set with Unity interface
-    // Two possible positions for the door
-    public Vector3[] positions = { new Vector3(-4.52f, 2.13f, -6.82f), new Vector3(-4.58f, 2.13f, -3.95f) };
+    //Set with Unity interface  
+    public Vector3[] positions = { new Vector3(-4.52f, 2.13f, -6.82f),             
+                                    new Vector3(-4.58f, 2.13f, -3.95f) };  // Two possible positions for the door (SIZE 2)
 
     string promptMsg = "Press E to move the door";  
     int targetPosition;
@@ -35,7 +37,6 @@ public class Door : Interactable{
         }
         if (transform.localPosition == positions[targetPosition])
         {
-            print("Door stoped moving");
             isMoving = false;
             targetPosition = (++targetPosition) % 2;
         }

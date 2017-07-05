@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scroll : Interactable {
 
-    public string promptMsg = "Press E to pick up Scroll";
+    string promptMsg = "Press E to pick up Scroll";
 
     public override string PromptMessage { get { return promptMsg; } }
 
@@ -17,17 +17,9 @@ public class Scroll : Interactable {
     public ScrollInfo info;
 
 
-    /*public override void InteractPrompt(bool toggle)
-    {
-        if (toggle)
-        {
-            print("Press E to pick up scroll");
-        }
-    }*/
-
     public override void Interact()
     {
-        print("Picking up scroll with content");
+        print("Picking up scroll with content " + info.content + " " + info.color);
         InteractableManager intManager = transform.parent.GetComponent<InteractableManager>();
         intManager.RemoveInteractable(this);  // So this scroll is not updated in InteractableManager
         intManager.ResetInRangeInteractable();
