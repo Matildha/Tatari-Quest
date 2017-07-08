@@ -12,16 +12,35 @@ public class WorldManager : MonoBehaviour {
     public int currentWorldArea;
 
 
+    public void SwitchArea(int area)
+    {
+        // Disable gameObjects in inactive world area
+        foreach (Interactable obj in worldAreas[currentWorldArea].interactables)
+        {
+            if (obj.tag == "Door")
+            {
+                obj.gameObject.GetComponent<Door>().enabled = false;
+                print("Disabled a door");
+            }
+        }
+
+        currentWorldArea = area;
+        // Enable gameObjects in current active world area
+        foreach(Interactable obj in worldAreas[currentWorldArea].interactables)
+        {
+            if (obj.tag == "Door")
+            {
+                obj.gameObject.GetComponent<Door>().enabled = true;
+                print("Enabled a door");
+            }
+        }
+    }
+
 	void Start () {
         scrollFact.Init();
         Init();
         intManager.Init();
 	}
-
-    private void Update()
-    {
-        
-    }
 
     private void Init()
     {
@@ -29,15 +48,15 @@ public class WorldManager : MonoBehaviour {
         for (int i = 0; i < numberOfWorldAreas; i++)
         {
             worldAreas[i].interactables = new LinkedList<Interactable>();
+
+            foreach(Door door in worldAreas[i].doors)
+            {
+
+                worldAreas[i].interactables.AddLast((Interactable) door);
+            }
+
         }
 
         scrollFact.CreateScrolls();
-
-        // Add doors to interactable list in each world area
-        foreach (Transform door in GameObject.Find("Doors").transform)
-        {
-            int area = door.gameObject.GetComponent<Door>().worldAreaID;
-            worldAreas[area].interactables.AddLast(door.gameObject.GetComponent<Door>());
-        }
     }
 }

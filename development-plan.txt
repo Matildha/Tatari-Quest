@@ -25,6 +25,8 @@
 18. Set up functionality to handle world areas (in WorldManager)  OK
 19. Set up and organize demon controlpoints, scroll possible positions
   and interactables according to world areas  OK
-. Only keep the interactables in the current world area active!
-. Implement thresholds and switching between active world areas
+20. Implement thresholds and switching between active world areas  OK
+21. Only keep the interactables in the current world area active!
+  - Disable/Enable script component in doors OK
+
 

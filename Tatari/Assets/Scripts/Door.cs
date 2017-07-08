@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Door : Interactable{
 
-    public int worldAreaID;
+    //public int worldAreaID;
 
     public float speed = 1f;
     //Set with Unity interface  

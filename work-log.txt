@@ -48,5 +48,5 @@ Addded things to WorldManager and continuted with the demon spawn. Demons can
 now spawn on random start position and being either homing or not. Demon spawn
 gets demon control points from WorldManager. 
 
-THINK ABOUT: Potential problem with neighbouring world areas! Where to split them
-and to make sure doors work. SOLUTION: Some doors only work from one area?
+7/7 17:
+Implemented thresholds ans switching between world areas. 

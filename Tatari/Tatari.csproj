@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Scroll.cs" />
     <Compile Include="Assets\Scripts\ScrollFactory.cs" />
     <Compile Include="Assets\Scripts\SpawnPos.cs" />
+    <Compile Include="Assets\Scripts\Threshold.cs" />
     <Compile Include="Assets\Scripts\WorldArea.cs" />
     <Compile Include="Assets\Scripts\WorldManager.cs" />
   </ItemGroup>
