@@ -8,19 +8,20 @@ public class ScrollFactory : MonoBehaviour {
     public GameObject orgScroll;
     public WorldManager worldMan;
 
-    List<string> descriptions;
+    //List<string> descriptions;
     List<string> colors;  // TODO: Change to list of images or indices for images!
-    Vector3[] occupiedPositions = new Vector3[Inventory.MAX_NR_SCROLLS];
 
 
     public void Init()
-    {   descriptions = new List<string>();
+    {  
         colors = new List<string>(new string[] { "Red", "Blue" });
     }
 
-    public void CreateScrolls()
+    public void CreateScrolls(List<string> _symptoms)
     {
-        LoadScrollInfo();
+        //LoadScrollInfo();
+        List<string> symptoms = new List<string>(_symptoms);  // So we can destructively remove items
+        Vector3[] occupiedPositions = new Vector3[Inventory.MAX_NR_SCROLLS];
 
         int content;
         int color;
@@ -31,13 +32,15 @@ public class ScrollFactory : MonoBehaviour {
 
         while(i < Inventory.MAX_NR_SCROLLS && whileSaver < 50)
         {
-            whileSaver++;
+            whileSaver++;  //TODO: Handle situation.
 
             Scroll.ScrollInfo info = new Scroll.ScrollInfo();
             
             // Set a random position
             int areaID = Random.Range(0, worldMan.numberOfWorldAreas);
             WorldArea worldArea = worldMan.worldAreas[areaID];
+            if (worldArea.nrScrollPositions == 0)
+                continue;
             GameObject rndPosition = worldArea.scrollPositions[Random.Range(0, worldArea.nrScrollPositions)];
 
             // If position has already been assigned, go back and choose a new one
@@ -49,8 +52,8 @@ public class ScrollFactory : MonoBehaviour {
             // Add random content and random color        
             content = Random.Range(0, Inventory.MAX_NR_SCROLLS - i);
             color = Random.Range(0, Inventory.MAX_NR_SCROLLS - i);
-            info.content = descriptions[content];
-            descriptions.RemoveAt(content);
+            info.content = symptoms[content];
+            symptoms.RemoveAt(content);
             info.color = colors[color];
             colors.RemoveAt(color);
 
@@ -63,7 +66,7 @@ public class ScrollFactory : MonoBehaviour {
             newScroll.info = info;
             newScroll.transform.position = rndPosition.transform.position;
             newScroll.transform.rotation = rndPosition.transform.rotation;
-            newScroll.gameObject.transform.SetParent(transform.parent);
+            newScroll.gameObject.transform.SetParent(transform);
             newScroll.gameObject.SetActive(true);
             newScroll.gameObject.layer = 9;
 
@@ -76,7 +79,7 @@ public class ScrollFactory : MonoBehaviour {
         }
     }
 
-    void LoadScrollInfo()
+    /*void LoadScrollInfo()
     {
         FileStream stream = new FileStream("Assets/TextFiles/scroll-info.txt", FileMode.Open, FileAccess.Read);
         StreamReader reader = new StreamReader(stream);
@@ -88,5 +91,5 @@ public class ScrollFactory : MonoBehaviour {
 
         reader.Close();
         stream.Close();
-    }
+    }*/
 }

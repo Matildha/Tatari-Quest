@@ -57,6 +57,15 @@ public class Inventory : MonoBehaviour {
         print("Scroll nr " + selectedScroll + " selected.");
     }
 
+    /* Returns the content of the currently selected scrolls. If inventory has no scrolls
+     an empty string is returned. */
+    public string GetScrollContent()
+    {
+        if (currentNrScrolls == 0) return "";
+
+        return scrolls[selectedScroll].content;
+    }
+
     public void ReadSelected()
     {
         if (currentNrScrolls == 0) return;  // No scroll to read

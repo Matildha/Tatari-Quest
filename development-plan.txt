@@ -37,8 +37,10 @@ turn it off while reading  OK
 26. Implement fear-meter (non-graphical)  OK
   - Increase when hit by demons  OK
   - Increase when walking without lantern lit  OK
-. Create victim class
-. Create victim chant prompt and implement the recognition of correct chanting
+27. Create victim class  OK
+  - And a victim factory!!  OK
+28. Create victim chant prompt and implement the recognition 
+of correct chanting  OK
 . Implement a start and game-over screen
   - Exit / play / restart options
 

@@ -50,3 +50,6 @@ gets demon control points from WorldManager.
 
 7/7 17:
 Implemented thresholds ans switching between world areas. 
+
+8/7 17:
+Need to handle areas that does not have any scroll or victim positions. DONE!

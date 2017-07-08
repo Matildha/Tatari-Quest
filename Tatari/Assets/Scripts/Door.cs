@@ -12,7 +12,7 @@ public class Door : Interactable{
     public Vector3[] positions = { new Vector3(-4.52f, 2.13f, -6.82f),             
                                     new Vector3(-4.58f, 2.13f, -3.95f) };  // Two possible positions for the door (SIZE 2)
 
-    string promptMsg = "Press E to move the door";  
+    const string PROMPT_MSG = "Press E to move the door";  
     int targetPosition;
     bool isMoving;
 
@@ -21,7 +21,7 @@ public class Door : Interactable{
         targetPosition = 1;
     }
 
-    public override string PromptMessage { get { return promptMsg; } }
+    public override string PromptMessage { get { return PROMPT_MSG; } }
 
     public override void Interact()
     {
