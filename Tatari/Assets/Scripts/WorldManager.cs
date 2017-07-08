@@ -51,7 +51,6 @@ public class WorldManager : MonoBehaviour {
 
             foreach(Door door in worldAreas[i].doors)
             {
-
                 worldAreas[i].interactables.AddLast((Interactable) door);
             }
 

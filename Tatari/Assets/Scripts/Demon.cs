@@ -15,6 +15,8 @@ public class Demon : MonoBehaviour {
 
     public bool autoHoming;  // Will make the demon update the player position
 
+    public const float FEAR_INCREASE = 20;
+
     float t;
     bool stop;
     float startTime;
@@ -27,13 +29,6 @@ public class Demon : MonoBehaviour {
 	}
 	
 	void Update () {
-
-        /*if ((Time.time - startTime) < 1.25f)
-        {
-            transform.position = start;
-            return;
-        }*/
-
 
         if (!stop)
         {

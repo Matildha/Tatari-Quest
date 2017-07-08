@@ -37,10 +37,8 @@ public class ScrollFactory : MonoBehaviour {
             
             // Set a random position
             int areaID = Random.Range(0, worldMan.numberOfWorldAreas);
-            print("Rnd area " + areaID);
             WorldArea worldArea = worldMan.worldAreas[areaID];
             GameObject rndPosition = worldArea.scrollPositions[Random.Range(0, worldArea.nrScrollPositions)];
-            print("Rnd pos " + rndPosition);
 
             // If position has already been assigned, go back and choose a new one
             if (System.Array.Exists<Vector3>(occupiedPositions, element => element == rndPosition.transform.position))

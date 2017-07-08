@@ -6,7 +6,7 @@ public class WorldArea : MonoBehaviour {
 
     public int ID;
 
-    public LinkedList<Interactable> interactables;
+    public LinkedList<Interactable> interactables;  // Linked list to enable fast removal
     public GameObject[] scrollPositions;
     public int nrScrollPositions;
     public GameObject[] demonStart;  // Control points to randomize demon start position (SIZE 2)

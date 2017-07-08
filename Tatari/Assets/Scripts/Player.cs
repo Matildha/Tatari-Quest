@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    public PlayerController playerController;
     public InteractableManager interactManager;
     public Inventory inventory;
     public Lantern lantern;
 
+    const float MAX_FEAR = 100;
+    float fear;
+
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
+        fear = 0f;
+    }
+
+    /* Increases or decreases the player's fear. Use negative value to decrement. */
+    public void ChangeFear(float delta)
+    {
+        fear += delta;
+        print("Player fear: " + fear);
+        if(fear >= MAX_FEAR)
+        {
+            print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
+        }
     }
 
     void Update () {
@@ -18,6 +34,11 @@ public class Player : MonoBehaviour {
         {
             Cursor.lockState = CursorLockMode.None;
         }
+        else if(inventory.isReading || (Input.GetButtonDown("Read") && lantern.isLit))
+        {
+            inventory.ReadSelected();
+            playerController.unableToMove = inventory.isReading;
+        }
         else if(Input.GetButtonDown("Interact") && (interactManager.inRangeInteractable != null))
         {
             interactManager.inRangeInteractable.Interact();
@@ -25,14 +46,12 @@ public class Player : MonoBehaviour {
         else if(Input.GetButtonDown("Select"))
         {
             inventory.Browse();
-        }
-        else if(Input.GetButtonDown("Read"))
-        {
-            inventory.ReadSelected();
-        }
+        }      
         else if (Input.GetKeyDown("space"))
         {
-            lantern.ToggleLight();
+            if(lantern.isLit || inventory.ExpandMatch())
+                lantern.ToggleLight();
         }
+
     }
 }

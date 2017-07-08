@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPos : MonoBehaviour {
+public class Victim : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
