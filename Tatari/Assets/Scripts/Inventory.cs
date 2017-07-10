@@ -9,6 +9,10 @@ public class Inventory : MonoBehaviour {
 
     public GameObject scrollDisplay;
     public GameObject readChannelBarFill;
+
+    public GameObject matchCount;
+    const string MATCH_TEXT = "X ";
+
     float readBarHeight;
     float readBarWidth;
     public bool isReading;
@@ -35,6 +39,8 @@ public class Inventory : MonoBehaviour {
         readBarWidth = readChannelBarFill.GetComponent<RectTransform>().rect.width;
         scrollDisplay.SetActive(false);
         readChannelBarFill.transform.parent.gameObject.SetActive(false);
+        matchCount.SetActive(true);
+        matchCount.GetComponent<Text>().text = MATCH_TEXT + currentNrMatches;
     }
 
     /* Returns true if the inventory has a match to expand, false otherwise. */
@@ -44,6 +50,7 @@ public class Inventory : MonoBehaviour {
         {
             currentNrMatches--;
             print("Number of matches left " + currentNrMatches);
+            matchCount.GetComponent<Text>().text = MATCH_TEXT + currentNrMatches;
             return true;
         }
         return false;

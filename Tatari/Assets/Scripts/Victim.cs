@@ -17,15 +17,28 @@ public class Victim : Interactable {
     bool symptDisplay;
 
     const string PROMPT_MSG = "Press E to rescue person";
+    const string SYMP_INFO = "Victim symptoms:\n";
 
-    
+
+    private void Start()
+    {
+        victimInfoBox.SetActive(false);
+    }
+
     public override void Interact()
     {
         //print("SAVE MEE~~~~");
-        victimInfoBox.SetActive(true);
-        victimInfoBox.GetComponent<Text>().text = "Victim symptoms:\n" + symptom;
-        symptDisplay = true;
-        symptDisplayStart = Time.time;
+        if (!symptDisplay)
+        {
+            victimInfoBox.SetActive(true);
+            victimInfoBox.transform.Find("Victim Info").GetComponent<Text>().text = SYMP_INFO + symptom;
+            symptDisplay = true;
+            symptDisplayStart = Time.time;
+        }
+        else
+        {
+            victimInfoBox.SetActive(false);
+        }
     }
 
     public void Rescue(string curedSymptom)
@@ -49,13 +62,13 @@ public class Victim : Interactable {
         }
     }
 
-    void Update()
+    /*void Update()
     {
         if(symptDisplay && Time.time - symptDisplayStart > SYMPT_DISP_TIME )
         {
             symptDisplay = false;
             victimInfoBox.SetActive(false);
         }
-    }
+    }*/
 
 }

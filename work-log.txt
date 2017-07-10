@@ -53,3 +53,12 @@ Implemented thresholds ans switching between world areas.
 
 8/7 17:
 Need to handle areas that does not have any scroll or victim positions. DONE!
+
+10/7 17:
+TODO: Glimmer animation on bars
+
+TODO: Make demons target player front
+
+TODO: Determine whether it is necessary to deactivate interactables
+
+IDEA: Kanji for color on scrolls 

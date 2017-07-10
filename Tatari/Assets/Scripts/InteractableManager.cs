@@ -20,6 +20,7 @@ public class InteractableManager : MonoBehaviour {
     {   rayLayerMask = 1 << 9;  // Bit mask, shift index of Interactable layer (9)
         inRangeInteractable = null;
         promptIsDisplayed = false;
+        ToggleInteractionPrompt(false);
     }
 
     /* Adds a new interactable item to the InteractableManager update list.
@@ -41,6 +42,21 @@ public class InteractableManager : MonoBehaviour {
     {
         inRangeInteractable = null;
         ToggleInteractionPrompt(false);
+    }
+
+     /* Displays an interaction prompt with a message from the current inRangeInteractable. */
+    public void ToggleInteractionPrompt(bool toggle)
+    {
+        if (toggle && inRangeInteractable != null)  // Safety check
+        {
+            interactionPrompt.GetComponent<Text>().text = inRangeInteractable.PromptMessage;
+            //print(inRangeInteractable.PromptMessage);
+            interactionPrompt.SetActive(true);
+        }
+        else
+        {
+            interactionPrompt.SetActive(false);
+        }
     }
 
     void Update()
@@ -66,21 +82,7 @@ public class InteractableManager : MonoBehaviour {
         }
     }
 
-    /* Displays an interaction prompt with a message from the current inRangeInteractable. */
-    void ToggleInteractionPrompt(bool toggle)
-    {
-        if (toggle && inRangeInteractable != null)  // Safety check
-        {
-            interactionPrompt.GetComponent<Text>().text = inRangeInteractable.PromptMessage;
-            //print(inRangeInteractable.PromptMessage);
-            interactionPrompt.SetActive(true);
-        }
-        else
-        {
-            interactionPrompt.SetActive(false);
-        }
-    }
-
+  
     /* Returns the distance if other is in a certain range and in covers the center of the screen, otherwise 
        returns infinity. */
     float Range (Interactable other)
