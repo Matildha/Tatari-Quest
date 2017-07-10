@@ -11,7 +11,7 @@ public class Scroll : Interactable {
     public struct ScrollInfo
     {
         public string content;
-        public string color;  // TODO: change to index for scroll image in inventory
+        public ScrollFactory.ScrollColors color;  // TODO: change to index for scroll image in inventory
     }
 
     public ScrollInfo info;

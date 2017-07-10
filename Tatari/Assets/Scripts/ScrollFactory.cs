@@ -9,12 +9,16 @@ public class ScrollFactory : MonoBehaviour {
     public WorldManager worldMan;
 
     //List<string> descriptions;
-    List<string> colors;  // TODO: Change to list of images or indices for images!
+    public enum ScrollColors { Red, Blue, White, Purple, Green, Yellow };
+    List<ScrollColors> colors;  // TODO: Change to list of images or indices for images!
 
 
     public void Init()
-    {  
-        colors = new List<string>(new string[] { "Red", "Blue" });
+    {
+        //colors = new List<string>(new string[] { "Red", "Blue", "White", "Purple", "Green", "Yellow"});
+        colors = new List<ScrollColors>(new ScrollColors[] { ScrollColors.Red, ScrollColors.Blue, ScrollColors.White,
+                                                        ScrollColors.Purple, ScrollColors.Green, ScrollColors.Yellow });
+
     }
 
     public void CreateScrolls(List<string> _symptoms)

@@ -45,7 +45,7 @@ of correct chanting  OK
 . Create graphical read channeling  OK
 . Create graphical fear-meter  OK
 . Create graphical view of victim description  OK
-. Create graphical inventory
+. Create graphical inventory  OKAAAY!!!
 
 . Implement a start and game-over screen
   - Exit / play / restart options
