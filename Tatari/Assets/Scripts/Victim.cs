@@ -10,7 +10,7 @@ public class Victim : Interactable {
     public override string PromptMessage { get { return PROMPT_MSG; } }
     public string symptom;
 
-    const float DECREASE_FEAR = 20;
+    const float DECREASE_FEAR = -20;
 
     float symptDisplayStart;
     const float SYMPT_DISP_TIME = 2;
@@ -21,7 +21,7 @@ public class Victim : Interactable {
     
     public override void Interact()
     {
-        print("SAVE MEE~~~~");
+        //print("SAVE MEE~~~~");
         victimInfoBox.SetActive(true);
         victimInfoBox.GetComponent<Text>().text = "Victim symptoms:\n" + symptom;
         symptDisplay = true;
@@ -39,7 +39,7 @@ public class Victim : Interactable {
 
             Player player = GameObject.Find("Player").GetComponent<Player>();
             player.IncreaseNrRescues();
-            player.ChangeFear(DECREASE_FEAR);
+            player.fearMeter.ChangeFear(DECREASE_FEAR);
 
             Destroy(this.gameObject);        
         }

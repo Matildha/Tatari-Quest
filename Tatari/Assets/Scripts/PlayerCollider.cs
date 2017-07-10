@@ -11,7 +11,7 @@ public class PlayerCollider : MonoBehaviour {
         if (other.gameObject.tag == "Demon")
         {
             print("Player attacked by demon!");
-            player.ChangeFear(Demon.FEAR_INCREASE);
+            player.fearMeter.ChangeFear(Demon.FEAR_INCREASE);
         }
     }
 }

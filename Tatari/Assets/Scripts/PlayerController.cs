@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 
             if (!player.lantern.isLit && (moveLR != 0 || moveFB != 0))
             {
-                player.ChangeFear(fearIncrease * Time.deltaTime);
+                player.fearMeter.ChangeFear(fearIncrease * Time.deltaTime);
             }
 
             float rotationY = Input.GetAxis("Mouse X") * mouseSensitivity;

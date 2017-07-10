@@ -41,11 +41,11 @@ turn it off while reading  OK
   - And a victim factory!!  OK
 28. Create victim chant prompt and implement the recognition 
 of correct chanting  OK
-. Implement a start and game-over screen
-  - Exit / play / restart options
 
-. Create graphical read channeling
-. Create graphical fear-meter
+. Create graphical read channeling  OK
+. Create graphical fear-meter  OK
 . Create graphical inventory
 
+. Implement a start and game-over screen
+  - Exit / play / restart options
 

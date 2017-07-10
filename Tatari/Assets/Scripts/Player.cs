@@ -7,21 +7,22 @@ public class Player : MonoBehaviour {
     public PlayerController playerController;
     public InteractableManager intMan;
     public Inventory inventory;
+    public FearMeter fearMeter;
     public Lantern lantern;
 
-    const float MAX_FEAR = 100;
-    float fear;
+    //const float MAX_FEAR = 100;
+    //float fear;
 
     int nrRescuedVictims;
 
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
-        fear = 0f;
+        //fear = 0f;
         nrRescuedVictims = 0;
     }
 
     /* Increases or decreases the player's fear. Use negative value to decrement. */
-    public void ChangeFear(float delta)
+    /*public void ChangeFear(float delta)
     {
         fear += delta;
         if(delta > 5 || delta < -5) print("Player fear: " + fear);
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour {
         {
             print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
         }
-    }
+    }*/
 
     public void IncreaseNrRescues()
     {
