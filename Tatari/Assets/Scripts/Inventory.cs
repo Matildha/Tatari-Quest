@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour {
 
     public GameObject scrollDisplay;
     public GameObject readChannelBarFill;
+    public InfoBox infoBox;
 
     public GameObject orgScrollBase;
     public Sprite[] scrollColors;
@@ -24,7 +25,8 @@ public class Inventory : MonoBehaviour {
     float readBarWidth;
     public bool isReading;
     float readStartTime;
-    float readingTime = 5f;
+    float readingTime = 3f;
+    float chantingTime = 6f;
 
     GameObject[] scrollIcons;
     Scroll.ScrollInfo[] scrolls;
@@ -53,7 +55,6 @@ public class Inventory : MonoBehaviour {
         orgScrollBase.SetActive(false);
         scrollSelect.SetActive(false);
         scrollHoriOffset = orgScrollBase.GetComponent<RectTransform>().anchoredPosition.x;
-        //scrollVertOffset = orgScrollBase.transform.parent.GetComponent<RectTransform>().sizeDelta.y / 3;
         scrollVertOffset = orgScrollBase.GetComponent<RectTransform>().anchoredPosition.y;
     }
 
@@ -84,9 +85,12 @@ public class Inventory : MonoBehaviour {
             orgScrollBase.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int)scroll.color];
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = orgScrollBase.GetComponent<RectTransform>().anchoredPosition;
             scrollSelect.SetActive(true);
+            infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
         }
         else
         {
+            if (currentNrScrolls == 2) infoBox.DisplayInfo("Use tab to browse scrolls");
+
             GameObject newScroll = Instantiate(orgScrollBase) as GameObject;
             newScroll.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int) scroll.color];
             newScroll.transform.SetParent(this.transform.Find("Scroll Holder").transform);
@@ -101,7 +105,7 @@ public class Inventory : MonoBehaviour {
                                                             0);
             newScroll.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = newScroll.GetComponent<RectTransform>().anchoredPosition;
-            newScroll.SetActive(true);
+            newScroll.SetActive(true);          
         }
     }
 
@@ -124,8 +128,13 @@ public class Inventory : MonoBehaviour {
     }
 
     /* Needs to be called every frame to update read channel bar and to determine when channel time has ended. */
-    public void ReadSelected()
+    public void ReadSelected(string type)
     {
+        float readDuration;
+        if (type == "Read") readDuration = readingTime;
+        else if (type == "Chant") readDuration = chantingTime;
+        else return;
+
         if (currentNrScrolls == 0) return;  // No scroll to read
 
         if (!isReading)
@@ -134,7 +143,7 @@ public class Inventory : MonoBehaviour {
             print("Scroll: Color " + info.color + " Content " + info.content);
 
             scrollDisplay.SetActive(true);
-            string displayText = "Color: " + info.color + "\n Symptoms: " + info.content;
+            string displayText = "Symptoms:\n" + info.content;
             scrollDisplay.transform.Find("Scroll Content").GetComponent<Text>().text = displayText;
 
             readChannelBarFill.SetActive(true);
@@ -146,11 +155,11 @@ public class Inventory : MonoBehaviour {
         else
         {
             float deltaTime = Time.time - readStartTime;
-            float newWidth = (deltaTime / readingTime) * readBarWidth;
+            float newWidth = (deltaTime / readDuration) * readBarWidth;
             readChannelBarFill.transform.parent.gameObject.SetActive(true);
             readChannelBarFill.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, readBarHeight);
 
-            if (deltaTime > readingTime)
+            if (deltaTime > readDuration)
             {
                 isReading = false;
                 scrollDisplay.SetActive(false);

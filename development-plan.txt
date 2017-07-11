@@ -42,10 +42,15 @@ turn it off while reading  OK
 28. Create victim chant prompt and implement the recognition 
 of correct chanting  OK
 
-. Create graphical read channeling  OK
-. Create graphical fear-meter  OK
-. Create graphical view of victim description  OK
-. Create graphical inventory  OKAAAY!!!
+29. Create graphical read channeling  OK
+30. Create graphical fear-meter  OK
+31. Create graphical view of victim description  OK
+32. Create graphical inventory  OKAAAY!!!
+33. Create final scroll graphical display OK
+
+. Try to make demons attack on front (or target at least)
+. Create and experiment with wall (shouji) texture
+. -- : -- with floor textures, both wood and mat (mats in first hand)
 
 . Implement a start and game-over screen
   - Exit / play / restart options

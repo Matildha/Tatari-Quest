@@ -61,4 +61,14 @@ TODO: Make demons target player front
 
 TODO: Determine whether it is necessary to deactivate interactables
 
-IDEA: Kanji for color on scrolls 
+IDEA: Kanji for color on scrolls  OK 
+
+11/7 17:
+TODO: Show infobox in beginning explaining space to switch light. 
+TODO: Enable/Disable tips in start menu.
+
+Created an infobox that can be used in various situations. For example as tips
+and when interacting with victim. 
+   Also created a difference of reading and chanting a scroll. Player chants a 
+scroll if interactable in range is a victim and this takes longer time then
+normal reading obviously. 

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public Inventory inventory;
     public FearMeter fearMeter;
     public GameObject victimStatIndicator;
+    public InfoBox infoBox;
     const string VICTIM_INDICATOR_TEXT = "Victims saved: ";
     public Lantern lantern;
 
@@ -39,12 +40,15 @@ public class Player : MonoBehaviour {
         }
         else if(inventory.isReading || (Input.GetButtonDown("Read") && lantern.isLit))
         {
-            inventory.ReadSelected();
-
-            // Detect if reading to victim right when stopped reading
-            if(!inventory.isReading && intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim")
+            if (intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim") {
+                inventory.ReadSelected("Chant");
+                intMan.ToggleInteractionPrompt(false);
+                // Rescue attempt when ReadSelected() sets isReading to false
+                if (!inventory.isReading) ((Victim)intMan.inRangeInteractable).Rescue(inventory.GetScrollContent());              
+            }
+            else
             {
-                ((Victim)intMan.inRangeInteractable).Rescue(inventory.GetScrollContent());
+                inventory.ReadSelected("Read");
             }
 
             playerController.unableToMove = inventory.isReading;
@@ -52,7 +56,7 @@ public class Player : MonoBehaviour {
         else if(Input.GetButtonDown("Interact") && (intMan.inRangeInteractable != null))
         {
             intMan.inRangeInteractable.Interact();
-            intMan.ToggleInteractionPrompt(false);
+            //intMan.ToggleInteractionPrompt(false);
         }
         else if(Input.GetButtonDown("Select"))
         {
@@ -62,6 +66,10 @@ public class Player : MonoBehaviour {
         {
             if(lantern.isLit || inventory.ExpandMatch())
                 lantern.ToggleLight();
+        }
+        else if (Input.GetButtonDown("Close"))
+        {
+            infoBox.Close();
         }
 
     }

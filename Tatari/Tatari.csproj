@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\DemonSpawn.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\FearMeter.cs" />
+    <Compile Include="Assets\Scripts\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractableManager.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />

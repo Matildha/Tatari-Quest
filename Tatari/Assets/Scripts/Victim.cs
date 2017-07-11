@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Victim : Interactable {
 
-    public GameObject victimInfoBox;
+    public InfoBox infoBox;
 
     public override string PromptMessage { get { return PROMPT_MSG; } }
     public string symptom;
@@ -16,29 +15,20 @@ public class Victim : Interactable {
     const float SYMPT_DISP_TIME = 2;
     bool symptDisplay;
 
-    const string PROMPT_MSG = "Press E to rescue person";
-    const string SYMP_INFO = "Victim symptoms:\n";
+    const string PROMPT_MSG = "Press E to view symptoms\nor R to chant from scroll";
+    const string SYMP_INFO = "Symptoms:\n";
+
+    const string RESCUE_SUCCESS = "You succesfully cured the victim from the curse!";
+    const string RESCUE_FAIL = "This chant could not cure the victim.";
 
 
     private void Start()
     {
-        victimInfoBox.SetActive(false);
     }
 
     public override void Interact()
     {
-        //print("SAVE MEE~~~~");
-        if (!symptDisplay)
-        {
-            victimInfoBox.SetActive(true);
-            victimInfoBox.transform.Find("Victim Info").GetComponent<Text>().text = SYMP_INFO + symptom;
-            symptDisplay = true;
-            symptDisplayStart = Time.time;
-        }
-        else
-        {
-            victimInfoBox.SetActive(false);
-        }
+        infoBox.DisplayInfo(SYMP_INFO + symptom);  
     }
 
     public void Rescue(string curedSymptom)
@@ -46,6 +36,9 @@ public class Victim : Interactable {
         if (curedSymptom == symptom)
         {
             print("Succesfully rescued victim!");
+
+            infoBox.DisplayInfo(RESCUE_SUCCESS);
+
             InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
             intManager.RemoveInteractable(this);  // So this victim is not updated in InteractableManager
             intManager.ResetInRangeInteractable();
@@ -59,6 +52,7 @@ public class Victim : Interactable {
         else
         {
             print("The chant did not cure this person!");
+            infoBox.DisplayInfo(RESCUE_FAIL);
         }
     }
 
