@@ -25,14 +25,14 @@ public class Demon : MonoBehaviour {
         stop = false;
         t = 0f;
         startTime = Time.time;
-        end = player.transform.position;
+        end = player.transform.Find("Target").position;
 	}
 	
 	void Update () {
 
         if (!stop)
         {
-            if(autoHoming) end = player.transform.position;
+            if(autoHoming) end = player.transform.Find("Target").position;
             t += percSpeed * Time.deltaTime;
             // Bezier curve movement towards end position
             transform.position = Mathf.Pow(1 - t, 3) * start + 3 * Mathf.Pow(1 - t, 2) * t * controlP1.transform.position +

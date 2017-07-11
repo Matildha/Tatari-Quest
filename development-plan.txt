@@ -48,7 +48,7 @@ of correct chanting  OK
 32. Create graphical inventory  OKAAAY!!!
 33. Create final scroll graphical display OK
 
-. Try to make demons attack on front (or target at least)
+34. Try to make demons attack on front (or target at least) Simple solution OK 
 . Create and experiment with wall (shouji) texture
 . -- : -- with floor textures, both wood and mat (mats in first hand)
 

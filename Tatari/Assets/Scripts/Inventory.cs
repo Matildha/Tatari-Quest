@@ -64,7 +64,7 @@ public class Inventory : MonoBehaviour {
         if (currentNrMatches != 0)
         {
             currentNrMatches--;
-            print("Number of matches left " + currentNrMatches);
+            //print("Number of matches left " + currentNrMatches);
             matchCount.GetComponent<Text>().text = MATCH_TEXT + currentNrMatches;
             return true;
         }
@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour {
     public void AddScroll(Scroll.ScrollInfo scroll)
     {
         scrolls[currentNrScrolls] = scroll;
-        print("Added scroll with index " + currentNrScrolls + " to inventory.");
+        //print("Added scroll with index " + currentNrScrolls + " to inventory.");
         currentNrScrolls++;
         selectedScroll = currentNrScrolls - 1;  // Automatically selects the newly added scroll
         
@@ -85,11 +85,11 @@ public class Inventory : MonoBehaviour {
             orgScrollBase.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int)scroll.color];
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = orgScrollBase.GetComponent<RectTransform>().anchoredPosition;
             scrollSelect.SetActive(true);
-            infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
+            if(Player.helpInfo) infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
         }
         else
         {
-            if (currentNrScrolls == 2) infoBox.DisplayInfo("Use tab to browse scrolls");
+            if (currentNrScrolls == 2 && Player.helpInfo) infoBox.DisplayInfo("Use tab to browse scrolls");
 
             GameObject newScroll = Instantiate(orgScrollBase) as GameObject;
             newScroll.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int) scroll.color];

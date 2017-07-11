@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    public static bool helpInfo;
+
     public PlayerController playerController;
     public InteractableManager intMan;
     public Inventory inventory;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour {
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         nrRescuedVictims = 0;
+        helpInfo = true;
     }
 
     public void IncreaseNrRescues()
