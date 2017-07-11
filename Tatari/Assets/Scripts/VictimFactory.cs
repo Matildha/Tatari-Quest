@@ -50,7 +50,7 @@ public class VictimFactory : MonoBehaviour {
 
             i++;
 
-            print("Created victim symptom " + newVictim.symptom + " at pos " + newVictim.transform.position);
+            //print("Created victim symptom " + newVictim.symptom + " at pos " + newVictim.transform.position);
         }
     }
 }

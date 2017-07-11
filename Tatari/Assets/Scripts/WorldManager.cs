@@ -28,7 +28,7 @@ public class WorldManager : MonoBehaviour {
             if (obj.tag == "Door")
             {
                 obj.gameObject.GetComponent<Door>().enabled = false;
-                print("Disabled a door");
+                //print("Disabled a door");
             }
         }
 
@@ -39,7 +39,7 @@ public class WorldManager : MonoBehaviour {
             if (obj.tag == "Door")
             {
                 obj.gameObject.GetComponent<Door>().enabled = true;
-                print("Enabled a door");
+                //print("Enabled a door");
             }
         }
     }
@@ -61,7 +61,7 @@ public class WorldManager : MonoBehaviour {
         List<string> symptoms = LoadScrollInfo();
         scrollFact.CreateScrolls(symptoms);
         victFact.CreateVictims(symptoms);
-        print("Symptoms length " + symptoms.Count);
+        //print("Symptoms length " + symptoms.Count);
     }
 
     List<string> LoadScrollInfo()

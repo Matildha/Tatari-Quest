@@ -49,8 +49,9 @@ of correct chanting  OK
 33. Create final scroll graphical display OK
 
 34. Try to make demons attack on front (or target at least) Simple solution OK 
-. Create and experiment with wall (shouji) texture
+35. Create and experiment with wall (shouji) texture  OK
 . -- : -- with floor textures, both wood and mat (mats in first hand)
+. Create effect to know when hit by demons  OK
 
 . Implement a start and game-over screen
   - Exit / play / restart options

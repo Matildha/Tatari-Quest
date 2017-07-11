@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class FearMeter : MonoBehaviour {
 
     public Player player;
+    public Animator hurtEffectAnim;
+    int hurtHash = Animator.StringToHash("HurtEffect 0");
+    const float HURT_THRESHOLD = 5;
 
     public const float MAX_FEAR = 100f; 
     float fear;
@@ -19,6 +22,7 @@ public class FearMeter : MonoBehaviour {
         height = transform.GetComponent<RectTransform>().rect.height;
         maxWidth = transform.GetComponent<RectTransform>().rect.width;
         UpdateFearMeter();
+       // hurtEffect = GameObject.Find("Hurt Effect").GetComponent<Animation>();
     }
 
     /* Increases or decreases the player's fear. Use negative value to decrement. */
@@ -31,6 +35,7 @@ public class FearMeter : MonoBehaviour {
             print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
             fear = MAX_FEAR;
         }
+        if (delta > HURT_THRESHOLD) hurtEffectAnim.Play(hurtHash); //hurtEffectAnim.SetTrigger(hurtHash); 
         UpdateFearMeter();
     }
 

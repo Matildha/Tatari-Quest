@@ -75,5 +75,7 @@ normal reading obviously.
    Created the most AWESOME looking shouji panels ever. :D 
 TODO: Something weird is going on with the lantern light. I think we need to
 research more about unity lights. But this is not priority right now. 
+   ANNNNIIIMATED a hurt effect when hit by demon. Took some time but looks fine
+now.
 
 

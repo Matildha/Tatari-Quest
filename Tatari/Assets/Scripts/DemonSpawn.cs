@@ -76,7 +76,7 @@ public class DemonSpawn : MonoBehaviour {
                     invertChance = 0;
                     SpawnDemon();
                 }
-                else print("Demon spawnas inte");
+                //else print("Demon spawnas inte");
                 startTime = Time.time;
             }
         }
