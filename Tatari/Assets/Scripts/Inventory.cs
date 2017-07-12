@@ -115,7 +115,6 @@ public class Inventory : MonoBehaviour {
         else selectedScroll++;
         scrollSelect.GetComponent<RectTransform>().anchoredPosition = scrollIcons[selectedScroll].
                                                                         GetComponent<RectTransform>().anchoredPosition;
-        print("Scroll nr " + selectedScroll + " selected.");
     }
 
     /* Returns the content of the currently selected scrolls. If inventory has no scrolls
@@ -166,10 +165,5 @@ public class Inventory : MonoBehaviour {
                 readChannelBarFill.transform.parent.gameObject.SetActive(false);
             }
         }
-        /*else
-        {
-            scrollDisplay.SetActive(false);
-            isReading = false;
-        }*/
     }
 }

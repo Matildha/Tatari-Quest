@@ -50,9 +50,34 @@ of correct chanting  OK
 
 34. Try to make demons attack on front (or target at least) Simple solution OK 
 35. Create and experiment with wall (shouji) texture  OK
-. -- : -- with floor textures, both wood and mat (mats in first hand)
-. Create effect to know when hit by demons  OK
+36. -- : -- with floor textures, both wood and mat (mats in first hand)
+37. Create effect to know when hit by demons  OK
+
+. Decide on strategy to build house (in blender or unity?, wall standards?)
+  - Draw blueprint  OK
+. Construct house (walls, floor)
+  - Create textures for tatami mat room
+  - Create texture for shouji panel with window
+  - Place all control points
+. Make doors "start position" random
+. Create scroll model
+. Create demon model
+. Create victim model
+
+. Add sound effect when demon attacks
+. Build outside environment
+  - Night sky box
+  - Light source
+  - Trees
+. Add rain particle effect in outside environment
+  - Add soundeffect
+. Add walking sound effect for player
+. Create demon animation
+. Create victim idle animation
+. Add random sound effects when walking around (thunder or whatever scary you find)
 
 . Implement a start and game-over screen
   - Exit / play / restart options
+  - Option to enable/disable help info ingame
+. Implement pause screen
 
