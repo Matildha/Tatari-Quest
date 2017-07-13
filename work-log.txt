@@ -78,16 +78,22 @@ research more about unity lights. But this is not priority right now.
    ANNNNIIIMATED a hurt effect when hit by demon. Took some time but looks fine
 now.
 
-12/ 17:
+12/7 17:
 
 Did a blueprint of house with marked world areas. We can cut off the bottom
 part if we for some reason would not be able to fix potential performance issues.
+
+13/7 17:
+IDEA: Quads with bloodsplash images on floor!
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 
 
 Gore Texture Stock Bloody Snow
 http://tildhanor.deviantart.com/art/Gore-Texture-Stock-Bloody-Snow-184739590
+
+WoodPlanksFloors0047
+https://www.textures.com/download/woodplanksfloors0047/122602?q=wood+floor
 
 
 

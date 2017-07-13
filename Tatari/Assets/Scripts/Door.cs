@@ -39,6 +39,7 @@ public class Door : Interactable
         {
             isMoving = false;
             targetPosition *= -1;
+            startPos = transform.localPosition;
         }
     }
 }
