@@ -61,6 +61,7 @@ of correct chanting  OK
   - Place all control points
 . Make doors "start position" random
 . Create scroll model
+. Create lantern model
 . Create demon model
 . Create victim model
 

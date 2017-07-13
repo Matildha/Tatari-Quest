@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\DemonBezMotionWithCollision.cs" />
     <Compile Include="Assets\Scripts\DemonSpawn.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
+    <Compile Include="Assets\Scripts\Door_Old.cs" />
     <Compile Include="Assets\Scripts\FearMeter.cs" />
     <Compile Include="Assets\Scripts\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
