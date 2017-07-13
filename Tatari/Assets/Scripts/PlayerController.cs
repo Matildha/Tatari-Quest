@@ -65,6 +65,6 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Trigger in player controller");
+        //print("Trigger in player controller");
     }
 }

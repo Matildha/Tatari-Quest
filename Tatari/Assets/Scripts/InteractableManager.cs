@@ -90,7 +90,7 @@ public class InteractableManager : MonoBehaviour {
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 3, rayLayerMask) && (hit.collider == other.GetComponent<Collider>()))
+        if(Physics.Raycast(ray, out hit, 2, rayLayerMask) && (hit.collider == other.GetComponent<Collider>()))
         {
             return hit.distance;
         }
