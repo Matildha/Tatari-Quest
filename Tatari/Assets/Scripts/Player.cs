@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 
     int nrRescuedVictims;
 
+    bool cursorToggle;
+
 
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -37,9 +39,13 @@ public class Player : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            Cursor.lockState = CursorLockMode.None;
+            if (!cursorToggle)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+            cursorToggle ^= true;  // xor
         }
         else if(inventory.isReading || (Input.GetButtonDown("Read") && lantern.isLit))
         {

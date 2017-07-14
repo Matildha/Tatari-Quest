@@ -17,7 +17,7 @@ public class Threshold : MonoBehaviour {
         if(collider.gameObject.tag == "Player")
         {
             worldMan.SwitchArea(areaID);
-            print("Changed world area to " + areaID);
+            //print("Changed world area to " + areaID);
         }
     }
 }

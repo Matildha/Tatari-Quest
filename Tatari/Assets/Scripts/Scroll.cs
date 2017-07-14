@@ -19,7 +19,7 @@ public class Scroll : Interactable {
 
     public override void Interact()
     {
-        print("Picking up scroll with content " + info.content + " " + info.color);
+        //print("Picking up scroll with content " + info.content + " " + info.color);
         InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
         intManager.RemoveInteractable(this);  // So this scroll is not updated in InteractableManager
         intManager.ResetInRangeInteractable();

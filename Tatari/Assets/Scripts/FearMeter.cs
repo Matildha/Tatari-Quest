@@ -32,10 +32,10 @@ public class FearMeter : MonoBehaviour {
         /*if (delta > 5 || delta < -5)*/ // print("Player fear: " + fear);
         if (fear >= MAX_FEAR)
         {
-            print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
+            //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
             fear = MAX_FEAR;
         }
-        if (delta > HURT_THRESHOLD) hurtEffectAnim.Play(hurtHash); //hurtEffectAnim.SetTrigger(hurtHash); 
+        if (delta > HURT_THRESHOLD) hurtEffectAnim.Play(hurtHash); 
         UpdateFearMeter();
     }
 

@@ -6,7 +6,7 @@ public class VictimFactory : MonoBehaviour {
 
     public GameObject orgVictim;
     public WorldManager worldMan;
-    public const int MAX_VICTIMS = 2;
+    public const int MAX_VICTIMS = 4;
 
 
     public void CreateVictims(List<string> symptoms)
@@ -18,9 +18,10 @@ public class VictimFactory : MonoBehaviour {
         int i = 0;
         int whileSaver = 0;
 
-        while (i < MAX_VICTIMS && whileSaver < 50)
+        while (i < MAX_VICTIMS && whileSaver < 100)
         {
             whileSaver++;
+            if (whileSaver == 100) print("Could not place all victims!");
 
             // Set a random position
             int areaID = Random.Range(0, worldMan.numberOfWorldAreas);
@@ -50,7 +51,7 @@ public class VictimFactory : MonoBehaviour {
 
             i++;
 
-            //print("Created victim symptom " + newVictim.symptom + " at pos " + newVictim.transform.position);
+            print("Created victim symptom " + newVictim.symptom + " at pos " + newVictim.transform.position);
         }
     }
 }

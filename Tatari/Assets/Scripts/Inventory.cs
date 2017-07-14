@@ -143,7 +143,7 @@ public class Inventory : MonoBehaviour {
         if (!isReading)
         {
             Scroll.ScrollInfo info = scrolls[selectedScroll];
-            print("Scroll: Color " + info.color + " Content " + info.content);
+            //print("Scroll: Color " + info.color + " Content " + info.content);
 
             scrollDisplay.SetActive(true);
             string displayText = "Symptoms:\n" + info.content;
