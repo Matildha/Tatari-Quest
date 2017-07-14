@@ -53,15 +53,16 @@ of correct chanting  OK
 36. -- : -- with floor textures, both wood and mat (mats in first hand)
 37. Create effect to know when hit by demons  OK
 
-. Decide on strategy to build house (in blender or unity?, wall standards?)
+38. Decide on strategy to build house (in blender or unity?, wall standards?)
   - Draw blueprint  OK
-. Construct house (walls, floor)
-  - Create textures for tatami mat room
+39. Construct upper part of (A0-A12) house (walls, floor)
+  - Create textures for tatami mat room  OK
   - Create texture for shouji panel with window  OK
-  - Place all control points
-. Make doors "start position" random
-. Create scroll model
+  - Place all control points  OK
+. Make doors "start position" random (I don't want this... :/)
 . Create lantern model
+. Create scroll model
+
 . Create demon model
 . Create victim model
 

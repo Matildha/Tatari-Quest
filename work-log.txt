@@ -93,6 +93,8 @@ THINK ABOUT: Whether player be able to rotate (use mouse movement) while reading
 Placed demon control points and scroll spawn positions in A0-A11 (including A8).
 Placed victim spawn positions and set max victims to 4. 
 
+Changed tag of player hitbox, since it caused incorrect triggers of thresholds.
+
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 
 
@@ -101,6 +103,9 @@ http://tildhanor.deviantart.com/art/Gore-Texture-Stock-Bloody-Snow-184739590
 
 WoodPlanksFloors0047
 https://www.textures.com/download/woodplanksfloors0047/122602?q=wood+floor
+
+Wicker00111
+https://www.textures.com/download/wicker0011/15203?q=woven
 
 
 
