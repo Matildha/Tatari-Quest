@@ -57,7 +57,7 @@ of correct chanting  OK
   - Draw blueprint  OK
 . Construct house (walls, floor)
   - Create textures for tatami mat room
-  - Create texture for shouji panel with window
+  - Create texture for shouji panel with window  OK
   - Place all control points
 . Make doors "start position" random
 . Create scroll model
