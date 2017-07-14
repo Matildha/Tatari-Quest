@@ -89,6 +89,8 @@ IDEA: Quads with bloodsplash images on floor!
 14/7 17:
 Created window panel. A0-A11 with exception on A8 are set up with walls, floor
 (no texture) and doors. 
+THINK ABOUT: Whether player be able to rotate (use mouse movement) while reading.
+Placed demon control points and scroll spawn positions in A0-A11 (including A8).
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 

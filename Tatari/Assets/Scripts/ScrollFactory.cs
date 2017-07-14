@@ -34,9 +34,10 @@ public class ScrollFactory : MonoBehaviour {
         int i = 0;
         int whileSaver = 0;
 
-        while(i < Inventory.MAX_NR_SCROLLS && whileSaver < 50)
+        while(i < Inventory.MAX_NR_SCROLLS && whileSaver < 100)
         {
             whileSaver++;  //TODO: Handle situation.
+            if (whileSaver == 50) print("Could not place all scrolls");
 
             Scroll.ScrollInfo info = new Scroll.ScrollInfo();
             
@@ -78,8 +79,8 @@ public class ScrollFactory : MonoBehaviour {
 
             i++;
 
-            print("Created scroll " + newScroll + " " + newScroll.info.content + " " + 
-                                           newScroll.info.color + " " + newScroll.transform.position);
+            //print("Created scroll " + newScroll + " " + newScroll.info.content + " " + 
+            //                               newScroll.info.color + " " + newScroll.transform.position);
         }
     }
 

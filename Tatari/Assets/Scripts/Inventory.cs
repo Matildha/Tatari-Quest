@@ -85,7 +85,11 @@ public class Inventory : MonoBehaviour {
             orgScrollBase.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int)scroll.color];
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = orgScrollBase.GetComponent<RectTransform>().anchoredPosition;
             scrollSelect.SetActive(true);
-            if(Player.helpInfo) infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
+            if (Player.helpInfo)
+            {
+                infoBox.gameObject.SetActive(true);
+                infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
+            }
         }
         else
         {

@@ -31,6 +31,9 @@ public class DemonSpawn : MonoBehaviour {
     {
         print("Demon spawnas");
 
+        // Check if there are any avaiable demon control points in current world area
+        if (worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP.Length == 0) return;
+
         GameObject newDemonGameObject = Instantiate(orgDemon) as GameObject;
         Demon newDemon = newDemonGameObject.GetComponent<Demon>();
 
