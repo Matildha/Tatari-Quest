@@ -13,25 +13,26 @@ public class PlayerController : MonoBehaviour {
     public float fearIncrease = 0.5f;
 
     public bool unableToMove;
+    public bool isWalking;
 
     GameObject playerCamera;
     
     float rotationX = 0f;
 
     Vector3 safeSpot;
-    bool movingToSafe;
+    
 
 	void Start ()
     {
         this.playerCamera = this.transform.Find("Player Camera").gameObject;
         unableToMove = false;
-        movingToSafe = false;
+        isWalking = false;
     }
 
     private void Update()
     {
         float rotationY = Input.GetAxis("Mouse X") * mouseSensitivity;
-        rotationX = Mathf.Clamp(rotationX + Input.GetAxis("Mouse Y") * mouseSensitivity, -40, 20);
+        rotationX = Mathf.Clamp(rotationX + Input.GetAxis("Mouse Y") * mouseSensitivity, -40, 10);
         playerCamera.gameObject.transform.localEulerAngles = new Vector3(-rotationX, 0, 0);
         transform.Rotate(0, rotationY, 0);
     }
@@ -44,11 +45,19 @@ public class PlayerController : MonoBehaviour {
             float moveLR = Input.GetAxis("Horizontal") * speed; // Left, right movement
             float moveFB = Input.GetAxis("Vertical") * speed;  // Front, back movement
 
-            if (!GetComponent<Player>().lantern.isLit && (moveLR != 0 || moveFB != 0))
+            if ((moveLR != 0 || moveFB != 0))
             {
-                GetComponent<Player>().fearMeter.ChangeFear(fearIncrease * Time.deltaTime);
+                if (!GetComponent<Player>().lantern.isLit)
+                {
+                    GetComponent<Player>().fearMeter.ChangeFear(fearIncrease * Time.deltaTime);  
+                }
+                isWalking = true;
             }
-
+            else
+            {
+                isWalking = false;
+            }
+          
             Vector3 direction = new Vector3(moveLR * Time.deltaTime, 0,
                                                                 moveFB * Time.deltaTime);
 

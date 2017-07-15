@@ -13,15 +13,19 @@ public class Lantern : MonoBehaviour {
     
     private void Start()
     {
-        lanternLight = this.transform.Find("Lantern Light").gameObject;
-        lanternGlow = GetComponent<Renderer>().material;
+        lanternLight = transform.Find("Lantern Light").gameObject;
+        Renderer lanternRend = transform.Find("Body").GetComponent<Renderer>();
+        lanternGlow = lanternRend.material;
+        if (lanternGlow == null) print("is null start");
         defaultColor = lanternGlow.GetColor("_EmissionColor");
+        print(defaultColor);
         lanternGlow.SetColor("_EmissionColor", Color.black);  //TODO: Remove or change later!!
         isLit = false;
     }
 
     public void ToggleLight()
     {
+        if (lanternGlow == null) print("is null");
         lanternGlow.EnableKeyword("_EMISSION");
         if (isLit)
         {

@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Door_Old.cs" />
     <Compile Include="Assets\Scripts\FearMeter.cs" />
+    <Compile Include="Assets\Scripts\FootSteps.cs" />
     <Compile Include="Assets\Scripts\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractableManager.cs" />

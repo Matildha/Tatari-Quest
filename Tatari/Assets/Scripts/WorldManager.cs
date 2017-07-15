@@ -8,6 +8,7 @@ public class WorldManager : MonoBehaviour {
     public InteractableManager intManager;
     public ScrollFactory scrollFact;
     public VictimFactory victFact;
+    public Player player;
 
     public int numberOfWorldAreas;
     public WorldArea[] worldAreas;
@@ -33,6 +34,8 @@ public class WorldManager : MonoBehaviour {
         }
 
         currentWorldArea = area;
+        player.SwitchArea(area);
+
         // Enable gameObjects in current active world area
         foreach(Interactable obj in worldAreas[currentWorldArea].interactables)
         {

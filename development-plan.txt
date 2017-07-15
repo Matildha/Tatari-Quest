@@ -59,8 +59,8 @@ of correct chanting  OK
   - Create textures for tatami mat room  OK
   - Create texture for shouji panel with window  OK
   - Place all control points  OK
-. Make doors "start position" random (I don't want this... :/)
-. Create lantern model
+40. Add walking sound effect for player  OK
+41. Create lantern model  OK
 . Create scroll model
 
 . Create demon model
@@ -68,12 +68,13 @@ of correct chanting  OK
 
 . Add sound effect when demon attacks
 . Build outside environment
-  - Night sky box
+  - Night sky box  OK
   - Light source
   - Trees
+  - "Fence" (u know what I mean) that goes down from the roof
 . Add rain particle effect in outside environment
   - Add soundeffect
-. Add walking sound effect for player
+
 . Create demon animation
 . Create victim idle animation
 . Add random sound effects when walking around (thunder or whatever scary you find)

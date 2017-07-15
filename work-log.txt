@@ -94,6 +94,10 @@ Placed demon control points and scroll spawn positions in A0-A11 (including A8).
 Placed victim spawn positions and set max victims to 4. 
 
 Changed tag of player hitbox, since it caused incorrect triggers of thresholds.
+Added step sound to player. Which softens as you go on to tatami rooms.
+
+BUG-ALERT: READING a scroll and then turning to a victim causes it to CHANT!
+(or at least channel bar to restart!!) 
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 
@@ -106,6 +110,9 @@ https://www.textures.com/download/woodplanksfloors0047/122602?q=wood+floor
 
 Wicker00111
 https://www.textures.com/download/wicker0011/15203?q=woven
+
+footstep-wood
+https://freesound.org/people/swuing/sounds/38876/
 
 
 

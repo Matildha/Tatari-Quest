@@ -16,8 +16,11 @@ public class Player : MonoBehaviour {
     const string VICTIM_INDICATOR_TEXT = "Victims saved: ";
     public Lantern lantern;
 
+    public int currentArea;
+
     int nrRescuedVictims;
 
+    bool normalReading;
     bool cursorToggle;
 
 
@@ -37,6 +40,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void SwitchArea(int area)
+    {
+        currentArea = area;
+        gameObject.GetComponent<FootSteps>().currentArea = area;
+    }
+
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -49,7 +58,7 @@ public class Player : MonoBehaviour {
         }
         else if(inventory.isReading || (Input.GetButtonDown("Read") && lantern.isLit))
         {
-            if (intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim") {
+            if (!normalReading && intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim") {
                 inventory.ReadSelected("Chant");
                 intMan.ToggleInteractionPrompt(false);
                 // Rescue attempt when ReadSelected() sets isReading to false
@@ -58,6 +67,8 @@ public class Player : MonoBehaviour {
             else
             {
                 inventory.ReadSelected("Read");
+                if (!inventory.isReading) normalReading = false;
+                else normalReading = true;
             }
 
             playerController.unableToMove = inventory.isReading;
