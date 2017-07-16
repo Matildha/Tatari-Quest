@@ -48,6 +48,7 @@ public class DemonSpawn : MonoBehaviour {
         newDemon.start = new Vector3(Random.Range(startCP1.x, startCP2.x),
                                         Random.Range(startCP1.y, startCP2.y),
                                         Random.Range(startCP1.z, startCP2.z));
+        print("Demon spawn at " + newDemon.start);
         newDemon.autoHoming = Random.Range(0, 2) == 1;
         print("New demon homing " + newDemon.autoHoming);
         newDemon.transform.SetParent(this.transform);

@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
     public const int MAX_NR_SCROLLS = 6;
     const int INVENTORY_SPOTS = 6;  // For debugging when nr scroll less then inventory spots
 
+    public Player player;
     public GameObject scrollDisplay;
     public GameObject readChannelBarFill;
     public InfoBox infoBox;
@@ -111,6 +112,8 @@ public class Inventory : MonoBehaviour {
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = newScroll.GetComponent<RectTransform>().anchoredPosition;
             newScroll.SetActive(true);          
         }
+        if(player.lantern.isLit)
+            ReadSelected("Read");
     }
 
     public void Browse()

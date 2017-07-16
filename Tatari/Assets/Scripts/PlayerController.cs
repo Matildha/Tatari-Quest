@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float speed = 2.5f;
     public float bounce = 2f;
     public float mouseSensitivity = 2.0f;
-    public float fearIncrease = 0.5f;
+    public float fearIncrease = 0.75f;
 
     public bool unableToMove;
     public bool isWalking;
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
+        if (unableToMove) return;
+
         float rotationY = Input.GetAxis("Mouse X") * mouseSensitivity;
         rotationX = Mathf.Clamp(rotationX + Input.GetAxis("Mouse Y") * mouseSensitivity, -40, 10);
         playerCamera.gameObject.transform.localEulerAngles = new Vector3(-rotationX, 0, 0);
@@ -40,29 +42,28 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate ()
     {
-        if (!unableToMove)
+        if (unableToMove) return;
+
+        float moveLR = Input.GetAxis("Horizontal") * speed; // Left, right movement
+        float moveFB = Input.GetAxis("Vertical") * speed;  // Front, back movement
+
+        if ((moveLR != 0 || moveFB != 0))
         {
-            float moveLR = Input.GetAxis("Horizontal") * speed; // Left, right movement
-            float moveFB = Input.GetAxis("Vertical") * speed;  // Front, back movement
-
-            if ((moveLR != 0 || moveFB != 0))
+            if (!GetComponent<Player>().lantern.isLit)
             {
-                if (!GetComponent<Player>().lantern.isLit)
-                {
-                    GetComponent<Player>().fearMeter.ChangeFear(fearIncrease * Time.deltaTime);  
-                }
-                isWalking = true;
+                GetComponent<Player>().fearMeter.ChangeFear(fearIncrease * Time.deltaTime);  
             }
-            else
-            {
-                isWalking = false;
-            }
-          
-            Vector3 direction = new Vector3(moveLR * Time.deltaTime, 0,
-                                                                moveFB * Time.deltaTime);
-
-            GetComponent<Rigidbody>().MovePosition(transform.TransformDirection(direction) + transform.position);
+            isWalking = true;
         }
+        else
+        {
+            isWalking = false;
+        }
+          
+        Vector3 direction = new Vector3(moveLR * Time.deltaTime, 0,
+                                                            moveFB * Time.deltaTime);
+
+        GetComponent<Rigidbody>().MovePosition(transform.TransformDirection(direction) + transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)

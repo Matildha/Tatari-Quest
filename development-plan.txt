@@ -61,9 +61,9 @@ of correct chanting  OK
   - Place all control points  OK
 40. Add walking sound effect for player  OK
 41. Create lantern model  OK
+42. Create demon model  OK
 . Create scroll model
 
-. Create demon model
 . Create victim model
 
 . Add sound effect when demon attacks

@@ -97,7 +97,13 @@ Changed tag of player hitbox, since it caused incorrect triggers of thresholds.
 Added step sound to player. Which softens as you go on to tatami rooms.
 
 BUG-ALERT: READING a scroll and then turning to a victim causes it to CHANT!
-(or at least channel bar to restart!!) 
+(or at least channel bar to restart!!)  Fixed
+
+16/7 17:
+BE WARY OF: Unable to interact with victim?? Why does this happen??!!!
+TODO: See if you can do something about demons spawning inside the player
+hitbox. 
+
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 
