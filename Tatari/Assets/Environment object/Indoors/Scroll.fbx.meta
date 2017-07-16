@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 18e651aa219dea5408a98ad8724ea62f
+timeCreated: 1500234409
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cylinder.001
+    100002: Lamp
+    100004: Lamp.001
+    100006: Lamp.002
+    100008: Lamp.003
+    100010: NurbsPath
+    100012: NurbsPath.003
+    100014: NurbsPath.004
+    100016: NurbsPath.005
+    100018: NurbsPath.006
+    100020: //RootNode
+    100022: Sphere
+    100024: Sphere.001
+    100026: Sphere.002
+    100028: Sphere.003
+    100030: Sphere.005
+    100032: Sphere.006
+    100034: Sphere.007
+    100036: Sphere.008
+    100038: Sphere.009
+    100040: Sphere.010
+    400000: Cylinder.001
+    400002: Lamp
+    400004: Lamp.001
+    400006: Lamp.002
+    400008: Lamp.003
+    400010: NurbsPath
+    400012: NurbsPath.003
+    400014: NurbsPath.004
+    400016: NurbsPath.005
+    400018: NurbsPath.006
+    400020: //RootNode
+    400022: Sphere
+    400024: Sphere.001
+    400026: Sphere.002
+    400028: Sphere.003
+    400030: Sphere.005
+    400032: Sphere.006
+    400034: Sphere.007
+    400036: Sphere.008
+    400038: Sphere.009
+    400040: Sphere.010
+    2300000: Cylinder.001
+    2300002: NurbsPath
+    2300004: NurbsPath.003
+    2300006: NurbsPath.004
+    2300008: NurbsPath.005
+    2300010: NurbsPath.006
+    2300012: Sphere
+    2300014: Sphere.001
+    2300016: Sphere.002
+    2300018: Sphere.003
+    2300020: Sphere.005
+    2300022: Sphere.006
+    2300024: Sphere.007
+    2300026: Sphere.008
+    2300028: Sphere.009
+    2300030: Sphere.010
+    3300000: Cylinder.001
+    3300002: NurbsPath
+    3300004: NurbsPath.003
+    3300006: NurbsPath.004
+    3300008: NurbsPath.005
+    3300010: NurbsPath.006
+    3300012: Sphere
+    3300014: Sphere.001
+    3300016: Sphere.002
+    3300018: Sphere.003
+    3300020: Sphere.005
+    3300022: Sphere.006
+    3300024: Sphere.007
+    3300026: Sphere.008
+    3300028: Sphere.009
+    3300030: Sphere.010
+    4300000: Cylinder.001
+    4300002: Sphere.010
+    4300004: Sphere.009
+    4300006: NurbsPath.006
+    4300008: NurbsPath.005
+    4300010: NurbsPath.004
+    4300012: Sphere.008
+    4300014: Sphere.007
+    4300016: Sphere.006
+    4300018: Sphere.005
+    4300020: Sphere.001
+    4300022: Sphere.003
+    4300024: NurbsPath.003
+    4300026: NurbsPath
+    4300028: Sphere.002
+    4300030: Sphere
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.6
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -62,11 +62,11 @@ of correct chanting  OK
 40. Add walking sound effect for player  OK
 41. Create lantern model  OK
 42. Create demon model  OK
-. Create scroll model
+43. Add sound effect when demon attacks  OK
+44. Create scroll model  OK
 
 . Create victim model
 
-. Add sound effect when demon attacks
 . Build outside environment
   - Night sky box  OK
   - Light source

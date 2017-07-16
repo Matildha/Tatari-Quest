@@ -30,6 +30,7 @@ public class VictimFactory : MonoBehaviour {
                 continue;
             GameObject rndPosition = worldArea.victimPositions[Random.Range(0, worldArea.nrVictimPositions)];
             // If position has already been assigned, go back and choose a new one
+            if (rndPosition == null) print("is null");
             if (System.Array.Exists<Vector3>(occupiedPositions, element => element == rndPosition.transform.position))
                 continue;
 

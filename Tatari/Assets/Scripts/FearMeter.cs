@@ -8,7 +8,7 @@ public class FearMeter : MonoBehaviour {
     public Player player;
     public Animator hurtEffectAnim;
     int hurtHash = Animator.StringToHash("HurtEffect 0");
-    const float HURT_THRESHOLD = 5;
+    //const float HURT_THRESHOLD = 5;
 
     public const float MAX_FEAR = 100f; 
     float fear;
@@ -35,7 +35,7 @@ public class FearMeter : MonoBehaviour {
             //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
             fear = MAX_FEAR;
         }
-        if (delta > HURT_THRESHOLD) hurtEffectAnim.Play(hurtHash); 
+        if (delta >= Demon.FEAR_INCREASE) hurtEffectAnim.Play(hurtHash); 
         UpdateFearMeter();
     }
 

@@ -7,6 +7,8 @@ public class DemonSpawn : MonoBehaviour {
     public GameObject orgDemon;
     public Player player;
     public WorldManager worldMan;
+    public AudioClip[] demonSounds;
+    public int nrDemonSounds;
     public bool activeDemon;
 
     float increaseChance = 0.75f;
@@ -45,9 +47,14 @@ public class DemonSpawn : MonoBehaviour {
         // Spawn the demon somewhehere between the two start control points given by WorldManager
         Vector3 startCP1 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[0].transform.position;
         Vector3 startCP2 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[1].transform.position;
+
         newDemon.start = new Vector3(Random.Range(startCP1.x, startCP2.x),
                                         Random.Range(startCP1.y, startCP2.y),
                                         Random.Range(startCP1.z, startCP2.z));
+        newDemon.transform.position = newDemon.start;
+
+        newDemon.sound = demonSounds[Random.Range(0, nrDemonSounds)];
+
         print("Demon spawn at " + newDemon.start);
         newDemon.autoHoming = Random.Range(0, 2) == 1;
         print("New demon homing " + newDemon.autoHoming);
