@@ -64,8 +64,7 @@ of correct chanting  OK
 42. Create demon model  OK
 43. Add sound effect when demon attacks  OK
 44. Create scroll model  OK
-
-. Create victim model
+45. Create victim model  OK
 
 . Build outside environment
   - Night sky box  OK
@@ -83,4 +82,7 @@ of correct chanting  OK
   - Exit / play / restart options
   - Option to enable/disable help info ingame
 . Implement pause screen
+
+. Make lantern glow stronger and weaker
+. Path finding algorithm to make player flee to the outside at game over
 

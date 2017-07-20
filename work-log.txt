@@ -104,6 +104,12 @@ BE WARY OF: Unable to interact with victim?? Why does this happen??!!!
 TODO: See if you can do something about demons spawning inside the player
 hitbox.     Did an easy fix with decreasing hitbox. 
 
+17/7 17:
+IDEA: Animation of shadow in shouji wall. 
+IDEA: Bow thank you animation for saved victim. (player face the other way 
+when victim disappears)
+IDEA: Make lantern emission effect "waver" up and down in intensity.
+
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 
@@ -125,6 +131,10 @@ https://freesound.org/people/LukeSharples/sounds/145619/
 https://freesound.org/people/Me_Is_Chaos/sounds/275652/
 https://freesound.org/people/raven2099/sounds/385854/
 https://freesound.org/people/MadamVicious/sounds/219778/
+https://freesound.org/people/plasterbrain/sounds/243022/
+
+Cloudy sky - Aerials0029
+https://www.textures.com/download/aerials0029/75136?q=Aerials0029
 
 
 
