@@ -67,15 +67,16 @@ of correct chanting  OK
 45. Create victim model  OK
 46. Create victim animations  OK
 47. Make lantern glow stronger and weaker  OK
-
+48. Add rain particle effect in outside environment  OK
+  - Add soundeffect  OK
+  
 . Build outside environment
   - Night sky box  OK
   - Light source  OK
-  - Trees
+  - Trees  OK
   - "Fence" (u know what I mean) that goes down from the roof
   
-. Add rain particle effect in outside environment
-  - Add soundeffect
+
 
 . Create demon animation (not priority, might not need this)
 

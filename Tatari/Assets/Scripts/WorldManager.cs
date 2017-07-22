@@ -14,6 +14,9 @@ public class WorldManager : MonoBehaviour {
     public WorldArea[] worldAreas;
     public int currentWorldArea;
 
+    public RainZone[] rainZones;
+    public AudioClip rainSound;
+
 
 	void Start () {
         scrollFact.Init();
@@ -23,6 +26,9 @@ public class WorldManager : MonoBehaviour {
 
     public void SwitchArea(int area)
     {
+
+        if (area == currentWorldArea) return;
+
         // Disable gameObjects in inactive world area
         foreach (Interactable obj in worldAreas[currentWorldArea].interactables)
         {
@@ -44,6 +50,12 @@ public class WorldManager : MonoBehaviour {
                 obj.gameObject.GetComponent<Door>().enabled = true;
                 //print("Enabled a door");
             }
+        }
+
+        // Update rain zones
+        foreach(RainZone rainZone in rainZones)
+        {
+            rainZone.UpdateSystems(area);
         }
     }
 

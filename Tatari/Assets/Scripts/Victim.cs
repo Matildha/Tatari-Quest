@@ -71,7 +71,7 @@ public class Victim : Interactable {
         else
         {
             print("The chant did not cure this person!");
-            victimAnimCon.SetTrigger("makeBow");
+            //victimAnimCon.SetTrigger("makeBow");
             //bowAnimStart = Time.time;
             //isDying = true;
             infoBox.DisplayInfo(RESCUE_FAIL);
