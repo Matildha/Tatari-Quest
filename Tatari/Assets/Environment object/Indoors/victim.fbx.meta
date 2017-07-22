@@ -19,6 +19,15 @@ ModelImporter:
     100022: Point.001
     100024: Point.002
     100026: //RootNode
+    100028: Armature
+    100030: Chest
+    100032: Head
+    100034: Head_end
+    100036: Shoulder L
+    100038: Shoulder L_end
+    100040: Shoulder R
+    100042: Shoulder R_end
+    100044: Stomach
     400000: Circle
     400002: Circle.001
     400004: Circle.002
@@ -33,6 +42,15 @@ ModelImporter:
     400022: Point.001
     400024: Point.002
     400026: //RootNode
+    400028: Armature
+    400030: Chest
+    400032: Head
+    400034: Head_end
+    400036: Shoulder L
+    400038: Shoulder L_end
+    400040: Shoulder R
+    400042: Shoulder R_end
+    400044: Stomach
     2300000: Circle
     2300002: Circle.001
     2300004: Circle.002
@@ -63,6 +81,12 @@ ModelImporter:
     4300014: Circle.003
     4300016: Cube.001
     4300018: Circle.002
+    7400000: Armature|Bow
+    7400002: Armature|Idle
+    9500000: //RootNode
+    13700000: Circle.003
+    13700002: Cube
+    13700004: Cube.002
   materials:
     importMaterials: 1
     materialName: 0
@@ -79,13 +103,121 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Bow
+      takeName: Armature|Bow
+      firstFrame: 0
+      lastFrame: 184
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Stomach
+        weight: 1
+      - path: Armature/Stomach/Chest
+        weight: 1
+      - path: Armature/Stomach/Chest/Head
+        weight: 1
+      - path: Armature/Stomach/Chest/Head/Head_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder L/Shoulder L_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder R/Shoulder R_end
+        weight: 1
+      - path: Circle.003
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle
+      takeName: Armature|Idle
+      firstFrame: 0
+      lastFrame: 190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Stomach
+        weight: 1
+      - path: Armature/Stomach/Chest
+        weight: 1
+      - path: Armature/Stomach/Chest/Head
+        weight: 1
+      - path: Armature/Stomach/Chest/Head/Head_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder L
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder L/Shoulder L_end
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder R
+        weight: 1
+      - path: Armature/Stomach/Chest/Shoulder R/Shoulder R_end
+        weight: 1
+      - path: Circle.003
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube.002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -124,10 +256,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

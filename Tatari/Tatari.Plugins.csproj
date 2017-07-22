@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1B4E6577-84A2-FFEA-C736-2EFB72E0BF7A}</ProjectGuid>
+    <ProjectGuid>{5CF53174-64B5-8D40-4740-7721A9947CF7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -78,34 +78,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Tatari.Plugins.csproj">
-      <Project>{5CF53174-64B5-8D40-4740-7721A9947CF7}</Project>
-      <Name>Tatari.Plugins</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Scripts\Demon.cs" />
-    <Compile Include="Assets\Scripts\DemonBezMotionWithCollision.cs" />
-    <Compile Include="Assets\Scripts\DemonSpawn.cs" />
-    <Compile Include="Assets\Scripts\Door.cs" />
-    <Compile Include="Assets\Scripts\Door_Old.cs" />
-    <Compile Include="Assets\Scripts\FearMeter.cs" />
-    <Compile Include="Assets\Scripts\FootSteps.cs" />
-    <Compile Include="Assets\Scripts\InfoBox.cs" />
-    <Compile Include="Assets\Scripts\Interactable.cs" />
-    <Compile Include="Assets\Scripts\InteractableManager.cs" />
-    <Compile Include="Assets\Scripts\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Lantern.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerCollider.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Scroll.cs" />
-    <Compile Include="Assets\Scripts\ScrollFactory.cs" />
-    <Compile Include="Assets\Scripts\Threshold.cs" />
-    <Compile Include="Assets\Scripts\Victim.cs" />
-    <Compile Include="Assets\Scripts\VictimFactory.cs" />
-    <Compile Include="Assets\Scripts\WorldArea.cs" />
-    <Compile Include="Assets\Scripts\WorldManager.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\Displace.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\GerstnerDisplace.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\MeshContainer.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\PlanarReflection.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\SpecularLighting.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\Water.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs" />
+    <Compile Include="Assets\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />

@@ -65,17 +65,20 @@ of correct chanting  OK
 43. Add sound effect when demon attacks  OK
 44. Create scroll model  OK
 45. Create victim model  OK
+46. Create victim animations  OK
+47. Make lantern glow stronger and weaker  OK
 
 . Build outside environment
   - Night sky box  OK
-  - Light source
+  - Light source  OK
   - Trees
   - "Fence" (u know what I mean) that goes down from the roof
+  
 . Add rain particle effect in outside environment
   - Add soundeffect
 
-. Create demon animation
-. Create victim idle animation
+. Create demon animation (not priority, might not need this)
+
 . Add random sound effects when walking around (thunder or whatever scary you find)
 
 . Implement a start and game-over screen
@@ -83,6 +86,6 @@ of correct chanting  OK
   - Option to enable/disable help info ingame
 . Implement pause screen
 
-. Make lantern glow stronger and weaker
+
 . Path finding algorithm to make player flee to the outside at game over
 

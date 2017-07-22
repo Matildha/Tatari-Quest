@@ -35,6 +35,10 @@ public class FearMeter : MonoBehaviour {
             //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
             fear = MAX_FEAR;
         }
+        else if(fear < 0)
+        {
+            fear = 0;
+        }
         if (delta >= Demon.FEAR_INCREASE) hurtEffectAnim.Play(hurtHash); 
         UpdateFearMeter();
     }

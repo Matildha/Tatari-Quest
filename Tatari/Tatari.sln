@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tatari.Plugins", "Tatari.Plugins.csproj", "{5CF53174-64B5-8D40-4740-7721A9947CF7}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tatari", "Tatari.csproj", "{1B4E6577-84A2-FFEA-C736-2EFB72E0BF7A}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CF53174-64B5-8D40-4740-7721A9947CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF53174-64B5-8D40-4740-7721A9947CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF53174-64B5-8D40-4740-7721A9947CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF53174-64B5-8D40-4740-7721A9947CF7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B4E6577-84A2-FFEA-C736-2EFB72E0BF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B4E6577-84A2-FFEA-C736-2EFB72E0BF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B4E6577-84A2-FFEA-C736-2EFB72E0BF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU

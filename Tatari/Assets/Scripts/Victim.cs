@@ -5,6 +5,7 @@ using UnityEngine;
 public class Victim : Interactable {
 
     public InfoBox infoBox;
+    Animator victimAnimCon;
 
     public override string PromptMessage { get { return PROMPT_MSG; } }
     public string symptom;
@@ -13,7 +14,10 @@ public class Victim : Interactable {
 
     float symptDisplayStart;
     const float SYMPT_DISP_TIME = 2;
+    float bowAnimDuration;
+    float bowAnimStart;
     bool symptDisplay;
+    bool isDying;
 
     const string PROMPT_MSG = "Press E to view symptoms\nor R to chant from scroll";
     const string SYMP_INFO = "Symptoms:\n";
@@ -24,6 +28,18 @@ public class Victim : Interactable {
 
     private void Start()
     {
+        victimAnimCon = GetComponent<Animator>();
+        isDying = false;
+        symptDisplay = false;
+
+        foreach(AnimationClip clip in victimAnimCon.runtimeAnimatorController.animationClips)
+        {
+            if(clip.name == "Armature|Bow")
+            {
+                bowAnimDuration = clip.length;
+                break;
+            }
+        }
     }
 
     public override void Interact()
@@ -40,29 +56,33 @@ public class Victim : Interactable {
             infoBox.DisplayInfo(RESCUE_SUCCESS);
 
             InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
-            intManager.RemoveInteractable(this);  // So this victim is not updated in InteractableManager
+            intManager.RemoveInteractable(this);  
             intManager.ResetInRangeInteractable();
 
             Player player = GameObject.Find("Player").GetComponent<Player>();
             player.IncreaseNrRescues();
             player.fearMeter.ChangeFear(DECREASE_FEAR);
 
-            Destroy(this.gameObject);        
+            victimAnimCon.SetTrigger("makeBow");
+            bowAnimStart = Time.time;
+
+            isDying = true;     
         }
         else
         {
             print("The chant did not cure this person!");
+            victimAnimCon.SetTrigger("makeBow");
+            //bowAnimStart = Time.time;
+            //isDying = true;
             infoBox.DisplayInfo(RESCUE_FAIL);
         }
     }
 
-    /*void Update()
+    void Update()
     {
-        if(symptDisplay && Time.time - symptDisplayStart > SYMPT_DISP_TIME )
+        if(isDying && Time.time - bowAnimStart > bowAnimDuration)
         {
-            symptDisplay = false;
-            victimInfoBox.SetActive(false);
+            Destroy(this.gameObject);
         }
-    }*/
-
+    }
 }
