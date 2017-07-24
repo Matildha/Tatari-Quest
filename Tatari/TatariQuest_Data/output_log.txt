@@ -1,0 +1,186 @@
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 755M (ID=0xfcd)
+    Vendor:   NVIDIA
+    VRAM:     1954 MB
+    Driver:   21.21.13.7654
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.137 seconds
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.388168 ms
+RGBA(0.875, 0.875, 0.875, 1.000)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom sleep deprivation at pos (3.4, 0.4, 13.3) in area 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom blind rage at pos (-2.5, 0.4, -0.7) in area 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom sleep deprivation at pos (-7.0, 0.4, 1.5) in area 10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom blindness, hallucinations at pos (5.5, 0.6, 9.0) in area 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 54dc -> priority: 1 
+  Thread -> id: 563c -> priority: 1 
+  Thread -> id: 4c20 -> priority: 1 
+  Thread -> id: 43fc -> priority: 1 
+Internal: JobTempAlloc has allocations that are more than 4 frames old - this is not allowed and likely a leak
+ 
+(Filename:  Line: 371)
+
+Stoped rain 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain sound 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Started rain and sound6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain sound 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Started rain and sound5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Demon spawnas
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Demon spawn at (-9.2, 1.0, 13.3)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+New demon homing True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Demon sound: 385854__raven2099__cackle-EDIT (UnityEngine.AudioClip)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Demon plays sound
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player attacked by demon!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Demon found player hitbox or environment obstacle in trigger, selfdestruct
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 15.332718 ms
+
+Unloading 155 unused Assets to reduce memory usage. Loaded Objects now: 330.
+Total: 17.385035 ms (FindLiveObjects: 0.034212 ms CreateObjectMapping: 0.031218 ms MarkObjects: 0.239914 ms  DeleteObjects: 17.079260 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.578902 ms
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 1499.
+Total: 1.654169 ms (FindLiveObjects: 0.131290 ms CreateObjectMapping: 0.062437 ms MarkObjects: 0.666286 ms  DeleteObjects: 0.792017 ms)
+
+RGBA(0.875, 0.875, 0.875, 1.000)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom paranoia, hysteria at pos (-0.4, 0.4, 4.4) in area 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom hallucinations, panic attacks at pos (-7.0, 0.4, 1.5) in area 10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom blindness, hallucinations at pos (1.3, 0.4, 10.5) in area 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Created victim symptom hallucinations, panic attacks at pos (-2.5, 0.4, -0.7) in area 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Internal: JobTempAlloc has allocations that are more than 4 frames old - this is not allowed and likely a leak
+ 
+(Filename:  Line: 371)
+
+Stoped rain 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain sound 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Started rain and sound6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain sound 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Started rain and sound7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain sound 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stoped rain sound 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+

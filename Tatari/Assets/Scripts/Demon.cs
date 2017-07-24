@@ -58,10 +58,10 @@ public class Demon : MonoBehaviour {
         if(!hasPlayedSound && Vector3.Distance(transform.position, end) < 3f)
         {
             GetComponent<AudioSource>().clip = sound;
-            print("Demon sound: " + sound);
+            //print("Demon sound: " + sound);
             GetComponent<AudioSource>().Play();
             hasPlayedSound = true;
-            print("Demon plays sound");
+            //print("Demon plays sound");
         } 
     }
 
@@ -76,7 +76,7 @@ public class Demon : MonoBehaviour {
         // We don't want to register hits on the player's physical collider
         if(other.gameObject.tag == "Player")
         {
-            //print("Demon hit player collider. Cont. to live.");
+            print("Demon hit player collider. Cont. to live.");
             return;
         }
         transform.Find("Demon").gameObject.SetActive(false);

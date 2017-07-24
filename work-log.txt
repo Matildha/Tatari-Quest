@@ -108,7 +108,13 @@ hitbox.     Did an easy fix with decreasing hitbox.
 IDEA: Animation of shadow in shouji wall. 
 IDEA: Bow thank you animation for saved victim. (player face the other way 
 when victim disappears)
-IDEA: Make lantern emission effect "waver" up and down in intensity.
+IDEA: Make lantern emission effect "waver" up and down in intensity.  OK
+
+23/7 17:
+IDEA: Display time in success game over screen. (how long it took)  OK
+
+24/7 17: 
+TODO: Clearn up player update function (only getkeydown)
 
 
 LIST OF RESOURCES: 
@@ -141,6 +147,9 @@ https://www.assetstore.unity3d.com/en/#!/content/7714
 
 Light Rain
 https://freesound.org/people/babusrelaxtv/sounds/344430/
+
+Konfuciuz (font)
+http://www.1001fonts.com/konfuciuz-font.html
 
 
 

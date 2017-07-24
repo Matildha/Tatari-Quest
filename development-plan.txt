@@ -76,17 +76,15 @@ of correct chanting  OK
   - Trees  OK
   - "Fence" (u know what I mean) that goes down from the roof
   
-
+  
+. Add random sound effects when walking around (thunder or whatever scary you find)
 
 . Create demon animation (not priority, might not need this)
-
-. Add random sound effects when walking around (thunder or whatever scary you find)
 
 . Implement a start and game-over screen
   - Exit / play / restart options
   - Option to enable/disable help info ingame
 . Implement pause screen
-
 
 . Path finding algorithm to make player flee to the outside at game over
 

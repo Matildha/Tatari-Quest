@@ -18,7 +18,7 @@ public class FearMeter : MonoBehaviour {
 
     private void Start()
     {
-        fear = 0;
+        fear =90;
         height = transform.GetComponent<RectTransform>().rect.height;
         maxWidth = transform.GetComponent<RectTransform>().rect.width;
         UpdateFearMeter();
@@ -29,11 +29,12 @@ public class FearMeter : MonoBehaviour {
     public void ChangeFear(float delta)
     {
         fear += delta;
-        /*if (delta > 5 || delta < -5)*/ // print("Player fear: " + fear);
+        if (delta >= 5 || delta <= -5) print("Player fear: " + fear);
         if (fear >= MAX_FEAR)
         {
             //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
             fear = MAX_FEAR;
+            player.GameOver();
         }
         else if(fear < 0)
         {
