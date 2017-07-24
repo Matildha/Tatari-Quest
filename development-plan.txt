@@ -69,6 +69,11 @@ of correct chanting  OK
 47. Make lantern glow stronger and weaker  OK
 48. Add rain particle effect in outside environment  OK
   - Add soundeffect  OK
+50. Implement pause screen  OK
+51. Implement game-over screen  OK
+
+. Implement a start screen
+  - Option to enable/disable help info ingame
   
 . Build outside environment
   - Night sky box  OK
@@ -81,10 +86,8 @@ of correct chanting  OK
 
 . Create demon animation (not priority, might not need this)
 
-. Implement a start and game-over screen
-  - Exit / play / restart options
-  - Option to enable/disable help info ingame
-. Implement pause screen
+
+
 
 . Path finding algorithm to make player flee to the outside at game over
 

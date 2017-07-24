@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
         isWalking = false;
     }
 
-    private void Update()
+    public void ExUpdate()
     {
         if (unableToMove) return;
 
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void FixedUpdate ()
+    public void ExFixedUpdate ()
     {
         if (unableToMove) return;
 

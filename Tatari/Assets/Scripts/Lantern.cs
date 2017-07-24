@@ -23,7 +23,7 @@ public class Lantern : MonoBehaviour {
         lanternGlow = lanternRend.material;
         if (lanternGlow == null) print("is null start");
         defaultColor = lanternGlow.GetColor("_EmissionColor");
-        print(defaultColor);
+        //print(defaultColor);
         lanternGlow.SetColor("_EmissionColor", Color.black);  //TODO: Remove or change later!!
         isLit = false;
         flickerPeriod = 1;

@@ -79,6 +79,16 @@ public class WorldManager : MonoBehaviour {
         //print("Symptoms length " + symptoms.Count);
     }
 
+    void Update()
+    {
+        player.ExUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        player.ExFixedUpdate();
+    }
+
     List<string> LoadScrollInfo()
     {
         List<string> symptoms = new List<string>();

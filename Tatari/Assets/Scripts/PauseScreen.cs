@@ -13,9 +13,8 @@ public class PauseScreen : MenuController {
 
         actions = new List<System.Func<int>>();
         actions.Add(Continue);
-        actions.Add(Help);
+        actions.Add(ToggleHelp);
         actions.Add(Exit);
-
     }
 	
 	int Continue()
@@ -24,19 +23,42 @@ public class PauseScreen : MenuController {
         return 0;
     }
 
-    int Help()
+    int ToggleHelp()
     {
-        menu.SetActive(false);
-        helpInfo.SetActive(true);
+        helpIsDisplay = !helpIsDisplay;
+        menu.SetActive(!helpIsDisplay);
+        helpInfo.SetActive(helpIsDisplay);
+        if (helpIsDisplay) Init();  // Reset menu when returning to it
         return 0;
     }
 
+
     void Update()
     {
-        if(helpIsDisplay || Input.GetKeyDown(KeyCode.Q))
+        if (helpIsDisplay)
         {
-            menu.SetActive(true);
-            helpInfo.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                menu.SetActive(true);
+                helpInfo.SetActive(false);
+                ToggleHelp();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Next();
+            }
+            else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Prev();
+            }
+            else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            {
+                Select();
+            }
         }
     }
+
 }

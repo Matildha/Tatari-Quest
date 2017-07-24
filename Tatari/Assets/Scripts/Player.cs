@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 
     public PlayerController playerController;
     public InteractableManager intMan;
+    public GameObject ingameUI;
     public Inventory inventory;
     public FearMeter fearMeter;
     public GameObject victimStatIndicator;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour {
 
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
+        gamePlayStartTime = (int) Time.time;
         nrRescuedVictims = 0;
         helpInfo = true;
     }
@@ -56,8 +58,9 @@ public class Player : MonoBehaviour {
         GameController.instance.SwitchScene(1);
     }
 
-    void Update() {
+    public void ExUpdate() {
 
+        playerController.ExUpdate();
         /*if (Input.GetKeyDown(KeyCode.Z))
         {
             if (!cursorToggle)
@@ -107,6 +110,11 @@ public class Player : MonoBehaviour {
             GameController.instance.Pause();
         }
 
+    }
+
+    public void ExFixedUpdate()
+    {
+        playerController.ExFixedUpdate();
     }
 
     void OnApplicationFocus(bool focus)

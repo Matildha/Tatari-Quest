@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour {
     public List<System.Func<int>> actions;
     public int nrMenuItems;
 
+    public Color textDefaultColor;
     int selectedItem;  // 0 indexed
     bool isRestarting;
     bool isExiting;
@@ -18,6 +19,20 @@ public class MenuController : MonoBehaviour {
     public void Init()
     {
         Input.ResetInputAxes();
+        selectedItem = 0;
+        print(textDefaultColor + " in Init");
+        for(int i=0; i<nrMenuItems; i++)
+        {
+            if (i == 0)
+            {
+                markers[i].SetActive(true);
+            }
+            else
+            {
+                markers[i].SetActive(false);
+            }
+            itemIcons[i].transform.Find("Text").GetComponent<Text>().color = textDefaultColor;
+        }   
     }
 
     public int Exit()
@@ -51,7 +66,7 @@ public class MenuController : MonoBehaviour {
         }
 	}
 
-    void Next()
+    public void Next()
     {
         markers[selectedItem].SetActive(false);
         selectedItem++;
@@ -60,7 +75,7 @@ public class MenuController : MonoBehaviour {
 
     }
 
-    void Prev()
+    public void Prev()
     {
         markers[selectedItem].SetActive(false);
         selectedItem--;
@@ -68,11 +83,11 @@ public class MenuController : MonoBehaviour {
         markers[selectedItem].SetActive(true);
     }
 
-    void Select()
+    public void Select()
     {
-        Color color = itemIcons[selectedItem].transform.Find("Text").GetComponent<Text>().color;
         itemIcons[selectedItem].transform.Find("Text").GetComponent<Text>().color = 
-                                                                new Color(color.r * 0.5f, color.g * 0.5f, color.b * 0.5f);
+                                                                new Color(textDefaultColor.r * 0.5f, 
+                                                                textDefaultColor.g * 0.5f, textDefaultColor.b * 0.5f);
         actions[selectedItem]();
     }
 }

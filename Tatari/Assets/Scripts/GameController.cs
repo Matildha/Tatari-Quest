@@ -7,9 +7,9 @@ public class GameController : MonoBehaviour {
 
     public static GameController instance;
 
-    public WorldManager worldMan;
-    public GameObject ingameUI;
-    public GameObject pauseScreen;
+    WorldManager worldMan;
+    GameObject ingameUI;
+    GameObject pauseScreen;
 
     public const int INGAME = 0;
     public const int GAME_OVER = 1;  // TODO: Keep this updated
@@ -20,6 +20,10 @@ public class GameController : MonoBehaviour {
     
 
 	void Start () {
+        GetInGameVariables();  // TEMPPPPPP!!! 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        pauseScreen.SetActive(false);
+
         // Make sure this class can only be instantiated once
 		if(instance == null)
         {
@@ -32,21 +36,42 @@ public class GameController : MonoBehaviour {
         }
 	}
 
+    void GetInGameVariables()
+    {
+        worldMan = GameObject.Find("Environment").GetComponent<WorldManager>();
+        ingameUI = GameObject.Find("IngameUI");
+        pauseScreen = GameObject.Find("Pause Screen");
+    }
+
     public void SwitchScene(int scene)
     {
+        if (pauseScreen != null)
+        {
+            pauseScreen.SetActive(true);  // So Game Controller can access it if INGAME level is reloaded
+        }
+
         int oldScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene, LoadSceneMode.Single);
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(scene));
+        /*if(scene == INGAME)
+        {
+            GetInGameVariables();
+        }*/
     }
 
     public void Pause()
     {
-        if (pauseScreen == null) return;
+        if (pauseScreen == null)
+        {
+            print("PAUSESCREEN IS NULL in pause");
+            return;
+        }
         /*worldMan.player.gameObject.SetActive(false);
         worldMan.gameObject.SetActive(false);*/
-        worldMan.player.enabled = false;
+        print("In Pause in game controller");
         worldMan.enabled = false;
         pauseScreen.SetActive(true);
+        pauseScreen.GetComponent<PauseScreen>().Init();
     }
 
     public void UnPause()
@@ -54,6 +79,17 @@ public class GameController : MonoBehaviour {
         if (pauseScreen == null) return;
         /*worldMan.gameObject.SetActive(true);
         worldMan.player.gameObject.SetActive(true);*/
+        worldMan.enabled = true;
         pauseScreen.SetActive(false);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        print("In game controller scene loaded");
+        if (scene.buildIndex == INGAME)
+        {
+            GetInGameVariables();
+
+        }
     }
 }
