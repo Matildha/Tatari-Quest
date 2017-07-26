@@ -116,6 +116,10 @@ IDEA: Display time in success game over screen. (how long it took)  OK
 24/7 17: 
 TODO: Clearn up player update function (only getkeydown)
 
+26// 17:
+TODO: Disable intManager update when puasing. OK
+
+
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 

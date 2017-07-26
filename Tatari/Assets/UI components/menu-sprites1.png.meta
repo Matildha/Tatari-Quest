@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 07907096d609eb4458f51c4b62bc913f
-timeCreated: 1500888511
+timeCreated: 1501064654
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,8 @@ TextureImporter:
     21300002: horray-text
     21300004: skull-marker
     21300006: plain-button
+    21300008: toggle-true
+    21300010: toggle-false
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -31,7 +33,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -137,7 +139,33 @@ TextureImporter:
         width: 712
         height: 193
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: toggle-true
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 199
+        width: 191
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: toggle-false
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 197
+        width: 188
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

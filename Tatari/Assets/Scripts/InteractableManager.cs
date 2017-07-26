@@ -59,7 +59,7 @@ public class InteractableManager : MonoBehaviour {
         }
     }
 
-    void Update()
+    public void ExUpdate()
     {
         if (inRangeInteractable == null)
         {

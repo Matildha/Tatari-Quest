@@ -7,26 +7,40 @@ public class GameController : MonoBehaviour {
 
     public static GameController instance;
 
-    WorldManager worldMan;
-    GameObject ingameUI;
-    GameObject pauseScreen;
-
-    public const int INGAME = 0;
-    public const int GAME_OVER = 1;  // TODO: Keep this updated
+    public const int START = 0;
+    public const int INGAME = 1;
+    public const int GAME_OVER = 2;  // TODO: Keep this updated
+    string[] scenePaths = {"start-screen", "ingame", "gameover-screen"};
     // Info to be accessed from several scenes
+    public bool hintInfo;
     public int nrRescuedVictims;
     public bool gameSuccess;
     public int gameplayTime;
-    
 
-	void Start () {
-        GetInGameVariables();  // TEMPPPPPP!!! 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        pauseScreen.SetActive(false);
+    StartMenu startMenu;
+
+    WorldManager worldMan;
+    GameObject ingameUI;
+    PauseScreen pauseScreen;
+
+
+    void Start () {
+        // When testing
+        /*if(SceneManager.GetActiveScene().buildIndex == INGAME)
+        {
+            GetInGameVariables();
+            pauseScreen.SetActive(false);
+        }*/
+
+
+        //GetInGameVariables();  // TEMPPPPPP!!! 
+        
+        //pauseScreen.SetActive(false);
 
         // Make sure this class can only be instantiated once
 		if(instance == null)
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
@@ -34,29 +48,33 @@ public class GameController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-	}
+
+        if (SceneManager.GetActiveScene().buildIndex == START)
+        {
+            startMenu = GameObject.Find("Start Menu").GetComponent<StartMenu>();
+            startMenu.StartMenuInit();
+        }
+    }
 
     void GetInGameVariables()
     {
         worldMan = GameObject.Find("Environment").GetComponent<WorldManager>();
         ingameUI = GameObject.Find("IngameUI");
-        pauseScreen = GameObject.Find("Pause Screen");
+        pauseScreen = GameObject.Find("Pause Screen").GetComponent<PauseScreen>();
     }
 
     public void SwitchScene(int scene)
     {
-        if (pauseScreen != null)
+        /*if (pauseScreen != null)
         {
             pauseScreen.SetActive(true);  // So Game Controller can access it if INGAME level is reloaded
-        }
+        }*/
 
         int oldScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(scene));
-        /*if(scene == INGAME)
-        {
-            GetInGameVariables();
-        }*/
+        /*SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        SceneManager.SetActiveScene(SceneManager.GetSceneAt(scene));*/
+        SceneManager.LoadScene(scenePaths[scene], LoadSceneMode.Single);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenePaths[scene]));
     }
 
     public void Pause()
@@ -70,17 +88,18 @@ public class GameController : MonoBehaviour {
         worldMan.gameObject.SetActive(false);*/
         print("In Pause in game controller");
         worldMan.enabled = false;
-        pauseScreen.SetActive(true);
-        pauseScreen.GetComponent<PauseScreen>().Init();
+        //pauseScreen.SetActive(true);
+        pauseScreen.Init();
+        pauseScreen.Pause();
     }
 
     public void UnPause()
     {
         if (pauseScreen == null) return;
-        /*worldMan.gameObject.SetActive(true);
-        worldMan.player.gameObject.SetActive(true);*/
+
         worldMan.enabled = true;
-        pauseScreen.SetActive(false);
+        //pauseScreen.SetActive(false);
+        pauseScreen.UnPause();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -89,7 +108,7 @@ public class GameController : MonoBehaviour {
         if (scene.buildIndex == INGAME)
         {
             GetInGameVariables();
-
+            pauseScreen.UnPause();
         }
     }
 }

@@ -17,6 +17,9 @@ public class WorldManager : MonoBehaviour {
     public RainZone[] rainZones;
     public AudioClip rainSound;
 
+    float intManLastUpdate;
+    const float intManDeltaUpdate = 0.5f;
+
 
 	void Start () {
         scrollFact.Init();
@@ -82,6 +85,11 @@ public class WorldManager : MonoBehaviour {
     void Update()
     {
         player.ExUpdate();
+        if (Time.time - intManLastUpdate > intManDeltaUpdate)
+        {
+            intManager.ExUpdate();
+            intManLastUpdate = Time.time;
+        }
     }
 
     private void FixedUpdate()

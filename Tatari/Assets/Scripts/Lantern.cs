@@ -36,11 +36,13 @@ public class Lantern : MonoBehaviour {
         if (isLit)
         {
             lanternLight.SetActive(false);
+            //lanternLight.GetComponent<Light>().intensity = 0;
             lanternGlow.SetColor("_EmissionColor", Color.black);
         }
         else
         {
             lanternLight.SetActive(true);
+            //lanternLight.GetComponent<Light>().intensity = 2;
             lanternGlow.SetColor("_EmissionColor", defaultColor);
         }
         isLit ^= true;  // xor

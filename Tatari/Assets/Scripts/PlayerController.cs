@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour {
     GameObject playerCamera;
     
     float rotationX = 0f;
-
-    Vector3 safeSpot;
     
 
 	void Start ()
@@ -42,7 +40,11 @@ public class PlayerController : MonoBehaviour {
 
     public void ExFixedUpdate ()
     {
-        if (unableToMove) return;
+        if (unableToMove)
+        {
+            isWalking = false;
+            return;
+        }
 
         float moveLR = Input.GetAxis("Horizontal") * speed; // Left, right movement
         float moveFB = Input.GetAxis("Vertical") * speed;  // Front, back movement

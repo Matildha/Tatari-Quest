@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseScreen : MenuController {
 
+    public GameObject PauseMenu;
     public GameObject menu;
     public GameObject helpInfo;
     bool helpIsDisplay;
@@ -15,6 +16,7 @@ public class PauseScreen : MenuController {
         actions.Add(Continue);
         actions.Add(ToggleHelp);
         actions.Add(Exit);
+
     }
 	
 	int Continue()
@@ -59,6 +61,18 @@ public class PauseScreen : MenuController {
                 Select();
             }
         }
+    }
+
+    public void Pause()
+    {
+        PauseMenu.SetActive(true);
+        this.enabled = true;     
+    }
+
+    public void UnPause()
+    {
+        PauseMenu.SetActive(false);
+        this.enabled = false;
     }
 
 }

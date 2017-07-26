@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-    public static bool helpInfo;
-
     public PlayerController playerController;
     public InteractableManager intMan;
     public GameObject ingameUI;
@@ -19,18 +17,21 @@ public class Player : MonoBehaviour {
 
     public int currentArea;
 
+    public bool hintInfo;
+
     int nrRescuedVictims;
     int gamePlayStartTime;
 
     bool normalReading;
     bool cursorToggle;
+    
 
 
-	void Start () {
+    void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         gamePlayStartTime = (int) Time.time;
         nrRescuedVictims = 0;
-        helpInfo = true;
+        hintInfo = GameController.instance.hintInfo;
     }
 
     public void IncreaseNrRescues()
@@ -55,20 +56,13 @@ public class Player : MonoBehaviour {
         GameController.instance.nrRescuedVictims = nrRescuedVictims;
         GameController.instance.gameplayTime = (int) Time.time - gamePlayStartTime;
         GameController.instance.gameSuccess = nrRescuedVictims == VictimFactory.MAX_VICTIMS;
-        GameController.instance.SwitchScene(1);
+        GameController.instance.SwitchScene(GameController.GAME_OVER);
     }
 
     public void ExUpdate() {
 
         playerController.ExUpdate();
-        /*if (Input.GetKeyDown(KeyCode.Z))
-        {
-            if (!cursorToggle)
-                Cursor.lockState = CursorLockMode.None;
-            else
-                Cursor.lockState = CursorLockMode.Locked;
-            cursorToggle ^= true;  // xor
-        }*/
+ 
         if (inventory.isReading || (Input.GetButtonDown("Read") && lantern.isLit))
         {
             if (!normalReading && intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim") {

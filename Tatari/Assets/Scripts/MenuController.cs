@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour {
     public int nrMenuItems;
 
     public Color textDefaultColor;
+    Color textSelectedColor;
     int selectedItem;  // 0 indexed
     bool isRestarting;
     bool isExiting;
@@ -20,7 +21,10 @@ public class MenuController : MonoBehaviour {
     {
         Input.ResetInputAxes();
         selectedItem = 0;
+        textSelectedColor = new Color(textDefaultColor.r * 0.5f,
+                                                    textDefaultColor.g * 0.5f, textDefaultColor.b * 0.5f);
         print(textDefaultColor + " in Init");
+
         for(int i=0; i<nrMenuItems; i++)
         {
             if (i == 0)
@@ -85,9 +89,12 @@ public class MenuController : MonoBehaviour {
 
     public void Select()
     {
-        itemIcons[selectedItem].transform.Find("Text").GetComponent<Text>().color = 
-                                                                new Color(textDefaultColor.r * 0.5f, 
-                                                                textDefaultColor.g * 0.5f, textDefaultColor.b * 0.5f);
+        itemIcons[selectedItem].transform.Find("Text").GetComponent<Text>().color = textSelectedColor;
         actions[selectedItem]();
+    }
+
+    public void DeSelect()
+    {
+        itemIcons[selectedItem].transform.Find("Text").GetComponent<Text>().color = textDefaultColor;
     }
 }

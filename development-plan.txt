@@ -71,9 +71,10 @@ of correct chanting  OK
   - Add soundeffect  OK
 50. Implement pause screen  OK
 51. Implement game-over screen  OK
-
-. Implement a start screen
-  - Option to enable/disable help info ingame
+52. Implement a start menu  OK
+  - Option to enable/disable help info ingame  OK
+  
+. Implement random player spawn positions
   
 . Build outside environment
   - Night sky box  OK

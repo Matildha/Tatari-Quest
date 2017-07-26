@@ -86,7 +86,7 @@ public class Inventory : MonoBehaviour {
             orgScrollBase.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int)scroll.color];
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = orgScrollBase.GetComponent<RectTransform>().anchoredPosition;
             scrollSelect.SetActive(true);
-            if (Player.helpInfo)
+            if (player.hintInfo)
             {
                 infoBox.gameObject.SetActive(true);
                 infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
@@ -94,7 +94,7 @@ public class Inventory : MonoBehaviour {
         }
         else
         {
-            if (currentNrScrolls == 2 && Player.helpInfo) infoBox.DisplayInfo("Use tab to browse scrolls");
+            if (currentNrScrolls == 2 && player.hintInfo) infoBox.DisplayInfo("Use tab to browse scrolls");
 
             GameObject newScroll = Instantiate(orgScrollBase) as GameObject;
             newScroll.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int) scroll.color];

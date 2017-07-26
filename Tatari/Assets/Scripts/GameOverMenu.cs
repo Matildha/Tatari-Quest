@@ -11,7 +11,7 @@ public class GameOverMenu : MenuController {
     public GameObject horrayText;
     public GameObject resultText;
     const string posResultMsg = "Yokatta! You rescued all victims from the demons.";
-    const string negResultMsg = "Curse you coward, fleeing to save only yourself!";
+    const string negResultMsg = "Curse you coward. Fleeing to save only yourself!";
     const string VICTIM_STAT_TEXT = "Victims rescued: ";
     const string TIME_STAT_TEXT = "Time: ";
     
