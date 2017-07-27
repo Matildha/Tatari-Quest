@@ -36,21 +36,32 @@ public class DemonSpawn : MonoBehaviour {
         // Check if there are any avaiable demon control points in current world area
         if (worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP.Length == 0) return;
 
+        // Spawn the demon somewhehere between the two start control points given by WorldManager
+        Vector3 startCP1 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[0].transform.position;
+        Vector3 startCP2 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[1].transform.position;
+
+        Vector3 rndStart = player.transform.position;
+        int whileSaver = 0;
+        while (Vector3.Distance(rndStart, player.transform.position) < 1f && whileSaver < 5)  // max 4 attempts
+        {
+            rndStart = new Vector3(Random.Range(startCP1.x, startCP2.x),
+                                            Random.Range(startCP1.y, startCP2.y),
+                                            Random.Range(startCP1.z, startCP2.z));
+            whileSaver++;
+            print("Demon start pos rnd attempt");
+        }
+
         GameObject newDemonGameObject = Instantiate(orgDemon) as GameObject;
         Demon newDemon = newDemonGameObject.GetComponent<Demon>();
 
         newDemon.controlP1 = worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP[0];
         newDemon.controlP2 = worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP[1];
 
+        newDemon.start = rndStart;
+
         Random.InitState(System.DateTime.Now.Millisecond);
 
-        // Spawn the demon somewhehere between the two start control points given by WorldManager
-        Vector3 startCP1 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[0].transform.position;
-        Vector3 startCP2 = worldMan.worldAreas[worldMan.currentWorldArea].demonStart[1].transform.position;
-
-        newDemon.start = new Vector3(Random.Range(startCP1.x, startCP2.x),
-                                        Random.Range(startCP1.y, startCP2.y),
-                                        Random.Range(startCP1.z, startCP2.z));
+        
         newDemon.transform.position = newDemon.start;
 
         newDemon.sound = demonSounds[Random.Range(0, nrDemonSounds)];
@@ -64,13 +75,11 @@ public class DemonSpawn : MonoBehaviour {
         activeDemon = true;
     }
 
-    void Update ()
+    public void ExUpdate ()
     {
         if (player.lantern.isLit && !activeDemon)
         {
             hasReset = false;
-
-            Random.InitState(System.DateTime.Now.Millisecond);
 
             safeTime -= decreaseSafeTime * Time.deltaTime;
             if (safeTime <= 0) safeTime = 0;
@@ -80,6 +89,7 @@ public class DemonSpawn : MonoBehaviour {
                 invertChance += increaseChance * Time.deltaTime;
                 if (invertChance >= 0.75f) invertChance = 0.75f;
 
+                Random.InitState(System.DateTime.Now.Millisecond);
                 float rnd = Random.Range(0f, 1f - invertChance);
 
                 if (rnd <= 0.25f)

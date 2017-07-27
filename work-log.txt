@@ -119,6 +119,12 @@ TODO: Clearn up player update function (only getkeydown)
 26// 17:
 TODO: Disable intManager update when puasing. OK
 
+27/7 17:
+Make sure we don't depend on start execution order!! 
+"Be careful, the demons are attracted to light.
+ So don't keep it on for too long!"
+ TODO: Make sure pausing the game when attacked by demon doesn't 
+ result in not taking damage!
 
 
 LIST OF RESOURCES: 

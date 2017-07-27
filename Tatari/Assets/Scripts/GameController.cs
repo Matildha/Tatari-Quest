@@ -26,16 +26,11 @@ public class GameController : MonoBehaviour {
 
     void Start () {
         // When testing
-        /*if(SceneManager.GetActiveScene().buildIndex == INGAME)
+        if(SceneManager.GetActiveScene().buildIndex == INGAME)
         {
             GetInGameVariables();
-            pauseScreen.SetActive(false);
-        }*/
-
-
-        //GetInGameVariables();  // TEMPPPPPP!!! 
-        
-        //pauseScreen.SetActive(false);
+            pauseScreen.UnPause();
+        }
 
         // Make sure this class can only be instantiated once
 		if(instance == null)

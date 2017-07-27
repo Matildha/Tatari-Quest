@@ -47,7 +47,7 @@ public class Demon : MonoBehaviour {
 
         if(autoHoming) end = player.transform.Find("Target").position;
 
-        Vector3 frameStartPos = transform.position;
+        //Vector3 frameStartPos = transform.position;
 
         t += percSpeed * Time.deltaTime;
         // Bezier curve movement towards end position

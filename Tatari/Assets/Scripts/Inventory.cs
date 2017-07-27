@@ -89,12 +89,12 @@ public class Inventory : MonoBehaviour {
             if (player.hintInfo)
             {
                 infoBox.gameObject.SetActive(true);
-                infoBox.DisplayInfo("Press R to read scroll.\nYou can only read with light on.");
+                infoBox.DisplayInfo("Press 'R' to read scroll.\nYou can only read with light on.");
             }
         }
         else
         {
-            if (currentNrScrolls == 2 && player.hintInfo) infoBox.DisplayInfo("Use tab to browse scrolls");
+            if (currentNrScrolls == 2 && player.hintInfo) infoBox.DisplayInfo("Use 'Tab' to browse scrolls");
 
             GameObject newScroll = Instantiate(orgScrollBase) as GameObject;
             newScroll.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int) scroll.color];

@@ -8,11 +8,15 @@ public class WorldManager : MonoBehaviour {
     public InteractableManager intManager;
     public ScrollFactory scrollFact;
     public VictimFactory victFact;
+    public DemonSpawn demonSpawn;
     public Player player;
 
     public int numberOfWorldAreas;
     public WorldArea[] worldAreas;
     public int currentWorldArea;
+
+    public int nrPlayerSpawnAreas;
+    public int[] playerSpawnAreas; // These areas are expected to have playerSpawn != null
 
     public RainZone[] rainZones;
     public AudioClip rainSound;
@@ -25,6 +29,7 @@ public class WorldManager : MonoBehaviour {
         scrollFact.Init();
         Init();
         intManager.Init();
+        GeneratePlayerPosition();
 	}
 
     public void SwitchArea(int area)
@@ -90,6 +95,7 @@ public class WorldManager : MonoBehaviour {
             intManager.ExUpdate();
             intManLastUpdate = Time.time;
         }
+        demonSpawn.ExUpdate();
     }
 
     private void FixedUpdate()
@@ -112,5 +118,22 @@ public class WorldManager : MonoBehaviour {
         stream.Close();
         
         return symptoms;
+    }
+
+    void GeneratePlayerPosition()
+    {
+        Random.InitState(System.DateTime.Now.Millisecond);
+        int area = playerSpawnAreas[Random.Range(0, nrPlayerSpawnAreas)];
+        if(worldAreas[area].playerSpawn != null)  // Debug check
+        {
+            player.transform.position = worldAreas[area].playerSpawn.transform.position;
+            player.transform.rotation = worldAreas[area].playerSpawn.transform.rotation;
+            currentWorldArea = area;
+            print("Set player pos to " + player.transform.position);
+        }
+        else
+        {
+            print("Forgot to add playerSpawn into worldarea!!");
+        }
     }
 }

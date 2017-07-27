@@ -26,12 +26,14 @@ public class Player : MonoBehaviour {
     bool cursorToggle;
     
 
-
     void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         gamePlayStartTime = (int) Time.time;
         nrRescuedVictims = 0;
         hintInfo = GameController.instance.hintInfo;
+        hintInfo = true;
+        infoBox.Init();
+        if (hintInfo) infoBox.DisplayInfo("Press 'Space' to toggle light.");
     }
 
     public void IncreaseNrRescues()

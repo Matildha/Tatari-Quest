@@ -8,7 +8,7 @@ public class InfoBox : MonoBehaviour {
     public InteractableManager intMan;
     GameObject background;
 
-    private void Start()
+    public void Init()
     {
         background = gameObject.transform.Find("Background").gameObject;
         background.SetActive(false);

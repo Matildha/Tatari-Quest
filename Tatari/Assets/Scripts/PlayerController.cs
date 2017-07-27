@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour {
     //public GameObject playerBody;
 
     public float speed = 2.5f;
-    public float bounce = 2f;
-    public float mouseSensitivity = 2.0f;
+    //public float bounce = 2f;
+    float mouseSensitivity = 1.5f;
     public float fearIncrease = 0.75f;
 
     public bool unableToMove;

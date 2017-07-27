@@ -24,12 +24,12 @@ public class RainZone : MonoBehaviour {
         {
             system.Play();
             soundEffect.enabled = true;
-            print("Started rain and sound" + newArea);
+            //print("Started rain and sound" + newArea);
             return;
         }
         else
         {
-            print("Stoped rain " + newArea);
+            //print("Stoped rain " + newArea);
             system.Stop();        
         }
 
@@ -37,11 +37,11 @@ public class RainZone : MonoBehaviour {
         if (System.Array.Exists<int>(audibleAreas, element => element == newArea))
        {
            soundEffect.enabled = true;
-           print("Started rain sound " + newArea);
+           //print("Started rain sound " + newArea);
        }
        else
        {
-           print("Stoped rain sound " + newArea);
+           //print("Stoped rain sound " + newArea);
            soundEffect.enabled = false;
        }
     }
