@@ -9,7 +9,7 @@ public class Demon : MonoBehaviour {
     public float percSpeed;
 
     public bool autoHoming;  // Will make the demon update the player position
-    public const float FEAR_INCREASE = 5;
+    static public int[] fearIncreaseLvls = {4, 7, 10}; 
 
     public Vector3 start;
     public GameObject controlP1;
@@ -29,8 +29,7 @@ public class Demon : MonoBehaviour {
         t = 0f;
         startTime = Time.time;
         end = player.transform.Find("Target").position;
-        body = transform.Find("Demon").gameObject;
-        
+        body = transform.Find("Demon").gameObject;    
 	}
 	
 	void Update () {
@@ -74,7 +73,7 @@ public class Demon : MonoBehaviour {
             //Destroy(gameObject);         
         }*/
         // We don't want to register hits on the player's physical collider
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             print("Demon hit player collider. Cont. to live.");
             return;

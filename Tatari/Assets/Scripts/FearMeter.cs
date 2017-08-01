@@ -18,18 +18,17 @@ public class FearMeter : MonoBehaviour {
 
     private void Start()
     {
-        fear = 50;
+        fear = 85;
         height = transform.GetComponent<RectTransform>().rect.height;
         maxWidth = transform.GetComponent<RectTransform>().rect.width;
         UpdateFearMeter();
-       // hurtEffect = GameObject.Find("Hurt Effect").GetComponent<Animation>();
     }
 
     /* Increases or decreases the player's fear. Use negative value to decrement. */
     public void ChangeFear(float delta)
     {
         fear += delta;
-        if (delta >= 5 || delta <= -5) print("Player fear: " + fear);
+        if (delta >= 3 || delta <= -3) print("Player fear: " + fear);
         if (fear >= MAX_FEAR)
         {
             //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
@@ -40,7 +39,7 @@ public class FearMeter : MonoBehaviour {
         {
             fear = 0;
         }
-        if (delta >= Demon.FEAR_INCREASE) hurtEffectAnim.Play(hurtHash); 
+        if (delta >= Demon.fearIncreaseLvls[GameController.instance.diffLvl]) hurtEffectAnim.SetTrigger("Hurt");
         UpdateFearMeter();
     }
 

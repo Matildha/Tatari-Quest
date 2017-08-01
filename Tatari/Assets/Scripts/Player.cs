@@ -19,8 +19,8 @@ public class Player : MonoBehaviour {
 
     public bool hintInfo;
 
-    int nrRescuedVictims;
-    int gamePlayStartTime;
+    public int nrRescuedVictims;
+    public int gamePlayStartTime;
 
     bool normalReading;
     bool cursorToggle;
@@ -31,7 +31,6 @@ public class Player : MonoBehaviour {
         gamePlayStartTime = (int) Time.time;
         nrRescuedVictims = 0;
         hintInfo = GameController.instance.hintInfo;
-        hintInfo = true;
         infoBox.Init();
         if (hintInfo) infoBox.DisplayInfo("Press 'Space' to toggle light.");
     }
@@ -40,7 +39,7 @@ public class Player : MonoBehaviour {
     {
         nrRescuedVictims++;
         victimStatIndicator.GetComponent<Text>().text = VICTIM_INDICATOR_TEXT + nrRescuedVictims;
-        if(nrRescuedVictims == VictimFactory.MAX_VICTIMS)
+        if (nrRescuedVictims == VictimFactory.maxVictims[GameController.instance.diffLvl])
         {
             print("You rescued all victims!!! Yokatta!!");
             GameOver();
@@ -55,17 +54,18 @@ public class Player : MonoBehaviour {
 
     public void GameOver()
     {
-        GameController.instance.nrRescuedVictims = nrRescuedVictims;
+        /*GameController.instance.nrRescuedVictims = nrRescuedVictims;
         GameController.instance.gameplayTime = (int) Time.time - gamePlayStartTime;
         GameController.instance.gameSuccess = nrRescuedVictims == VictimFactory.MAX_VICTIMS;
-        GameController.instance.SwitchScene(GameController.GAME_OVER);
+        GameController.instance.SwitchScene(GameController.GAME_OVER);*/
+        GameController.instance.GameOver();
     }
 
     public void ExUpdate() {
 
         playerController.ExUpdate();
  
-        if (inventory.isReading || (Input.GetButtonDown("Read") && lantern.isLit))
+        if (inventory.isReading || (Input.GetKeyDown(KeyCode.R) && lantern.isLit))
         {
             if (!normalReading && intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim") {
                 inventory.ReadSelected("Chant");
@@ -82,21 +82,21 @@ public class Player : MonoBehaviour {
 
             playerController.unableToMove = inventory.isReading;
         }
-        else if (Input.GetButtonDown("Interact") && (intMan.inRangeInteractable != null))
+        else if (Input.GetKeyDown(KeyCode.E) && (intMan.inRangeInteractable != null))
         {
             intMan.inRangeInteractable.Interact();
             //intMan.ToggleInteractionPrompt(false);
         }
-        else if (Input.GetButtonDown("Select"))
+        else if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventory.Browse();
         }
-        else if (Input.GetKeyDown("space"))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             if (lantern.isLit || inventory.ExpandMatch())
                 lantern.ToggleLight();
         }
-        else if (Input.GetButtonDown("Close"))
+        else if (Input.GetKeyDown(KeyCode.Q))
         {
             infoBox.Close();
         }
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour {
         playerController.ExFixedUpdate();
     }
 
-    void OnApplicationFocus(bool focus)
+    /*void OnApplicationFocus(bool focus)
     {
         if(focus)
         {
@@ -123,5 +123,5 @@ public class Player : MonoBehaviour {
         {
             Cursor.lockState = CursorLockMode.None;
         }
-    }
+    }*/
 }

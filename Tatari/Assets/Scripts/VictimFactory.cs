@@ -6,19 +6,19 @@ public class VictimFactory : MonoBehaviour {
 
     public GameObject orgVictim;
     public WorldManager worldMan;
-    public const int MAX_VICTIMS = 4;
+    static public int[] maxVictims = { 4, 5, 6 };  // TODO: Update when we have more spawn pos!!
 
 
     public void CreateVictims(List<string> symptoms)
     {
-        Vector3[] occupiedPositions = new Vector3[MAX_VICTIMS];
+        Vector3[] occupiedPositions = new Vector3[maxVictims[GameController.instance.diffLvl]];
 
         Random.InitState(System.DateTime.Now.Millisecond);
 
         int i = 0;
         int whileSaver = 0;
 
-        while (i < MAX_VICTIMS && whileSaver < 100)
+        while (i < maxVictims[GameController.instance.diffLvl] && whileSaver < 100)
         {
             whileSaver++;
             if (whileSaver == 100) print("Could not place all victims!");

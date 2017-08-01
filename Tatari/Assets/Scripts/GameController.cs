@@ -10,18 +10,24 @@ public class GameController : MonoBehaviour {
     public const int START = 0;
     public const int INGAME = 1;
     public const int GAME_OVER = 2;  // TODO: Keep this updated
+    public const int MAX_DIFF_LVL = 2;  // 0,1,2
+
     string[] scenePaths = {"start-screen", "ingame", "gameover-screen"};
+
     // Info to be accessed from several scenes
+    public int diffLvl;
     public bool hintInfo;
     public int nrRescuedVictims;
     public bool gameSuccess;
     public int gameplayTime;
 
     StartMenu startMenu;
+    BackgroundMusic music;
 
     WorldManager worldMan;
     GameObject ingameUI;
     PauseScreen pauseScreen;
+    GameOverSeq gameOverSeq;
 
 
     void Start () {
@@ -30,6 +36,10 @@ public class GameController : MonoBehaviour {
         {
             GetInGameVariables();
             pauseScreen.UnPause();
+            gameOverSeq.enabled = false;
+            music = GameObject.Find("Background Music").GetComponent<BackgroundMusic>();
+            music.Init();
+            music.StartVariatedLoop();
         }
 
         // Make sure this class can only be instantiated once
@@ -47,6 +57,9 @@ public class GameController : MonoBehaviour {
         if (SceneManager.GetActiveScene().buildIndex == START)
         {
             startMenu = GameObject.Find("Start Menu").GetComponent<StartMenu>();
+            music = GameObject.Find("Background Music").GetComponent<BackgroundMusic>();
+            music.Init();
+            music.StartNormalLoop();
             startMenu.StartMenuInit();
         }
     }
@@ -56,18 +69,13 @@ public class GameController : MonoBehaviour {
         worldMan = GameObject.Find("Environment").GetComponent<WorldManager>();
         ingameUI = GameObject.Find("IngameUI");
         pauseScreen = GameObject.Find("Pause Screen").GetComponent<PauseScreen>();
+        gameOverSeq = GameObject.Find("Game Over Sequence").GetComponent<GameOverSeq>();
+
     }
 
     public void SwitchScene(int scene)
     {
-        /*if (pauseScreen != null)
-        {
-            pauseScreen.SetActive(true);  // So Game Controller can access it if INGAME level is reloaded
-        }*/
-
         int oldScene = SceneManager.GetActiveScene().buildIndex;
-        /*SceneManager.LoadScene(scene, LoadSceneMode.Single);
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(scene));*/
         SceneManager.LoadScene(scenePaths[scene], LoadSceneMode.Single);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(scenePaths[scene]));
     }
@@ -79,11 +87,9 @@ public class GameController : MonoBehaviour {
             print("PAUSESCREEN IS NULL in pause");
             return;
         }
-        /*worldMan.player.gameObject.SetActive(false);
-        worldMan.gameObject.SetActive(false);*/
+
         print("In Pause in game controller");
         worldMan.enabled = false;
-        //pauseScreen.SetActive(true);
         pauseScreen.Init();
         pauseScreen.Pause();
     }
@@ -97,6 +103,20 @@ public class GameController : MonoBehaviour {
         pauseScreen.UnPause();
     }
 
+    public void GameOver()
+    {
+        nrRescuedVictims = worldMan.player.nrRescuedVictims;
+        gameplayTime = (int)Time.time - worldMan.player.gamePlayStartTime;
+        gameSuccess = nrRescuedVictims == VictimFactory.maxVictims[instance.diffLvl];
+        gameOverSeq.enabled = true;
+        gameOverSeq.Init();
+        worldMan.enabled = false;
+        worldMan.intManager.ResetInRangeInteractable();
+        worldMan.player.infoBox.Close();
+        music.StartNormalLoop();
+        //SwitchScene(GameController.GAME_OVER);
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         print("In game controller scene loaded");
@@ -104,6 +124,20 @@ public class GameController : MonoBehaviour {
         {
             GetInGameVariables();
             pauseScreen.UnPause();
+            gameOverSeq.enabled = false;
+            music.StartVariatedLoop();
+        }
+    }
+
+    void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

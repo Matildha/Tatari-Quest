@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BackgroundMusic.cs" />
     <Compile Include="Assets\Scripts\Demon.cs" />
     <Compile Include="Assets\Scripts\DemonBezMotionWithCollision.cs" />
     <Compile Include="Assets\Scripts\DemonSpawn.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Assets\Scripts\FootSteps.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GameOverMenu.cs" />
+    <Compile Include="Assets\Scripts\GameOverSeq.cs" />
     <Compile Include="Assets\Scripts\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractableManager.cs" />

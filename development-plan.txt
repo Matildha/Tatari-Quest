@@ -79,13 +79,15 @@ of correct chanting  OK
   - Option to enable/disable help info ingame  OK  
 53. Implement random player spawn positions  OK
 54. Start menu background  OK
+55. Indicating player fleeing at game over  OK
+56. Difficulty selection  OK
+  
   
 . Start intro
 
-  
 . Create some "Fence" (u know what I mean) that goes down from the roof
   
 . Add random sound effects when walking around (thunder or whatever scary you find)
 
-. Path finding algorithm to make player flee to the outside at game over
+. How should victims disappear? 
 

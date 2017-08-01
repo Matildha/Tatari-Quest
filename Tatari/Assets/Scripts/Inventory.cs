@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour {
     int currentNrScrolls;
     int selectedScroll;
 
-    const int MAX_NR_MATCHES = 10;
+    int[] maxNrMatches = { 10, 7, 4 };
     int currentNrMatches;
 
     
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour {
         selectedScroll = 0;
         currentNrScrolls = 0;
         isReading = false;
-        currentNrMatches = MAX_NR_MATCHES;
+        currentNrMatches = maxNrMatches[GameController.instance.diffLvl];
         readBarHeight = readChannelBarFill.GetComponent<RectTransform>().rect.height;
         readBarWidth = readChannelBarFill.GetComponent<RectTransform>().rect.width;
         scrollDisplay.SetActive(false);

@@ -10,7 +10,7 @@ public class Victim : Interactable {
     public override string PromptMessage { get { return PROMPT_MSG; } }
     public string symptom;
 
-    const float DECREASE_FEAR = -20;
+    static int[] decreaseFearLvls = { -20, -15, -10};
 
     float symptDisplayStart;
     const float SYMPT_DISP_TIME = 2;
@@ -40,6 +40,8 @@ public class Victim : Interactable {
                 break;
             }
         }
+
+        print("Victim fear decr " + decreaseFearLvls[GameController.instance.diffLvl]);
     }
 
     public override void Interact()
@@ -61,7 +63,7 @@ public class Victim : Interactable {
 
             Player player = GameObject.Find("Player").GetComponent<Player>();
             player.IncreaseNrRescues();
-            player.fearMeter.ChangeFear(DECREASE_FEAR);
+            player.fearMeter.ChangeFear((float) decreaseFearLvls[GameController.instance.diffLvl]);
 
             victimAnimCon.SetTrigger("makeBow");
             bowAnimStart = Time.time;

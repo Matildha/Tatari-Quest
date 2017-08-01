@@ -93,7 +93,7 @@ public class MenuController : MonoBehaviour {
         actions[selectedItem]();
     }
 
-    public void DeSelect()
+    public void Deselect()
     {
         itemIcons[selectedItem].transform.Find("Text").GetComponent<Text>().color = textDefaultColor;
     }

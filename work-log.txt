@@ -114,7 +114,7 @@ IDEA: Make lantern emission effect "waver" up and down in intensity.  OK
 IDEA: Display time in success game over screen. (how long it took)  OK
 
 24/7 17: 
-TODO: Clearn up player update function (only getkeydown)
+TODO: Clearn up player update function (only getkeydown)  OK
 
 26// 17:
 TODO: Disable intManager update when puasing. OK
@@ -160,6 +160,9 @@ https://freesound.org/people/babusrelaxtv/sounds/344430/
 
 Konfuciuz (font)
 http://www.1001fonts.com/konfuciuz-font.html
+
+Scream!!! - estefanialbonnin
+https://freesound.org/people/estefaniabonnin/sounds/219867/
 
 
 

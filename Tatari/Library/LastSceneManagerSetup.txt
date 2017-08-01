@@ -1,10 +1,10 @@
 sceneSetups:
 - path: Assets/Scenes/ingame.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
 - path: Assets/Scenes/gameover-screen.unity
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/start-screen.unity
-  isLoaded: 0
-  isActive: 0
+  isLoaded: 1
+  isActive: 1

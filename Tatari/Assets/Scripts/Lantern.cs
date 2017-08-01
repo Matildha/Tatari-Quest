@@ -60,7 +60,7 @@ public class Lantern : MonoBehaviour {
         }
         float lightIntensity = 0.5f * Mathf.Sin(flickerPeriod * flickerX) + INTENSITY_OFFSET;
         lanternLight.GetComponent<Light>().intensity = lightIntensity;
-        lightIntensity /= 5;  // value 5 set from testing to match default intensity of defaultColor
+        lightIntensity /= 5;  // value 5 set from testing to match default intensity of defaultColor on lantern
         lanternGlow.SetColor("_EmissionColor", defaultColor + new Color(lightIntensity, lightIntensity, lightIntensity, 1));  // 1 = alpha
     }
 }

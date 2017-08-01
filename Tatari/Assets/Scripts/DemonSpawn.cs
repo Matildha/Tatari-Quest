@@ -14,7 +14,7 @@ public class DemonSpawn : MonoBehaviour {
     float increaseChance = 0.75f;
     float invertChance;
 
-    float baseSafeTime = 5f;  // seconds
+    float[] baseSafeTimes = { 7f, 5f, 3f };  // seconds
     float safeTime;
     float decreaseSafeTime = 0.05f;
     float startTime;
@@ -25,13 +25,13 @@ public class DemonSpawn : MonoBehaviour {
     {
         invertChance = 0;
         startTime = Time.time;
-        safeTime = baseSafeTime;
+        safeTime = baseSafeTimes[GameController.instance.diffLvl];
         hasReset = false;
 	}
 
     void SpawnDemon()
     {
-        print("Demon spawnas");
+        //print("Demon spawnas");
 
         // Check if there are any avaiable demon control points in current world area
         if (worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP.Length == 0) return;
@@ -66,7 +66,7 @@ public class DemonSpawn : MonoBehaviour {
 
         newDemon.sound = demonSounds[Random.Range(0, nrDemonSounds)];
 
-        print("Demon spawn at " + newDemon.start);
+        //print("Demon spawn at " + newDemon.start);
         newDemon.autoHoming = Random.Range(0, 2) == 1;
         print("New demon homing " + newDemon.autoHoming);
         newDemon.transform.SetParent(this.transform);
@@ -103,7 +103,7 @@ public class DemonSpawn : MonoBehaviour {
         }
         else if(!hasReset && !activeDemon)
         {
-            safeTime = baseSafeTime;
+            safeTime = baseSafeTimes[GameController.instance.diffLvl];
             invertChance = 0;
             startTime = Time.time;
 
