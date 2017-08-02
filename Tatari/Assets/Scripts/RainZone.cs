@@ -4,45 +4,32 @@ using UnityEngine;
 
 public class RainZone : MonoBehaviour {
 
-    public int[] visibleAreas;
-    public int[] audibleAreas;
+    public int[] activeAreas;
 
     ParticleSystem system;
     AudioSource soundEffect;
 
 
-    private void Start()
+    public void Init()
     {
         system = GetComponent<ParticleSystem>();
         soundEffect = transform.Find("Sound").gameObject.GetComponent<AudioSource>();
     }
 
-    public void UpdateSystems(int newArea)
+    public void UpdateSystem(int newArea)
     {
-        // Rain that is visible is also audible
-        if (System.Array.Exists<int>(visibleAreas, element => element == newArea))
+        if (System.Array.Exists<int>(activeAreas, element => element == newArea))
         {
             system.Play();
             soundEffect.enabled = true;
-            //print("Started rain and sound" + newArea);
-            return;
+            print("Started rain" + newArea);
+            soundEffect.enabled = true;
         }
         else
-        {
-            //print("Stoped rain " + newArea);
+        {   
+            soundEffect.enabled = false;
+            print("Stoped rain " + newArea);
             system.Stop();        
         }
-
-        // Rain can be audible but not visible
-        if (System.Array.Exists<int>(audibleAreas, element => element == newArea))
-       {
-           soundEffect.enabled = true;
-           //print("Started rain sound " + newArea);
-       }
-       else
-       {
-           //print("Stoped rain sound " + newArea);
-           soundEffect.enabled = false;
-       }
     }
 }

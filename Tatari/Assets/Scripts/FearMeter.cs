@@ -18,7 +18,7 @@ public class FearMeter : MonoBehaviour {
 
     private void Start()
     {
-        fear = 85;
+        fear = 0;
         height = transform.GetComponent<RectTransform>().rect.height;
         maxWidth = transform.GetComponent<RectTransform>().rect.width;
         UpdateFearMeter();

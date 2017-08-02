@@ -30,6 +30,12 @@ public class WorldManager : MonoBehaviour {
         Init();
         intManager.Init();
         GeneratePlayerPosition();
+
+        foreach(RainZone zone in rainZones)
+        {
+            zone.Init();
+            zone.UpdateSystem(currentWorldArea);
+        }
 	}
 
     public void SwitchArea(int area)
@@ -63,7 +69,7 @@ public class WorldManager : MonoBehaviour {
         // Update rain zones
         foreach(RainZone rainZone in rainZones)
         {
-            rainZone.UpdateSystems(area);
+            rainZone.UpdateSystem(area);
         }
     }
 

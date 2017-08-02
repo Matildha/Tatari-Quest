@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
     public PlayerController playerController;
     public InteractableManager intMan;
-    public GameObject ingameUI;
+    //public GameObject ingameUI;
     public Inventory inventory;
     public FearMeter fearMeter;
     public GameObject victimStatIndicator;

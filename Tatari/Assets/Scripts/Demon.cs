@@ -16,6 +16,7 @@ public class Demon : MonoBehaviour {
     public GameObject controlP2;
     public AudioClip sound;
     Vector3 end;
+    Transform target;
 
     GameObject body;
 
@@ -28,7 +29,8 @@ public class Demon : MonoBehaviour {
         hasPlayedSound = false;
         t = 0f;
         startTime = Time.time;
-        end = player.transform.Find("Target").position;
+        target = player.transform.Find("Target");
+        end = target.position;
         body = transform.Find("Demon").gameObject;    
 	}
 	
@@ -44,7 +46,7 @@ public class Demon : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        if(autoHoming) end = player.transform.Find("Target").position;
+        if(autoHoming) end = target.position;
 
         //Vector3 frameStartPos = transform.position;
 
@@ -53,7 +55,7 @@ public class Demon : MonoBehaviour {
         transform.position = Mathf.Pow(1 - t, 3) * start + 3 * Mathf.Pow(1 - t, 2) * t * controlP1.transform.position +
                                                 3 * (1 - t) * Mathf.Pow(t, 2) * controlP2.transform.position + Mathf.Pow(t, 3) * end;
 
-        body.transform.LookAt(player.transform, Vector3.up);
+        body.transform.LookAt(target.transform, Vector3.up);
         if(!hasPlayedSound && Vector3.Distance(transform.position, end) < 3f)
         {
             GetComponent<AudioSource>().clip = sound;
