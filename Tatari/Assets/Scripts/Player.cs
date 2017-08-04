@@ -19,6 +19,10 @@ public class Player : MonoBehaviour {
 
     public bool hintInfo;
 
+    public bool hasEncounteredVictim;
+    public int demonsEncountered;
+    public bool hasFoundScroll;
+
     public int nrRescuedVictims;
     public int gamePlayStartTime;
 
@@ -30,15 +34,21 @@ public class Player : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         gamePlayStartTime = (int) Time.time;
         nrRescuedVictims = 0;
+        hasEncounteredVictim = false;
+        victimStatIndicator.GetComponent<Text>().text = VICTIM_INDICATOR_TEXT + nrRescuedVictims
+                                                               + " / " + VictimFactory.maxVictims[GameController.instance.diffLvl];
+        demonsEncountered = 0;
         hintInfo = GameController.instance.hintInfo;
         infoBox.Init();
-        if (hintInfo) infoBox.DisplayInfo("Press 'Space' to toggle light.");
+        string[] message = { "Press 'Space' to toggle light." };
+        if (hintInfo) infoBox.DisplayInfo(message);
     }
 
     public void IncreaseNrRescues()
     {
         nrRescuedVictims++;
-        victimStatIndicator.GetComponent<Text>().text = VICTIM_INDICATOR_TEXT + nrRescuedVictims;
+        victimStatIndicator.GetComponent<Text>().text = VICTIM_INDICATOR_TEXT + nrRescuedVictims 
+                                                                + " / " + VictimFactory.maxVictims[GameController.instance.diffLvl];
         if (nrRescuedVictims == VictimFactory.maxVictims[GameController.instance.diffLvl])
         {
             print("You rescued all victims!!! Yokatta!!");
@@ -98,7 +108,7 @@ public class Player : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            infoBox.Close();
+            infoBox.Continue();
         }
         else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Z))
         {
@@ -113,15 +123,58 @@ public class Player : MonoBehaviour {
         playerController.ExFixedUpdate();
     }
 
-    /*void OnApplicationFocus(bool focus)
+    public void FirstVictimEncounter()
     {
-        if(focus)
+        //if (!hintInfo) return;
+
+        string[] messages;
+        if (demonsEncountered == 0)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            messages = new string[]{" I'M SORRY FOR INTRUDING", "I'M JUST TAKING SHELTER FROM THE STORM...",
+                                    "... HEY, ARE YOU OKAY?"};
+            
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            messages = new string[]{" I'M SORRY FOR INTRUDING", "I'M JUST TAKING SHELTER FROM THE STORM...",
+                                    "... HEY, ARE YOU OKAY?", "... THE THING I SAW BEFORE... DID IT DO THIS TO YOU?"};
         }
-    }*/
+        infoBox.DisplayInfo(messages);
+        hasEncounteredVictim = true;
+    }
+
+    public void DemonEncounter()
+    {
+        //if (!hintInfo) return;
+
+        if (demonsEncountered == 1)
+        {
+            string[] message = { " 'WHAT THE HELL WAS THAT?!' " };
+            infoBox.DisplayInfo(message);
+        }
+        else if (demonsEncountered == 2)
+        {
+            string[] messages;
+
+            if (hasEncounteredVictim)
+            {
+                messages = new string[]{ " 'ANOTHER ONE..!' ", " ' ARE THOSE THINGS ATTRACTED TO LIGHT? ' ",
+                                    " ' ... I SHOULDN'T KEEP THE LIGHT ON FOR TOO LONG' ",
+                                    " 'THE PERSON FROM BEFORE... DID THEY GET ATTACKED TOO?' "};
+            }
+            else
+            {
+                messages = new string[]{ " 'ANOTHER ONE..!' ", " ' ARE THOSE THINGS ATTRACTED TO LIGHT? ' ",
+                                    " ' ... I SHOULDN'T KEEP THE LIGHT ON FOR TOO LONG' "};
+            }
+            infoBox.DisplayInfo(messages);
+        }      
+    }
+
+    public void FirstScrollEncounter()
+    {
+        string[] msg = { " 'WHAT'S THIS THING DOING HERE?' " };
+        infoBox.DisplayInfo(msg);
+        hasFoundScroll = true;
+    }
 }

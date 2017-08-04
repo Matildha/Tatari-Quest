@@ -82,13 +82,13 @@ of correct chanting  OK
 55. Indicating player fleeing at game over  OK
 56. Difficulty selection  OK
 57. Build rest of the house  OK
+58. Model a roof facade  OK
+59. Show max nr victims ("1/4 victims rescued")  OK
 
-. Model a roof facade
-. Model something to cover up distance between wood floor and ground
 . Door sound  
 . Start intro
-. Show max nr victims ("1/4 victims rescued")
 
-. Create some "Fence" (u know what I mean) that goes down from the roof
+
+. Clean up code!
 
 

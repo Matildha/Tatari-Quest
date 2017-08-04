@@ -62,6 +62,8 @@ public class GameController : MonoBehaviour {
             music.StartNormalLoop();
             startMenu.StartMenuInit();
         }
+
+        hintInfo = true;
     }
 
     void GetInGameVariables()

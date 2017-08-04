@@ -74,10 +74,10 @@ public class Demon : MonoBehaviour {
             //demonSpawn.activeDemon = false;
             //Destroy(gameObject);         
         }*/
-        // We don't want to register hits on the player's physical collider
-        if (other.gameObject.tag == "Player")
+        // We don't want to register hits on the player's physical collider or thresholds
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Threshold")
         {
-            print("Demon hit player collider. Cont. to live.");
+            print("Demon hit player collider or threshold. Cont. to live.");
             return;
         }
         transform.Find("Demon").gameObject.SetActive(false);

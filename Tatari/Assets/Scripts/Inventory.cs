@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour {
     float readStartTime;
     float readingTime = 3f;
     float chantingTime = 6f;
+    bool hasReadFirst;
 
     GameObject[] scrollIcons;
     Scroll.ScrollInfo[] scrolls;
@@ -88,13 +89,23 @@ public class Inventory : MonoBehaviour {
             scrollSelect.SetActive(true);
             if (player.hintInfo)
             {
-                infoBox.gameObject.SetActive(true);
-                infoBox.DisplayInfo("Press 'R' to read scroll.\nYou can only read with light on.");
+                //infoBox.gameObject.SetActive(true);
+                string[] msg = { "Press 'R' to read scroll.\nYou can only read with light on." };
+                infoBox.DisplayInfo(msg);
+            }
+            else
+            {
+                string[] msg = { " 'WHAT'S THIS THING DOING HERE?' " };
+                infoBox.DisplayInfo(msg);
             }
         }
         else
         {
-            if (currentNrScrolls == 2 && player.hintInfo) infoBox.DisplayInfo("Use 'Tab' to browse scrolls");
+            if (currentNrScrolls == 2 && player.hintInfo)
+            {
+                string[] msg = { "Use 'Tab' to browse scrolls" };
+                infoBox.DisplayInfo(msg);
+            }
 
             GameObject newScroll = Instantiate(orgScrollBase) as GameObject;
             newScroll.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int) scroll.color];
@@ -170,6 +181,13 @@ public class Inventory : MonoBehaviour {
                 isReading = false;
                 scrollDisplay.SetActive(false);
                 readChannelBarFill.transform.parent.gameObject.SetActive(false);
+
+                if(!hasReadFirst)
+                {
+                    string[] messages = { " 'THIS SEEMS TO BE SOME KIND OF CHANT...' " };                                                
+                    infoBox.DisplayInfo(messages);
+                    hasReadFirst = true;
+                }
             }
         }
     }

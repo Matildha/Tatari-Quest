@@ -19,7 +19,7 @@ public class Victim : Interactable {
     bool symptDisplay;
     bool isDying;
 
-    const string PROMPT_MSG = "Press E to view symptoms\nor R to chant from scroll";
+    const string PROMPT_MSG = "Press 'E' to view curse symptoms\nor 'R' to chant from scroll";
     const string SYMP_INFO = "Symptoms:\n";
 
     const string RESCUE_SUCCESS = "You succesfully cured the victim from the curse!";
@@ -46,7 +46,8 @@ public class Victim : Interactable {
 
     public override void Interact()
     {
-        infoBox.DisplayInfo(SYMP_INFO + symptom);  
+        string[] msg = { SYMP_INFO + symptom };
+        infoBox.DisplayInfo(msg);  
     }
 
     public void Rescue(string curedSymptom)
@@ -55,7 +56,8 @@ public class Victim : Interactable {
         {
             print("Succesfully rescued victim!");
 
-            infoBox.DisplayInfo(RESCUE_SUCCESS);
+            string[] msg = { RESCUE_SUCCESS };
+            infoBox.DisplayInfo(msg);
 
             InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
             intManager.RemoveInteractable(this);  
@@ -76,7 +78,8 @@ public class Victim : Interactable {
             //victimAnimCon.SetTrigger("makeBow");
             //bowAnimStart = Time.time;
             //isDying = true;
-            infoBox.DisplayInfo(RESCUE_FAIL);
+            string[] msg = { RESCUE_FAIL };
+            infoBox.DisplayInfo(msg);
         }
     }
 

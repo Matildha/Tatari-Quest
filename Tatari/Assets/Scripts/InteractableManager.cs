@@ -70,6 +70,15 @@ public class InteractableManager : MonoBehaviour {
                 {
                     inRangeInteractable = other;
                     ToggleInteractionPrompt(true);
+                    if (inRangeInteractable.tag == "Victim" && !worldMan.player.hasEncounteredVictim)
+                    {
+                        worldMan.player.FirstVictimEncounter();
+                        print("First victim encounter in int man");
+                    }
+                    if(inRangeInteractable.tag == "Scroll" && !worldMan.player.hasFoundScroll)
+                    {
+                        worldMan.player.FirstScrollEncounter();
+                    }
                     break;
                 }
             }
