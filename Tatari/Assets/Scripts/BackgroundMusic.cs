@@ -18,9 +18,11 @@ public class BackgroundMusic : MonoBehaviour {
 
 
 	public void Init () {
+
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null) print("null in music start");
         DontDestroyOnLoad(gameObject);
+        normalLoop = true;
         volumeX = 0;
         volumePeriod = 0.1f;
         volumeAmp = 0.2f;

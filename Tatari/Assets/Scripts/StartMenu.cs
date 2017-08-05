@@ -28,13 +28,6 @@ public class StartMenu : MenuController {
         diffLvl = 1;
         diffLvlIndicator.GetComponent<Text>().text = diffLvls[diffLvl];
     }
-	
-    int StartGame()
-    {
-        //TODO add intro!!!!! 
-        Restart();
-        return 0;
-    }
 
     int ToggleHints()
     {

@@ -84,10 +84,12 @@ of correct chanting  OK
 57. Build rest of the house  OK
 58. Model a roof facade  OK
 59. Show max nr victims ("1/4 victims rescued")  OK
+60. Start intro  OK 
+61. Door sound and automatic closing  OK  
+62. Add whisper sound when chanting  OK
 
-. Door sound  
-. Start intro
-
+. Credit screen
+. Remove random player spawn positions
 
 . Clean up code!
 

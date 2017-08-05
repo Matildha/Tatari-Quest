@@ -35,6 +35,8 @@ public class GameOverMenu : MenuController {
             int timeMin = GameController.instance.gameplayTime / 60;
             int timeSec = GameController.instance.gameplayTime % 60;
             timeStat.GetComponent<Text>().text = TIME_STAT_TEXT + timeMin + " min " + timeSec + " sec";
+            actions.RemoveAt(0);
+            actions.Insert(0, LoadStartMenu);
         }
         else
         {
@@ -44,4 +46,11 @@ public class GameOverMenu : MenuController {
             resultText.GetComponent<Text>().text = negResultMsg;
         }
 	}
+
+    int LoadStartMenu()
+    {
+        GameController.instance.showIntro = true;
+        GameController.instance.SwitchScene(GameController.START);
+        return 0;
+    }
 }

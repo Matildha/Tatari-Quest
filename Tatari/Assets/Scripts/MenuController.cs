@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour {
     public Color textDefaultColor;
     Color textSelectedColor;
     int selectedItem;  // 0 indexed
-    bool isRestarting;
+    bool loading;
     bool isExiting;
 
 
@@ -47,11 +47,21 @@ public class MenuController : MonoBehaviour {
         return 0;  // Becasue System.Func requires a return type
     }
 
+    public int StartGame()
+    {
+        if (loading) return 0;
+        GameController.instance.showIntro = true;
+        GameController.instance.SwitchScene(GameController.INGAME);
+        loading = true;
+        return 0;  // Becasue System.Func requires a return type
+    }
+
     public int Restart()
     {
-        if (isRestarting) return 0;
+        if (loading) return 0;
+        GameController.instance.showIntro = false;
         GameController.instance.SwitchScene(GameController.INGAME);
-        isRestarting = true;
+        loading = true;
         return 0;  // Becasue System.Func requires a return type
     }
 

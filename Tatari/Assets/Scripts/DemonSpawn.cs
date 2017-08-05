@@ -33,6 +33,13 @@ public class DemonSpawn : MonoBehaviour {
     {
         //print("Demon spawnas");
 
+        if (player.demonsEncountered < 2)
+        {
+            //print("First demon encounter");
+            player.demonsEncountered++;
+            player.DemonEncounter();
+        }
+
         // Check if there are any avaiable demon control points in current world area
         if (worldMan.worldAreas[worldMan.currentWorldArea].demonBezCP.Length == 0) return;
 

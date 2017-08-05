@@ -21,7 +21,8 @@ public class Scroll : Interactable {
     {
         //print("Picking up scroll with content " + info.content + " " + info.color);
         InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
-        intManager.RemoveInteractable(this);  // So this scroll is not updated in InteractableManager
+        // So this scroll is not updated in InteractableManager
+        intManager.RemoveInteractable(this);  
         intManager.ResetInRangeInteractable();
 
         Player player = GameObject.Find("Player").GetComponent<Player>();

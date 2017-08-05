@@ -29,7 +29,10 @@ public class WorldManager : MonoBehaviour {
         scrollFact.Init();
         Init();
         intManager.Init();
-        GeneratePlayerPosition();
+        //GeneratePlayerPosition();  // TODO: Remove functionality for random player spawns
+        player.transform.position = worldAreas[19].playerSpawn.transform.position;
+        player.transform.rotation = worldAreas[19].playerSpawn.transform.rotation;
+        currentWorldArea = 19;
 
         foreach(RainZone zone in rainZones)
         {
@@ -40,31 +43,11 @@ public class WorldManager : MonoBehaviour {
 
     public void SwitchArea(int area)
     {
-
         if (area == currentWorldArea) return;
 
-        // Disable gameObjects in inactive world area
-        foreach (Interactable obj in worldAreas[currentWorldArea].interactables)
-        {
-            if (obj.tag == "Door")
-            {
-                obj.gameObject.GetComponent<Door>().enabled = false;
-                //print("Disabled a door");
-            }
-        }
-
+        intManager.UpdateActive(area);
         currentWorldArea = area;
         player.SwitchArea(area);
-
-        // Enable gameObjects in current active world area
-        foreach(Interactable obj in worldAreas[currentWorldArea].interactables)
-        {
-            if (obj.tag == "Door")
-            {
-                obj.gameObject.GetComponent<Door>().enabled = true;
-                //print("Enabled a door");
-            }
-        }
 
         // Update rain zones
         foreach(RainZone rainZone in rainZones)

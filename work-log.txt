@@ -125,6 +125,16 @@ Make sure we don't depend on start execution order!!
  So don't keep it on for too long!"
  TODO: Make sure pausing the game when attacked by demon doesn't 
  result in not taking damage!
+ 
+ 4/8 17:
+ Reworked InfoBox a bit to stack messages. Planning to remove
+ random spawn positions, since this becomes more logical with the
+ intro sequence. 
+ 
+5/8 17:
+Fix infobox when pausing.  OK
+
+Victims not removed correctly when different current area!!! OK
 
 
 LIST OF RESOURCES: 
@@ -163,6 +173,15 @@ http://www.1001fonts.com/konfuciuz-font.html
 
 Scream!!! - estefanialbonnin
 https://freesound.org/people/estefaniabonnin/sounds/219867/
+
+Thunder, Ver Close, Rain, A.wav - InspectorK
+https://freesound.org/people/InspectorJ/sounds/360328/
+
+open_close Oshiire - Taira Komori
+http://freesound.org/people/Taira%20Komori/sounds/212747/
+
+Four Voices Whispering - With Reverb - geoneo0
+http://freesound.org/people/geoneo0/sounds/193817/
 
 
 

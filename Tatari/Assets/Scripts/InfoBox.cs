@@ -6,36 +6,54 @@ using UnityEngine.UI;
 public class InfoBox : MonoBehaviour {
 
     public InteractableManager intMan;
-    GameObject background;
-    string[] messages;
-    int nrMsg;
-    int currentMsg;
+    public GameObject background;
+    List<string> messages;
 
     public void Init()
     {
-        background = gameObject.transform.Find("Background").gameObject;
-        background.SetActive(false);
+        //background = gameObject.transform.Find("Background").gameObject;
+        //background.SetActive(false);
+        messages = new List<string>();
     }
 
     public void DisplayInfo(string[] _messages)
     {
+        if (_messages.Length == 0) return;
+
         background.SetActive(true);
-        messages = _messages;
-        nrMsg = messages.Length;
-        currentMsg = 0;
-        background.transform.Find("Info").GetComponent<Text>().text = _messages[currentMsg];
+        foreach (string msg in _messages)
+        {
+            messages.Add(msg);
+        }
+        // Check if any old messages are left
+        if (messages.Count == _messages.Length)
+        {
+            background.transform.Find("Info").GetComponent<Text>().text = messages[0];
+            messages.RemoveAt(0);
+        }
         //intMan.ToggleInteractionPrompt(false);
     }
 
     public void Continue()
     {
-        currentMsg++;
-        if (currentMsg == nrMsg) Close();
-        else background.transform.Find("Info").GetComponent<Text>().text = messages[currentMsg];
+        if (messages.Count == 0)
+        {
+            Close();
+        }
+        else
+        {
+            background.transform.Find("Info").GetComponent<Text>().text = messages[0];
+            messages.RemoveAt(0);
+        }
     }
 
     public void Close()
     {
         background.SetActive(false);
+    }
+
+    public void Show()
+    {
+        background.SetActive(true);
     }
 }

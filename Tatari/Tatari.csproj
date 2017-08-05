@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\InfoBox.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\InteractableManager.cs" />
+    <Compile Include="Assets\Scripts\IntroSeq.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Lantern.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />

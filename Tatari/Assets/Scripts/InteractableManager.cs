@@ -23,18 +23,51 @@ public class InteractableManager : MonoBehaviour {
         ToggleInteractionPrompt(false);
     }
 
-    /* Adds a new interactable item to the InteractableManager update list.
-    It is not safe to call this function after the cycles of update calls starts!
-    (no interactables are suppose to be added during gameplay) */
-    /*public void AddInteractable(Interactable item)
+    public void UpdateActive(int newArea)
     {
-        worldMan.worldAreas[worldMan.currentWorldArea].interactables.AddLast(item);
-    }*/
+        // Disable update calls for doors and victims in inactive world area
+        foreach (Interactable obj in worldMan.worldAreas[worldMan.currentWorldArea].interactables)
+        {
+            if(obj.keepMeEnabled)
+            {
+                // Let the door know it should disable itself when it is ready
+                if (obj.tag == "Door") obj.gameObject.GetComponent<Door>().toBeDisabled = true;
+                continue;
+            }
 
-    /* Removes an item from InteractableManager's update list. */
+            if (obj.tag == "Door")
+            {
+                obj.gameObject.GetComponent<Door>().enabled = false;
+                //print("Disabled a door");
+            }
+            else if (obj.tag == "Victim")
+            {
+                obj.gameObject.GetComponent<Victim>().enabled = false;
+            }
+        }
+
+        // Enable update calls for doors and victims in current active world area
+        foreach (Interactable obj in worldMan.worldAreas[newArea].interactables)
+        {
+            if (obj.tag == "Door")
+            {
+                obj.gameObject.GetComponent<Door>().enabled = true;
+                obj.gameObject.GetComponent<Door>().toBeDisabled = false;
+                //print("Enabled a door");
+            }
+            else if (obj.tag == "Victim")
+            {
+                obj.gameObject.GetComponent<Victim>().enabled = true;
+            }
+        }
+    }
+
+    /* Attempts to remove 'item' from the current world area's list of interactables. */
     public void RemoveInteractable(Interactable item)
     {
-        worldMan.worldAreas[worldMan.currentWorldArea].interactables.Remove(item);
+        bool success = worldMan.worldAreas[worldMan.currentWorldArea].interactables.Remove(item);
+        print("Removed interactable " + success);
+
     }
 
     /* Sets the inRangeInteractable to null. */

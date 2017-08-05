@@ -22,13 +22,13 @@ public class RainZone : MonoBehaviour {
         {
             system.Play();
             soundEffect.enabled = true;
-            print("Started rain" + newArea);
+            //print("Started rain" + newArea);
             soundEffect.enabled = true;
         }
         else
         {   
             soundEffect.enabled = false;
-            print("Stoped rain " + newArea);
+            //print("Stoped rain " + newArea);
             system.Stop();        
         }
     }

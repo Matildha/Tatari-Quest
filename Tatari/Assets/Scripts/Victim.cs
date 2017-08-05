@@ -17,13 +17,15 @@ public class Victim : Interactable {
     float bowAnimDuration;
     float bowAnimStart;
     bool symptDisplay;
-    bool isDying;
+    //bool isDying;
 
     const string PROMPT_MSG = "Press 'E' to view curse symptoms\nor 'R' to chant from scroll";
     const string SYMP_INFO = "Symptoms:\n";
 
     const string RESCUE_SUCCESS = "You succesfully cured the victim from the curse!";
     const string RESCUE_FAIL = "This chant could not cure the victim.";
+
+    int areaID;
 
 
     private void Start()
@@ -41,13 +43,18 @@ public class Victim : Interactable {
             }
         }
 
-        print("Victim fear decr " + decreaseFearLvls[GameController.instance.diffLvl]);
+        //print("Victim fear decr " + decreaseFearLvls[GameController.instance.diffLvl]);
     }
 
     public override void Interact()
     {
-        string[] msg = { SYMP_INFO + symptom };
-        infoBox.DisplayInfo(msg);  
+        if (!isDying)
+        {
+            string[] msg = { SYMP_INFO + symptom };
+            infoBox.DisplayInfo(msg);
+            areaID = GameController.instance.worldMan.currentWorldArea;
+            print("Area id stored in victim " + areaID);
+        }
     }
 
     public void Rescue(string curedSymptom)
@@ -59,10 +66,6 @@ public class Victim : Interactable {
             string[] msg = { RESCUE_SUCCESS };
             infoBox.DisplayInfo(msg);
 
-            InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
-            intManager.RemoveInteractable(this);  
-            intManager.ResetInRangeInteractable();
-
             Player player = GameObject.Find("Player").GetComponent<Player>();
             player.IncreaseNrRescues();
             player.fearMeter.ChangeFear((float) decreaseFearLvls[GameController.instance.diffLvl]);
@@ -70,16 +73,22 @@ public class Victim : Interactable {
             victimAnimCon.SetTrigger("makeBow");
             bowAnimStart = Time.time;
 
-            isDying = true;     
+            isDying = keepMeEnabled = true;
+            InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();
+            intManager.RemoveInteractable(this);
+            intManager.ResetInRangeInteractable();
         }
         else
         {
             print("The chant did not cure this person!");
-            //victimAnimCon.SetTrigger("makeBow");
-            //bowAnimStart = Time.time;
-            //isDying = true;
+            victimAnimCon.SetTrigger("makeBow");
+            bowAnimStart = Time.time;
+            isDying = keepMeEnabled = true;
             string[] msg = { RESCUE_FAIL };
             infoBox.DisplayInfo(msg);
+            InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();  // FOR DEBUG!!
+            intManager.RemoveInteractable(this);
+            intManager.ResetInRangeInteractable();
         }
     }
 
@@ -87,6 +96,8 @@ public class Victim : Interactable {
     {
         if(isDying && Time.time - bowAnimStart > bowAnimDuration)
         {
+            print("Victim to be removed");
+            keepMeEnabled = false;
             Destroy(this.gameObject);
         }
     }

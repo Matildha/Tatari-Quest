@@ -148,8 +148,14 @@ public class Inventory : MonoBehaviour {
     public void ReadSelected(string type)
     {
         float readDuration;
-        if (type == "Read") readDuration = readingTime;
-        else if (type == "Chant") readDuration = chantingTime;
+        if (type == "Read")
+        {
+            readDuration = readingTime;
+        }
+        else if (type == "Chant")
+        {
+            readDuration = chantingTime;
+        }
         else return;
 
         if (currentNrScrolls == 0) return;  // No scroll to read

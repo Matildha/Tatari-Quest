@@ -39,9 +39,7 @@ public class Player : MonoBehaviour {
                                                                + " / " + VictimFactory.maxVictims[GameController.instance.diffLvl];
         demonsEncountered = 0;
         hintInfo = GameController.instance.hintInfo;
-        infoBox.Init();
-        string[] message = { "Press 'Space' to toggle light." };
-        if (hintInfo) infoBox.DisplayInfo(message);
+        infoBox.Close();
     }
 
     public void IncreaseNrRescues()
@@ -59,7 +57,7 @@ public class Player : MonoBehaviour {
     public void SwitchArea(int area)
     {
         currentArea = area;
-        gameObject.GetComponent<FootSteps>().currentArea = area;
+        transform.Find("Footstep Sound").GetComponent<FootSteps>().currentArea = area;
     }
 
     public void GameOver()
@@ -78,10 +76,18 @@ public class Player : MonoBehaviour {
         if (inventory.isReading || (Input.GetKeyDown(KeyCode.R) && lantern.isLit))
         {
             if (!normalReading && intMan.inRangeInteractable != null && intMan.inRangeInteractable.tag == "Victim") {
-                inventory.ReadSelected("Chant");
-                intMan.ToggleInteractionPrompt(false);
+                if (!inventory.isReading)
+                {
+                    transform.Find("Chant Sound").GetComponent<AudioSource>().Play();  // When we start reading
+                    intMan.ToggleInteractionPrompt(false);
+                }
+                inventory.ReadSelected("Chant");  // Sets inventory.isReading to false, if we just finished reading            
                 // Rescue attempt when ReadSelected() sets isReading to false
-                if (!inventory.isReading) ((Victim)intMan.inRangeInteractable).Rescue(inventory.GetScrollContent());
+                if (!inventory.isReading)
+                {
+                    ((Victim)intMan.inRangeInteractable).Rescue(inventory.GetScrollContent());
+                    transform.Find("Chant Sound").GetComponent<AudioSource>().Stop();
+                }
             }
             else
             {
@@ -130,14 +136,14 @@ public class Player : MonoBehaviour {
         string[] messages;
         if (demonsEncountered == 0)
         {
-            messages = new string[]{" I'M SORRY FOR INTRUDING", "I'M JUST TAKING SHELTER FROM THE STORM...",
-                                    "... HEY, ARE YOU OKAY?"};
+            messages = new string[]{" 'I'M SORRY FOR INTRUDING' ", " 'I'M JUST TAKING SHELTER FROM THE STORM...' ",
+                                    " '... HEY, ARE YOU OKAY?' "};
             
         }
         else
         {
-            messages = new string[]{" I'M SORRY FOR INTRUDING", "I'M JUST TAKING SHELTER FROM THE STORM...",
-                                    "... HEY, ARE YOU OKAY?", "... THE THING I SAW BEFORE... DID IT DO THIS TO YOU?"};
+            messages = new string[]{" 'I'M SORRY FOR INTRUDING' " , " 'I'M JUST TAKING SHELTER FROM THE STORM...' " ,
+                                    " '... HEY, ARE YOU OKAY?' " , " '... THE THING I SAW BEFORE... DID IT DO THIS TO YOU?' "};
         }
         infoBox.DisplayInfo(messages);
         hasEncounteredVictim = true;
@@ -176,5 +182,23 @@ public class Player : MonoBehaviour {
         string[] msg = { " 'WHAT'S THIS THING DOING HERE?' " };
         infoBox.DisplayInfo(msg);
         hasFoundScroll = true;
+    }
+
+    public void InitMessages()
+    {
+        infoBox.Init();
+        if(hintInfo)
+        {
+            string[] message = { " '... PHEW! SUCH NASTY WEATHER...' ",
+                                        " 'EXCUSE ME FOR INTRUDING! IS ANYONE HOME?' ",
+                                        "Press 'Space' to toggle light." };
+            infoBox.DisplayInfo(message);
+        }
+        else
+        {
+            string[] message = { " '... PHEW! SUCH NASTY WEATHER...' ",
+                                        " 'EXCUSE ME FOR INTRUDING! IS ANYONE HOME?' "};
+            infoBox.DisplayInfo(message);
+        }
     }
 }

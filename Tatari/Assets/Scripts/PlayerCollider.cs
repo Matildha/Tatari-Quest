@@ -13,12 +13,12 @@ public class PlayerCollider : MonoBehaviour {
             print("Player attacked by demon!");
             player.fearMeter.ChangeFear((float) Demon.fearIncreaseLvls[GameController.instance.diffLvl]);
 
-            if(player.demonsEncountered < 2)
+            /*if(player.demonsEncountered < 2)
             {
                 print("First demon encounter");
                 player.demonsEncountered++;
                 player.DemonEncounter();
-            }
+            }*/
         }
     }
 }
