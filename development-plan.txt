@@ -87,9 +87,10 @@ of correct chanting  OK
 60. Start intro  OK 
 61. Door sound and automatic closing  OK  
 62. Add whisper sound when chanting  OK
+63. Credit screen  OK
+64. Remove random player spawn positions  OK
 
-. Credit screen
-. Remove random player spawn positions
+65. Change infobox to show newest first  OK
 
 . Clean up code!
 

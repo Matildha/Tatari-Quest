@@ -8,9 +8,9 @@ public class FearMeter : MonoBehaviour {
     public Player player;
     public Animator hurtEffectAnim;
     int hurtHash = Animator.StringToHash("HurtEffect 0");
-    //const float HURT_THRESHOLD = 5;
+    const float HURT_THRESHOLD = 3;
 
-    public const float MAX_FEAR = 100f; 
+    public float[] maxFears = { 200f, 150f, 100f }; 
     float fear;
 
     float maxWidth;
@@ -28,11 +28,11 @@ public class FearMeter : MonoBehaviour {
     public void ChangeFear(float delta)
     {
         fear += delta;
-        if (delta >= 3 || delta <= -3) print("Player fear: " + fear);
-        if (fear >= MAX_FEAR)
+        if (delta >= HURT_THRESHOLD || delta <= -HURT_THRESHOLD) print("Player fear: " + fear);
+        if (fear >= maxFears[GameController.instance.diffLvl])
         {
             //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");
-            fear = MAX_FEAR;
+            fear = maxFears[GameController.instance.diffLvl];
             player.GameOver();
         }
         else if(fear < 0)
@@ -45,7 +45,7 @@ public class FearMeter : MonoBehaviour {
 
     private void UpdateFearMeter()
     {
-        float width = (fear / MAX_FEAR) * maxWidth;
+        float width = (fear / maxFears[GameController.instance.diffLvl]) * maxWidth;
         transform.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
     }
 }

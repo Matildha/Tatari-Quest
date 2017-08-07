@@ -10,13 +10,15 @@ public class WorldManager : MonoBehaviour {
     public VictimFactory victFact;
     public DemonSpawn demonSpawn;
     public Player player;
+    public GameObject playerSpawnPos;
+    public int playerSpawnArea;
 
     public int numberOfWorldAreas;
     public WorldArea[] worldAreas;
     public int currentWorldArea;
 
-    public int nrPlayerSpawnAreas;
-    public int[] playerSpawnAreas; // These areas are expected to have playerSpawn != null
+    //public int nrPlayerSpawnAreas;
+    //public int[] playerSpawnAreas; // These areas are expected to have playerSpawn != null
 
     public RainZone[] rainZones;
     public AudioClip rainSound;
@@ -29,10 +31,10 @@ public class WorldManager : MonoBehaviour {
         scrollFact.Init();
         Init();
         intManager.Init();
-        //GeneratePlayerPosition();  // TODO: Remove functionality for random player spawns
-        player.transform.position = worldAreas[19].playerSpawn.transform.position;
-        player.transform.rotation = worldAreas[19].playerSpawn.transform.rotation;
-        currentWorldArea = 19;
+        // TODO: Remove functionality for random player spawns
+        player.transform.position = playerSpawnPos.transform.position;
+        player.transform.rotation = playerSpawnPos.transform.rotation;
+        currentWorldArea = playerSpawnArea;
 
         foreach(RainZone zone in rainZones)
         {
@@ -109,7 +111,7 @@ public class WorldManager : MonoBehaviour {
         return symptoms;
     }
 
-    void GeneratePlayerPosition()
+    /*void GeneratePlayerPosition()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
         int area = playerSpawnAreas[Random.Range(0, nrPlayerSpawnAreas)];
@@ -124,5 +126,5 @@ public class WorldManager : MonoBehaviour {
         {
             print("Forgot to add playerSpawn into worldarea!!");
         }
-    }
+    }*/
 }

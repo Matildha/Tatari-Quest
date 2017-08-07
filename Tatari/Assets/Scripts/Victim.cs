@@ -86,9 +86,9 @@ public class Victim : Interactable {
             isDying = keepMeEnabled = true;
             string[] msg = { RESCUE_FAIL };
             infoBox.DisplayInfo(msg);
-            InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();  // FOR DEBUG!!
+            /*InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();  // FOR DEBUG!!
             intManager.RemoveInteractable(this);
-            intManager.ResetInRangeInteractable();
+            intManager.ResetInRangeInteractable();*/
         }
     }
 

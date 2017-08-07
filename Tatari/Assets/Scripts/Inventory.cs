@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour {
     int currentNrScrolls;
     int selectedScroll;
 
-    int[] maxNrMatches = { 10, 7, 4 };
+    int[] maxNrMatches = { 10, 8, 6 };
     int currentNrMatches;
 
     

@@ -21,29 +21,26 @@ public class InfoBox : MonoBehaviour {
         if (_messages.Length == 0) return;
 
         background.SetActive(true);
-        foreach (string msg in _messages)
+
+        for (int i=_messages.Length-1; i >= 0; i--)
         {
-            messages.Add(msg);
+            messages.Insert(0, _messages[i]);
         }
-        // Check if any old messages are left
-        if (messages.Count == _messages.Length)
-        {
-            background.transform.Find("Info").GetComponent<Text>().text = messages[0];
-            messages.RemoveAt(0);
-        }
-        //intMan.ToggleInteractionPrompt(false);
+
+        background.transform.Find("Info").GetComponent<Text>().text = messages[0];
     }
 
     public void Continue()
     {
-        if (messages.Count == 0)
+        if (messages.Count == 1)
         {
+            messages.RemoveAt(0);
             Close();
         }
         else
         {
-            background.transform.Find("Info").GetComponent<Text>().text = messages[0];
             messages.RemoveAt(0);
+            background.transform.Find("Info").GetComponent<Text>().text = messages[0];
         }
     }
 

@@ -6,7 +6,7 @@ public class VictimFactory : MonoBehaviour {
 
     public GameObject orgVictim;
     public WorldManager worldMan;
-    static public int[] maxVictims = { 4, 6, 8 };  // TODO: Update when we have more spawn pos!!
+    static public int[] maxVictims = { 4, 6, 8 };
 
 
     public void CreateVictims(List<string> symptoms)

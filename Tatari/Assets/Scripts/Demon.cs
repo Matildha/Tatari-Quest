@@ -9,7 +9,7 @@ public class Demon : MonoBehaviour {
     public float percSpeed;
 
     public bool autoHoming;  // Will make the demon update the player position
-    static public int[] fearIncreaseLvls = {4, 7, 10}; 
+    static public int[] fearIncreaseLvls = {5, 8, 10}; 
 
     public Vector3 start;
     public GameObject controlP1;

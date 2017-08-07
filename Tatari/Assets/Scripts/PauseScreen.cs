@@ -6,6 +6,7 @@ public class PauseScreen : MenuController {
 
     public GameObject PauseMenu;
     public GameObject menu;
+    public GameObject background;
     public GameObject helpInfo;
     bool helpIsDisplay;
 
@@ -66,12 +67,14 @@ public class PauseScreen : MenuController {
     public void Pause()
     {
         PauseMenu.SetActive(true);
+        background.SetActive(true);
         this.enabled = true;     
     }
 
     public void UnPause()
     {
         PauseMenu.SetActive(false);
+        background.SetActive(false);
         this.enabled = false;
     }
 
