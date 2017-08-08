@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 2.5f;
     //public float bounce = 2f;
-    float mouseSensitivity = 1.5f;
+    float mouseSensitivity = 1.2f;
     public float fearIncrease = 0.75f;
 
     public bool unableToMove;

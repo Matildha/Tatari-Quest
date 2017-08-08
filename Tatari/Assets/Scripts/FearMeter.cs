@@ -28,7 +28,7 @@ public class FearMeter : MonoBehaviour {
     public void ChangeFear(float delta)
     {
         fear += delta;
-        if (delta >= HURT_THRESHOLD || delta <= -HURT_THRESHOLD) print("Player fear: " + fear);
+        //if (delta >= HURT_THRESHOLD || delta <= -HURT_THRESHOLD) print("Player fear: " + fear);
         if (fear >= maxFears[GameController.instance.diffLvl])
         {
             //print("GAMEEEE OOOOOVEEEERRRRR!!!! :O");

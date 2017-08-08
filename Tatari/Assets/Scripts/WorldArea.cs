@@ -14,5 +14,4 @@ public class WorldArea : MonoBehaviour {
     public GameObject[] demonStart;  // Control points to randomize demon start position (SIZE 2)
     public GameObject[] demonBezCP;  // Control points for demon bezier curve movement (SIZE 2)
     public Door[] doors;
-    //public GameObject playerSpawn;  // May be NULL if area has no intended player spawn position
 }

@@ -17,21 +17,23 @@ public class WorldManager : MonoBehaviour {
     public WorldArea[] worldAreas;
     public int currentWorldArea;
 
-    //public int nrPlayerSpawnAreas;
-    //public int[] playerSpawnAreas; // These areas are expected to have playerSpawn != null
-
     public RainZone[] rainZones;
     public AudioClip rainSound;
 
+    List<string> symptoms;
+
     float intManLastUpdate;
-    const float intManDeltaUpdate = 0.5f;
+    const float INTMAN_UPDATE_DELTA = 0.5f;
+
+    float demonSpawnLastUpdate;
+    const float DEMONSPAWN_UPDATE_DELTA = 0.25f;
 
 
 	void Start () {
         scrollFact.Init();
         Init();
         intManager.Init();
-        // TODO: Remove functionality for random player spawns
+
         player.transform.position = playerSpawnPos.transform.position;
         player.transform.rotation = playerSpawnPos.transform.rotation;
         currentWorldArea = playerSpawnArea;
@@ -41,6 +43,7 @@ public class WorldManager : MonoBehaviour {
             zone.Init();
             zone.UpdateSystem(currentWorldArea);
         }
+        print("Start in worldmanager");
 	}
 
     public void SwitchArea(int area)
@@ -81,12 +84,17 @@ public class WorldManager : MonoBehaviour {
     void Update()
     {
         player.ExUpdate();
-        if (Time.time - intManLastUpdate > intManDeltaUpdate)
+        if (Time.time - intManLastUpdate > INTMAN_UPDATE_DELTA)
         {
             intManager.ExUpdate();
             intManLastUpdate = Time.time;
         }
-        demonSpawn.ExUpdate();
+        //demonSpawn.ExUpdate();
+        if (Time.time - demonSpawnLastUpdate > DEMONSPAWN_UPDATE_DELTA)
+        {
+            demonSpawn.ExUpdate();
+            demonSpawnLastUpdate = Time.time;
+        }
     }
 
     private void FixedUpdate()
@@ -94,10 +102,14 @@ public class WorldManager : MonoBehaviour {
         player.ExFixedUpdate();
     }
 
-    List<string> LoadScrollInfo()
+    /*List<string> LoadScrollInfo()
     {
         List<string> symptoms = new List<string>();
-        FileStream stream = new FileStream("Assets/TextFiles/scroll-info.txt", FileMode.Open, FileAccess.Read);
+        FileStream stream;
+
+        stream = new FileStream("Assets/TextFiles/scroll-info.txt", FileMode.Open, FileAccess.Read);
+        stream = new FileStream("TatariQuest_Data/Resources/scroll-info.txt", FileMode.Open, FileAccess.Read);
+
         StreamReader reader = new StreamReader(stream);
 
         for (int i = 0; i < Inventory.MAX_NR_SCROLLS; i++)
@@ -109,22 +121,19 @@ public class WorldManager : MonoBehaviour {
         stream.Close();
         
         return symptoms;
-    }
-
-    /*void GeneratePlayerPosition()
-    {
-        Random.InitState(System.DateTime.Now.Millisecond);
-        int area = playerSpawnAreas[Random.Range(0, nrPlayerSpawnAreas)];
-        if(worldAreas[area].playerSpawn != null)  // Debug check
-        {
-            player.transform.position = worldAreas[area].playerSpawn.transform.position;
-            player.transform.rotation = worldAreas[area].playerSpawn.transform.rotation;
-            currentWorldArea = area;
-            print("Set player pos to " + player.transform.position);
-        }
-        else
-        {
-            print("Forgot to add playerSpawn into worldarea!!");
-        }
     }*/
+
+    List<string> LoadScrollInfo()
+    {
+        string[] sympt = { "hallucinations, panic attacks",
+                                        "blindness, hallucinations",
+                                        "paranoia, hysteria",
+                                        "sleep deprivation",
+                                        "blind rage",
+                                        "paranoia, panic attacks"};
+
+        symptoms = new List<string>(sympt);
+
+        return symptoms;
+    }
 }

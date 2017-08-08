@@ -10,7 +10,7 @@ public class Victim : Interactable {
     public override string PromptMessage { get { return PROMPT_MSG; } }
     public string symptom;
 
-    static int[] decreaseFearLvls = { -20, -15, -10};
+    static int[] decreaseFearLvls = { -15, -16, -10};
 
     float symptDisplayStart;
     const float SYMPT_DISP_TIME = 2;
@@ -66,9 +66,9 @@ public class Victim : Interactable {
             string[] msg = { RESCUE_SUCCESS };
             infoBox.DisplayInfo(msg);
 
-            Player player = GameObject.Find("Player").GetComponent<Player>();
+            /*Player player = GameObject.Find("Player").GetComponent<Player>();
             player.IncreaseNrRescues();
-            player.fearMeter.ChangeFear((float) decreaseFearLvls[GameController.instance.diffLvl]);
+            player.fearMeter.ChangeFear((float) decreaseFearLvls[GameController.instance.diffLvl]); */
 
             victimAnimCon.SetTrigger("makeBow");
             bowAnimStart = Time.time;
@@ -81,9 +81,9 @@ public class Victim : Interactable {
         else
         {
             print("The chant did not cure this person!");
-            victimAnimCon.SetTrigger("makeBow");
-            bowAnimStart = Time.time;
-            isDying = keepMeEnabled = true;
+           // victimAnimCon.SetTrigger("makeBow");
+            //bowAnimStart = Time.time;
+            //isDying = keepMeEnabled = true;
             string[] msg = { RESCUE_FAIL };
             infoBox.DisplayInfo(msg);
             /*InteractableManager intManager = GameObject.Find("Interactables").GetComponent<InteractableManager>();  // FOR DEBUG!!
@@ -98,6 +98,11 @@ public class Victim : Interactable {
         {
             print("Victim to be removed");
             keepMeEnabled = false;
+
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            player.IncreaseNrRescues();
+            player.fearMeter.ChangeFear((float)decreaseFearLvls[GameController.instance.diffLvl]);
+
             Destroy(this.gameObject);
         }
     }

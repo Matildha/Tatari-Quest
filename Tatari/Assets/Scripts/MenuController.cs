@@ -65,21 +65,6 @@ public class MenuController : MonoBehaviour {
         return 0;  // Becasue System.Func requires a return type
     }
 
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Next();
-        }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Prev();
-        }
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-        {
-            Select();
-        }
-	}
-
     public void Next()
     {
         markers[selectedItem].SetActive(false);

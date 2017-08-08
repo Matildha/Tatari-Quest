@@ -21,9 +21,9 @@ public class GameOverMenu : MenuController {
 
         victimStat.SetActive(true);
         victimStat.GetComponent<Text>().text = VICTIM_STAT_TEXT + GameController.instance.nrRescuedVictims;
-        nrMenuItems = 2;
         actions = new List<System.Func<int>>();
         actions.Add(Restart);
+        actions.Add(LoadStartMenu);
         actions.Add(Exit);
 
         if(GameController.instance.gameSuccess)
@@ -35,8 +35,8 @@ public class GameOverMenu : MenuController {
             int timeMin = GameController.instance.gameplayTime / 60;
             int timeSec = GameController.instance.gameplayTime % 60;
             timeStat.GetComponent<Text>().text = TIME_STAT_TEXT + timeMin + " min " + timeSec + " sec";
-            actions.RemoveAt(0);
-            actions.Insert(0, LoadStartMenu);
+            //actions.RemoveAt(0);
+            //actions.Insert(0, LoadStartMenu);
         }
         else
         {
@@ -49,8 +49,23 @@ public class GameOverMenu : MenuController {
 
     int LoadStartMenu()
     {
-        GameController.instance.showIntro = true;
-        GameController.instance.SwitchScene(GameController.START);
+        GameController.instance.LoadStartMenu();
         return 0;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Next();
+        }
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Prev();
+        }
+        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        {
+            Select();
+        }
     }
 }

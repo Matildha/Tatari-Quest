@@ -11,12 +11,12 @@ public class DemonSpawn : MonoBehaviour {
     public int nrDemonSounds;
     public bool activeDemon;
 
-    float increaseChance = 0.75f;
+    float increaseChance = 0.05f;
     float invertChance;
 
-    float[] baseSafeTimes = { 7f, 5f, 3f };  // seconds
+    float[] baseSafeTimes = { 7f, 5f, 4f };  // seconds
     float safeTime;
-    float decreaseSafeTime = 0.05f;
+    float decreaseSafeTime = 0.4f;
     float startTime;
 
     bool hasReset;
@@ -74,7 +74,7 @@ public class DemonSpawn : MonoBehaviour {
         newDemon.sound = demonSounds[Random.Range(0, nrDemonSounds)];
 
         //print("Demon spawn at " + newDemon.start);
-        newDemon.autoHoming = Random.Range(0, 2) == 1;
+        newDemon.autoHoming = Random.Range(0, 11) < 9;
         print("New demon homing " + newDemon.autoHoming);
         newDemon.transform.SetParent(this.transform);
 
@@ -93,7 +93,7 @@ public class DemonSpawn : MonoBehaviour {
             
             if ((Time.time - startTime) > safeTime)
             {
-                invertChance += increaseChance * Time.deltaTime;
+                invertChance += increaseChance; // * Time.deltaTime;
                 if (invertChance >= 0.75f) invertChance = 0.75f;
 
                 Random.InitState(System.DateTime.Now.Millisecond);

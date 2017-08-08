@@ -23,7 +23,7 @@ public class StartMenu : MenuController {
     float maxCreditPos;
 
 
-    const float TEXT_MOVE_Y = 40f; 
+    float textMoveY; 
 
 	public void StartMenuInit () {
         Init();
@@ -47,10 +47,13 @@ public class StartMenu : MenuController {
         minCreditPos = creditsTextBox.transform.position.y;
         Vector3[] corners = new Vector3[4];
         creditsTextBox.GetComponent<RectTransform>().GetWorldCorners(corners);
-        float boxHeight = corners[0].y - corners[1].y;
-        maxCreditPos = minCreditPos - boxHeight / 2;  // Subtract margin
+        float boxHeight = corners[1].y - corners[0].y;
+        maxCreditPos = minCreditPos + boxHeight / 2;  // Subtract margin
 
         creditsTextBox.GetComponent<Text>().text = creditFile.text;
+
+        textMoveY = boxHeight * 0.01f;
+        print("box height " + boxHeight);
     }
 
     void Update()
@@ -63,7 +66,7 @@ public class StartMenu : MenuController {
             }
             else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
-                creditsTextBox.transform.position += new Vector3(0, -TEXT_MOVE_Y, 0);
+                creditsTextBox.transform.position += new Vector3(0, -textMoveY, 0);
 
                 if (creditsTextBox.transform.position.y < minCreditPos)
                 {
@@ -73,7 +76,7 @@ public class StartMenu : MenuController {
             }
             else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
-                creditsTextBox.transform.position += new Vector3(0, TEXT_MOVE_Y, 0);
+                creditsTextBox.transform.position += new Vector3(0, textMoveY, 0);
 
                 if (creditsTextBox.transform.position.y > maxCreditPos)
                 {

@@ -39,7 +39,10 @@ public class Player : MonoBehaviour {
                                                                + " / " + VictimFactory.maxVictims[GameController.instance.diffLvl];
         demonsEncountered = 0;
         hintInfo = GameController.instance.hintInfo;
+        infoBox.Init();
         infoBox.Close();
+
+        if (!GameController.instance.showIntro) InitMessages();
     }
 
     public void IncreaseNrRescues()
@@ -66,6 +69,7 @@ public class Player : MonoBehaviour {
         GameController.instance.gameplayTime = (int) Time.time - gamePlayStartTime;
         GameController.instance.gameSuccess = nrRescuedVictims == VictimFactory.MAX_VICTIMS;
         GameController.instance.SwitchScene(GameController.GAME_OVER);*/
+        //nrRescuedVictims = VictimFactory.maxVictims[GameController.instance.diffLvl];
         GameController.instance.GameOver();
     }
 
@@ -155,7 +159,7 @@ public class Player : MonoBehaviour {
 
         if (demonsEncountered == 1)
         {
-            string[] message = { " 'WHAT THE HELL WAS THAT?!' " };
+            string[] message = { " 'WHAT THE HELL IS THAT?!' " };
             infoBox.DisplayInfo(message);
         }
         else if (demonsEncountered == 2)
@@ -166,7 +170,7 @@ public class Player : MonoBehaviour {
             {
                 messages = new string[]{ " 'ANOTHER ONE..!' ", " ' ARE THOSE THINGS ATTRACTED TO LIGHT? ' ",
                                     " ' ... I SHOULDN'T KEEP THE LIGHT ON FOR TOO LONG' ",
-                                    " 'THE PERSON FROM BEFORE... DID THEY GET ATTACKED TOO?' "};
+                                    " 'IT MUST HAVE ATTACKED THE PERSON I SAW BEFORE TOO...' "};
             }
             else
             {
@@ -186,7 +190,6 @@ public class Player : MonoBehaviour {
 
     public void InitMessages()
     {
-        infoBox.Init();
         if(hintInfo)
         {
             string[] message = { " '... PHEW! SUCH NASTY WEATHER...' ",

@@ -42,7 +42,6 @@ public class Demon : MonoBehaviour {
         }
         else if(isDying)
         {
-            demonSpawn.activeDemon = false;
             Destroy(gameObject);
         }
 
@@ -77,18 +76,24 @@ public class Demon : MonoBehaviour {
         // We don't want to register hits on the player's physical collider or thresholds
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Threshold")
         {
-            print("Demon hit player collider or threshold. Cont. to live.");
+            //print("Demon hit player collider or threshold. Cont. to live.");
             return;
         }
         transform.Find("Demon").gameObject.SetActive(false);
-        print("Demon found player hitbox or environment obstacle in trigger, selfdestruct");
+        //print("Demon found player hitbox or environment obstacle in trigger, selfdestruct");
         isDying = true;
+        demonSpawn.activeDemon = false;
+        print("Sets active demon to false");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Demon found obstacle in collision, selfdestruct");
+        //print("Demon found obstacle in collision, selfdestruct");
+        transform.Find("Demon").gameObject.SetActive(false);
+        //demonSpawn.activeDemon = false;
+        isDying = true;
         demonSpawn.activeDemon = false;
-        Destroy(gameObject);
+        print("Sets active demon to false");
+        //Destroy(gameObject);
     }
 }

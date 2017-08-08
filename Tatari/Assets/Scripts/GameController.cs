@@ -74,9 +74,8 @@ public class GameController : MonoBehaviour {
             startMenu.StartMenuInit();
             print("In active scene start in gamecontroller start");
             showIntro = true;
+            diffLvl = 1;
         }
-
-        hintInfo = true;
     }
 
     void GetInGameVariables()
@@ -110,8 +109,9 @@ public class GameController : MonoBehaviour {
 
         print("In Pause in game controller");
         worldMan.enabled = false;
+        worldMan.player.playerController.unableToMove = true;
         ingameUI.SetActive(false);
-        pauseScreen.Init();
+        //pauseScreen.Init();
         pauseScreen.Pause();
     }
 
@@ -120,6 +120,7 @@ public class GameController : MonoBehaviour {
         if (pauseScreen == null) return;
 
         worldMan.enabled = true;
+        worldMan.player.playerController.unableToMove = false;
         ingameUI.SetActive(true);
         pauseScreen.UnPause();
     }
@@ -129,13 +130,27 @@ public class GameController : MonoBehaviour {
         nrRescuedVictims = worldMan.player.nrRescuedVictims;
         gameplayTime = (int)Time.time - worldMan.player.gamePlayStartTime;
         gameSuccess = nrRescuedVictims == VictimFactory.maxVictims[instance.diffLvl];
-        gameOverSeq.enabled = true;
-        gameOverSeq.Init();
         worldMan.enabled = false;
         worldMan.intManager.ResetInRangeInteractable();
         worldMan.player.infoBox.Close();
         music.StartNormalLoop();
-        //SwitchScene(GameController.GAME_OVER);
+
+        if(gameSuccess)
+        {
+            SwitchScene(GAME_OVER);
+        }
+        else
+        {
+            gameOverSeq.enabled = true;
+            gameOverSeq.Init();
+        }
+        
+    }
+
+    public void LoadStartMenu()
+    {
+        showIntro = true;
+        SwitchScene(START);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

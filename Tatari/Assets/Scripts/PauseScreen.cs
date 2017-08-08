@@ -11,6 +11,7 @@ public class PauseScreen : MenuController {
     bool helpIsDisplay;
 
 	void Start () {
+        Init();
         helpIsDisplay = false;
 
         actions = new List<System.Func<int>>();
@@ -22,6 +23,7 @@ public class PauseScreen : MenuController {
 	
 	int Continue()
     {
+        Deselect();
         GameController.instance.UnPause();
         return 0;
     }

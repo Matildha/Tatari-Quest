@@ -18,7 +18,7 @@ public class IntroSeq : MonoBehaviour {
     public Transform[] path;
     public int nrPoints;
     int currentPoint;
-    float speed = 1.25f;
+    const float SPEED = 1.25f;
 
     bool transitionHasBegun;
     float transitionDuration = 1f;
@@ -28,6 +28,7 @@ public class IntroSeq : MonoBehaviour {
 
     void Start () {
         cutSceneCam.gameObject.SetActive(true);
+        blackCam.gameObject.SetActive(false);
         blackEdgesEffect.SetActive(true);
         footStepSound.forceSound = true;
         playerCam.gameObject.SetActive(false);
@@ -43,11 +44,11 @@ public class IntroSeq : MonoBehaviour {
     }
 	
 	void Update ()
-    { 
+    {
         if (cutSceneCam.transform.position != path[currentPoint].position)
         {
             cutSceneCam.transform.position = Vector3.MoveTowards(cutSceneCam.transform.position,
-                                                                    path[currentPoint].position, speed * Time.deltaTime);
+                                                                    path[currentPoint].position, SPEED * Time.deltaTime);
 
             cutSceneCam.transform.LookAt(path[nrPoints - 1], Vector3.up);
         }
@@ -63,9 +64,7 @@ public class IntroSeq : MonoBehaviour {
             else if(Time.time - transitionStart > transitionDuration)
             {
                 DisableStartSeq();
-            }
-
-            
+            }      
         }
         else
         {

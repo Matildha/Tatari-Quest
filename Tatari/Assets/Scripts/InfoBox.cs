@@ -32,7 +32,11 @@ public class InfoBox : MonoBehaviour {
 
     public void Continue()
     {
-        if (messages.Count == 1)
+        if(messages.Count == 0)
+        {
+            return;
+        }
+        else if (messages.Count == 1)
         {
             messages.RemoveAt(0);
             Close();

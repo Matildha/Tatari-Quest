@@ -26,8 +26,8 @@ public class Inventory : MonoBehaviour {
     float readBarWidth;
     public bool isReading;
     float readStartTime;
-    float readingTime = 3f;
-    float chantingTime = 6f;
+    float readingTime = 5f;
+    float chantingTime = 8f;
     bool hasReadFirst;
 
     GameObject[] scrollIcons;
@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour {
     int currentNrScrolls;
     int selectedScroll;
 
-    int[] maxNrMatches = { 10, 8, 6 };
+    int[] maxNrMatches = { 9, 7, 5 };
     int currentNrMatches;
 
     
