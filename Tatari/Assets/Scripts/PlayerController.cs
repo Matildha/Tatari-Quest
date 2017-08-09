@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     //public Player player;
     //public GameObject playerBody;
 
-    public float speed = 2.5f;
+    float speed = 3f;
     //public float bounce = 2f;
     float mouseSensitivity = 1.2f;
     public float fearIncrease = 0.75f;

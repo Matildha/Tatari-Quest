@@ -10,7 +10,7 @@ public class Victim : Interactable {
     public override string PromptMessage { get { return PROMPT_MSG; } }
     public string symptom;
 
-    static int[] decreaseFearLvls = { -15, -16, -10};
+    static int[] decreaseFearLvls = { -30, -25, -20};
 
     float symptDisplayStart;
     const float SYMPT_DISP_TIME = 2;

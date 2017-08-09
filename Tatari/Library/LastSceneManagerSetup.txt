@@ -3,7 +3,7 @@ sceneSetups:
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/gameover-screen.unity
-  isLoaded: 1
+  isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/start-screen.unity
   isLoaded: 1

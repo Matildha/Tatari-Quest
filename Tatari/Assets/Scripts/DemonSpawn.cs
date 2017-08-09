@@ -74,7 +74,7 @@ public class DemonSpawn : MonoBehaviour {
         newDemon.sound = demonSounds[Random.Range(0, nrDemonSounds)];
 
         //print("Demon spawn at " + newDemon.start);
-        newDemon.autoHoming = Random.Range(0, 11) < 9;
+        newDemon.autoHoming = Random.Range(0, 4) < 3;
         print("New demon homing " + newDemon.autoHoming);
         newDemon.transform.SetParent(this.transform);
 
