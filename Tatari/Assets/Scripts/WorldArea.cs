@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * WorldArea contains collections of information and gameObjects associated with the area of index "ID". 
+ * 
+ * WorldArea is intented to represent a physical area in the game world where the below listed gameObject:s
+ * are positioned. 
+*/
+
 public class WorldArea : MonoBehaviour {
 
     public int ID;

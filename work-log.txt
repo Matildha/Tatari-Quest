@@ -136,6 +136,11 @@ Fix infobox when pausing.  OK
 
 Victims not removed correctly when different current area!!! OK
 
+9/8 17: LAST LOG?? :O :O !!! 
+Changed background variated loop a bit, because values mismatched in 
+update. 
+   Removed duplicate of what's this thing doing here message in inventory. 
+
 
 LIST OF RESOURCES: 
 Rice paper http://tildhanor.deviantart.com/art/rice-paper-457679385 

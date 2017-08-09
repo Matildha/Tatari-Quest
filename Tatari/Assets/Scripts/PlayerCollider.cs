@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * PlayerCollider should be attached to the gameObject of the player's physical collider. 
+ * PlayerCollider will recognize trigger collissions with objects tagged "Demon", this
+ * will cause a call to the player's FearMeter reference with the current difficult 
+ * level Demon's fear increase. 
+*/
+
 public class PlayerCollider : MonoBehaviour {
 
     public Player player;
@@ -12,13 +19,6 @@ public class PlayerCollider : MonoBehaviour {
         {
             print("Player attacked by demon!");
             player.fearMeter.ChangeFear((float) Demon.fearIncreaseLvls[GameController.instance.diffLvl]);
-
-            /*if(player.demonsEncountered < 2)
-            {
-                print("First demon encounter");
-                player.demonsEncountered++;
-                player.DemonEncounter();
-            }*/
         }
     }
 }

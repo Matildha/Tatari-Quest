@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * FootSteps use the "isWalking" boolean in PlayerController to determine when to play
+ * the AudioSource attached to the same GameObject. 
+ * 
+ * FootSteps automatically creates a variated sound using random values
+ * for audio volume and pitch. Footsteps also include an array of worldAreas which has
+ * "soft floors" where the audio volume should be generally lower. 
+ * 
+ * The "fourceSound" boolean can be set to make FootSteps play audio even though 
+ * "isWalking" is not set. 
+*/
+
 public class FootSteps : MonoBehaviour {
 
     public Player player;
@@ -12,9 +24,6 @@ public class FootSteps : MonoBehaviour {
     float volMin;
     float volMax;
 
-	/*void Start () {
-        audioSource = gameObject.GetComponent<AudioSource>();
-	}*/
 	
 	void Update () {
 

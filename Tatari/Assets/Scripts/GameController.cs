@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * GameController controls the switching of scenes and their primary set up and
+ * is therefore also set to DontDestroyOnLoad. 
+ * 
+ * Contains functionality to restart completely from START, trigger game over and
+ * pause, unpause the game. 
+ * 
+ * GameController contains variables used to pass information between scenes. 
+*/
+
 public class GameController : MonoBehaviour {
 
     public static GameController instance;
@@ -12,7 +22,9 @@ public class GameController : MonoBehaviour {
     public const int INGAME = 1;
     public const int GAME_OVER = 2; 
 
-    public const int MAX_DIFF_LVL = 2;  // 0,1,2
+    public const int MAX_DIFF_LVL = 2;  // 0,1,2 ; where 2 is the most difficult
+
+    public WorldManager worldMan;
 
     string[] scenePaths = {"start-screen", "ingame", "gameover-screen"};
 
@@ -23,19 +35,18 @@ public class GameController : MonoBehaviour {
     public bool gameSuccess;
     public int gameplayTime;
 
+    public bool showIntro;
+    IntroSeq introSeq;
+
     StartMenu startMenu;
     BackgroundMusic music;
 
-    public WorldManager worldMan;
     GameObject ingameUI;
     PauseScreen pauseScreen;
     GameOverSeq gameOverSeq;
 
-    public bool showIntro;
-    IntroSeq introSeq;
 
-
-    void Start()
+    private void Start()
     {
         // For debuggin and testing (normally game starts at scene START)
         if (SceneManager.GetActiveScene().buildIndex == INGAME)
@@ -63,7 +74,7 @@ public class GameController : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        print(SceneManager.GetActiveScene().name);
+        //print(SceneManager.GetActiveScene().name);
 
         if (SceneManager.GetActiveScene().name == scenePaths[START])
         {
@@ -72,13 +83,13 @@ public class GameController : MonoBehaviour {
             music.Init();
             music.StartNormalLoop();
             startMenu.StartMenuInit();
-            print("In active scene start in gamecontroller start");
             showIntro = true;
-            diffLvl = 1;
+            diffLvl = 1;  // Set default difficult level to 1 (normal)
+            //print("In active scene start in gamecontroller start");
         }
     }
 
-    void GetInGameVariables()
+    private void GetInGameVariables()
     {
         worldMan = GameObject.Find("Environment").GetComponent<WorldManager>();
         ingameUI = GameObject.Find("IngameUI");
@@ -87,6 +98,8 @@ public class GameController : MonoBehaviour {
         introSeq = GameObject.Find("Intro Sequence").GetComponent<IntroSeq>();
     }
 
+    /* Loads scene as the only active scene. If the given scene is START, the current instance of
+     GameController and BackgroundMusic will be destroyed. (to be reinstantiated by the START scene) */
     public void SwitchScene(int scene)
     {
         int oldScene = SceneManager.GetActiveScene().buildIndex;
@@ -99,6 +112,8 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    /* Interrupts most parts of the INGAME scene by disabling WorldManager and hiding 
+     ingame UI. Calls PauseScreen Pause() to enable pause menu. */
     public void Pause()
     {
         if (pauseScreen == null)
@@ -107,14 +122,17 @@ public class GameController : MonoBehaviour {
             return;
         }
 
-        print("In Pause in game controller");
+        //print("In Pause in game controller");
         worldMan.enabled = false;
-        worldMan.player.playerController.unableToMove = true;
+        worldMan.player.playerController.unableToMove = true;  // So FootSteps' sound can not be played
         ingameUI.SetActive(false);
         //pauseScreen.Init();
         pauseScreen.Pause();
     }
 
+
+    /* Resumes activity of all parts of the INGAME scene that was interrupted by Pause() by enabling WorldManager and showing 
+     ingame UI. Calls PauseScreen UnPause() to disable pause menu. */
     public void UnPause()
     {
         if (pauseScreen == null) return;
@@ -125,6 +143,8 @@ public class GameController : MonoBehaviour {
         pauseScreen.UnPause();
     }
 
+    /* Initiates the end of the game session. Retrives information required by GAME_OVER scene, 
+     * disables WorldManager and either switches to GAME_OVER scene or enables GameOverSeq. */
     public void GameOver()
     {
         nrRescuedVictims = worldMan.player.nrRescuedVictims;
@@ -147,13 +167,22 @@ public class GameController : MonoBehaviour {
         
     }
 
+    /* Loads the START scene with showIntro set to true. */
     public void LoadStartMenu()
     {
         showIntro = true;
         SwitchScene(START);
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    /* Quits the application. */
+    public static void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    /* Sets up the INGAME scene. This function is called by SceneManager when a scene
+     * has finished loading. */
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         print("In game controller scene loaded");
         if (scene.name == scenePaths[INGAME])
@@ -177,7 +206,8 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    void OnApplicationFocus(bool focus)
+    /* Controls the locked state of the user cursor. */
+    private void OnApplicationFocus(bool focus)
     {
         if (focus)
         {

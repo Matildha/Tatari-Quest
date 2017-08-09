@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * StartMenu inherits from MenuController with added functionality to
+ * toggle "hintInfo" and choose difficult level. It manages all
+ * GUI gameObjects associated with the START scene. 
+ * 
+ * StartMenu can also display and scroll through "creditsDisplay", which
+ * contents are added by StartMenu from TextAsset "creditFile". 
+*/
+
 public class StartMenu : MenuController {
 
     public GameObject menu;
@@ -56,6 +65,7 @@ public class StartMenu : MenuController {
         print("box height " + boxHeight);
     }
 
+    /* Handle user input depending on whether the displayCredits is set or not. */
     void Update()
     {
         if (displayCredits)
@@ -129,5 +139,4 @@ public class StartMenu : MenuController {
         
         return 0;
     }
-
 }

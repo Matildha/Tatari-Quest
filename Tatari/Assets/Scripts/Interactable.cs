@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour{
+/*
+ * The abstract class implemented by the game world objects the player can 
+ * interact with. 
+ * 
+ * Objects inheriting from this class are mainly managed by InteractableManager. 
+*/
+
+public abstract class Interactable : MonoBehaviour {
 
     public abstract string PromptMessage { get; }
 

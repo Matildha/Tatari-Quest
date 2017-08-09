@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * RainZone updates the given ParticleSystem "system" 
+ * according a given WorldArea index and its array of 
+ * active areas. This areas are where "system" will be 
+ * activated.
+ * 
+ * An audio will be played when "system" is activated. 
+*/
+
 public class RainZone : MonoBehaviour {
 
     public int[] activeAreas;

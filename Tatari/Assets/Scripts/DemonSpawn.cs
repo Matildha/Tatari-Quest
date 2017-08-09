@@ -16,7 +16,7 @@ public class DemonSpawn : MonoBehaviour {
 
     float[] baseSafeTimes = { 7f, 5f, 4f };  // seconds
     float safeTime;
-    float decreaseSafeTime = 0.4f;
+    float decreaseSafeTime = 0.002f;
     float startTime;
 
     bool hasReset;
@@ -88,12 +88,13 @@ public class DemonSpawn : MonoBehaviour {
         {
             hasReset = false;
 
-            safeTime -= decreaseSafeTime * Time.deltaTime;
+            safeTime -= decreaseSafeTime;
             if (safeTime <= 0) safeTime = 0;
             
             if ((Time.time - startTime) > safeTime)
             {
-                invertChance += increaseChance; // * Time.deltaTime;
+                invertChance += increaseChance;
+                print("Invert chance " + invertChance);
                 if (invertChance >= 0.75f) invertChance = 0.75f;
 
                 Random.InitState(System.DateTime.Now.Millisecond);
@@ -105,9 +106,11 @@ public class DemonSpawn : MonoBehaviour {
                     SpawnDemon();
                 }
                 //else print("Demon spawnas inte");
+
                 startTime = Time.time;
             }
         }
+        // Reset when player has turned off lantern
         else if(!hasReset && !activeDemon)
         {
             safeTime = baseSafeTimes[GameController.instance.diffLvl];
@@ -117,4 +120,9 @@ public class DemonSpawn : MonoBehaviour {
             hasReset = true;
         }
 	}
+
+    public void SetSafeStartTime()
+    {
+        startTime = Time.time;
+    }
 }

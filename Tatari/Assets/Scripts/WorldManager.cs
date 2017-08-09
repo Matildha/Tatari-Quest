@@ -1,7 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
+
+/*
+ * WorldManager is responsible for initializing world areas and populate their 
+ * lists of Interactable:s. It also places the original player position. 
+ * 
+ * WorldManager is futher more responsible for updating Player, 
+ * InteractableManager and DemonSpawn and all RainZone:s when switching
+ * "currentWorldArea". 
+ * 
+ * WorldManager is the primary coordinator of the world area system and the
+ * dynamic gameObject:s set up in the game world. 
+*/
 
 public class WorldManager : MonoBehaviour {
 
@@ -19,8 +30,6 @@ public class WorldManager : MonoBehaviour {
 
     public RainZone[] rainZones;
     public AudioClip rainSound;
-
-    List<string> symptoms;
 
     float intManLastUpdate;
     const float INTMAN_UPDATE_DELTA = 0.5f;
@@ -46,6 +55,9 @@ public class WorldManager : MonoBehaviour {
         print("Start in worldmanager");
 	}
 
+    /* Sets the current world area to given index and updates rain zones. 
+     If area == currentWorldArea this function will return immediately without
+     expending any extra work. */
     public void SwitchArea(int area)
     {
         if (area == currentWorldArea) return;
@@ -68,19 +80,21 @@ public class WorldManager : MonoBehaviour {
         {
             worldAreas[i].interactables = new LinkedList<Interactable>();
 
+            // Doors are added this way because of Unity Editor's interface not enabling
+            // graphical addition of gameObject:s to lists
             foreach(Door door in worldAreas[i].doors)
             {
                 worldAreas[i].interactables.AddLast((Interactable) door);
             }
-
         }
 
-        List<string> symptoms = LoadScrollInfo();
+        List<string> symptoms = scrollFact.LoadScrollInfo();
         scrollFact.CreateScrolls(symptoms);
         victFact.CreateVictims(symptoms);
         //print("Symptoms length " + symptoms.Count);
     }
 
+    /* Update player on every call. Updates InteractableManager and DemonSpawn on intervals. */
     void Update()
     {
         player.ExUpdate();
@@ -89,7 +103,7 @@ public class WorldManager : MonoBehaviour {
             intManager.ExUpdate();
             intManLastUpdate = Time.time;
         }
-        //demonSpawn.ExUpdate();
+
         if (Time.time - demonSpawnLastUpdate > DEMONSPAWN_UPDATE_DELTA)
         {
             demonSpawn.ExUpdate();
@@ -100,40 +114,5 @@ public class WorldManager : MonoBehaviour {
     private void FixedUpdate()
     {
         player.ExFixedUpdate();
-    }
-
-    /*List<string> LoadScrollInfo()
-    {
-        List<string> symptoms = new List<string>();
-        FileStream stream;
-
-        stream = new FileStream("Assets/TextFiles/scroll-info.txt", FileMode.Open, FileAccess.Read);
-        stream = new FileStream("TatariQuest_Data/Resources/scroll-info.txt", FileMode.Open, FileAccess.Read);
-
-        StreamReader reader = new StreamReader(stream);
-
-        for (int i = 0; i < Inventory.MAX_NR_SCROLLS; i++)
-        {
-            symptoms.Add(reader.ReadLine());
-        }
-
-        reader.Close();
-        stream.Close();
-        
-        return symptoms;
-    }*/
-
-    List<string> LoadScrollInfo()
-    {
-        string[] sympt = { "hallucinations, panic attacks",
-                                        "blindness, hallucinations",
-                                        "paranoia, hysteria",
-                                        "sleep deprivation",
-                                        "blind rage",
-                                        "paranoia, panic attacks"};
-
-        symptoms = new List<string>(sympt);
-
-        return symptoms;
     }
 }

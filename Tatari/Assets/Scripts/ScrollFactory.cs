@@ -3,27 +3,37 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/*
+ * ScrollFactory instantiate "orgScroll" objects and randomly positions
+ * them in the game world according to WorldArea's array of scroll positions. 
+ * ScrollFactory also assigns them unique but randomly distributed colors.
+ * 
+ * ScrollFactory declares a set of enum constants to represent the scroll
+ * color property. 
+ * 
+ * ScrollFactory contains method LoadScrollInfo() whicch contains hard-coded
+ * symptoms strings. 
+*/
+
 public class ScrollFactory : MonoBehaviour {
+
+    public enum ScrollColors { Red, Blue, White, Purple, Green, Yellow };
+
 
     public GameObject orgScroll;
     public WorldManager worldMan;
 
-    //List<string> descriptions;
-    public enum ScrollColors { Red, Blue, White, Purple, Green, Yellow };
-    List<ScrollColors> colors;  // TODO: Change to list of images or indices for images!
+    List<ScrollColors> colors;
 
 
     public void Init()
     {
-        //colors = new List<string>(new string[] { "Red", "Blue", "White", "Purple", "Green", "Yellow"});
         colors = new List<ScrollColors>(new ScrollColors[] { ScrollColors.Red, ScrollColors.Blue, ScrollColors.White,
                                                         ScrollColors.Purple, ScrollColors.Green, ScrollColors.Yellow });
-
     }
 
     public void CreateScrolls(List<string> _symptoms)
     {
-        //LoadScrollInfo();
         List<string> symptoms = new List<string>(_symptoms);  // So we can destructively remove items
         Vector3[] occupiedPositions = new Vector3[Inventory.MAX_NR_SCROLLS];
 
@@ -34,10 +44,14 @@ public class ScrollFactory : MonoBehaviour {
         int i = 0;
         int whileSaver = 0;
 
+        // Keep looping until all scrolls haven succesfully has been positioned
+        // (or worse case we fail to do this under 100 attempts,
+        // NB: This scenario is currently unhandled!)
         while(i < Inventory.MAX_NR_SCROLLS && whileSaver < 100)
         {
-            whileSaver++;  //TODO: Handle situation.
-            if (whileSaver == 50) print("Could not place all scrolls");
+            whileSaver++;
+            if (whileSaver == 100) print("Could not place all scrolls");  // For debug, should not happen! But number is adjusted to the current number
+                                                                         // of scroll positions and max number scrolls. 
 
             Scroll.ScrollInfo info = new Scroll.ScrollInfo();
             
@@ -62,8 +76,7 @@ public class ScrollFactory : MonoBehaviour {
             info.color = colors[color];
             colors.RemoveAt(color);
 
-            // Add properties to new scroll and add the to InteractableManager
-            // if random position has not already been occupied
+            // Add properties to new scroll and add it to the correct WorldArea's list of Interactable:s
             
             GameObject newScrollGameObj = Instantiate(orgScroll) as GameObject;
             Scroll newScroll = newScrollGameObj.GetComponent<Scroll>();
@@ -73,7 +86,7 @@ public class ScrollFactory : MonoBehaviour {
             newScroll.transform.rotation = rndPosition.transform.rotation;
             newScroll.gameObject.transform.SetParent(transform);
             newScroll.gameObject.SetActive(true);
-            newScroll.gameObject.layer = 9;
+            newScroll.gameObject.layer = InteractableManager.INTERACTABLE_LAYER;
 
             worldMan.worldAreas[areaID].interactables.AddLast(newScroll);
 
@@ -84,17 +97,19 @@ public class ScrollFactory : MonoBehaviour {
         }
     }
 
-    /*void LoadScrollInfo()
+    public List<string> LoadScrollInfo()
     {
-        FileStream stream = new FileStream("Assets/TextFiles/scroll-info.txt", FileMode.Open, FileAccess.Read);
-        StreamReader reader = new StreamReader(stream);
+        List<string> symptoms = new List<string>();
 
-        for (int i = 0; i < Inventory.MAX_NR_SCROLLS; i++)
-        {
-            descriptions.Add(reader.ReadLine());
-        }
+        string[] sympt = { "hallucinations, panic attacks",
+                                        "blindness, hallucinations",
+                                        "paranoia, hysteria",
+                                        "sleep deprivation",
+                                        "blind rage",
+                                        "paranoia, panic attacks"};
 
-        reader.Close();
-        stream.Close();
-    }*/
+        symptoms = new List<string>(sympt);
+
+        return symptoms;
+    }
 }

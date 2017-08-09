@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Lantern controls lanternLights light intensity together with child object "Body"
+ * to the gameObject this script is attached to. Intensity of light and emission of 
+ * "Body" material is randomly generated and follows a sinus curve. 
+ * 
+ * Lantern contains functionality to toggle the light and emission property of "Body"'s 
+ * material on or off. 
+*/
+
 public class Lantern : MonoBehaviour {
 
     public bool isLit;
@@ -21,10 +30,8 @@ public class Lantern : MonoBehaviour {
         lanternLight = transform.Find("Lantern Light").gameObject;
         Renderer lanternRend = transform.Find("Body").GetComponent<Renderer>();
         lanternGlow = lanternRend.material;
-        if (lanternGlow == null) print("is null start");
         defaultColor = lanternGlow.GetColor("_EmissionColor");
-        //print(defaultColor);
-        lanternGlow.SetColor("_EmissionColor", Color.black);  //TODO: Remove or change later!!
+        lanternGlow.SetColor("_EmissionColor", Color.black);
         isLit = false;
         flickerPeriod = 1;
     }

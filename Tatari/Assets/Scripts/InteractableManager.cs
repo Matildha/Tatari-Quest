@@ -3,14 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * InteractableManager is in charge of the interactive system that enables the player to 
+ * interact with objects in the game world. InteractableManager makes use of objects
+ * inherited from Interactable. 
+ * 
+ * InteractableManager continuously searches the Interactable:s of the current world area
+ * and tests them with a raycast for visibilty and proximity to the player. When in range
+ * an interact prompt message from the specific Interactable is displayed. 
+ * 
+ * InteractableManager contains functionality to disable and enable Interactable:s given
+ * a new world area and to permanently remove an Interactable from the current world area's 
+ * list of Interactable:s. 
+*/ 
+
 public class InteractableManager : MonoBehaviour {
 
     public WorldManager worldMan;
-    public Camera playerCamera;
+    public Camera playerCamera;  // used when raycasting to Interactable 
     public GameObject interactionPrompt;
-    public GameObject Doors;
     
-    public Interactable inRangeInteractable;
+    public Interactable inRangeInteractable;  // the Interactable the player currently can interact with
+
+    public const int INTERACTABLE_LAYER = 9;
 
     bool promptIsDisplayed;
     int rayLayerMask;
@@ -23,6 +38,9 @@ public class InteractableManager : MonoBehaviour {
         ToggleInteractionPrompt(false);
     }
 
+    /* Disables Interactable:s of the current area and enables Interactable:s of WorldArea newArea. 
+     Interactables that have their "keepMeEnabled" flag set is not disabled. Door:s as a special case
+     gets their "toBeDisabled" flag set instead of being disabled when they have "keepMeEnabled" set. */
     public void UpdateActive(int newArea)
     {
         // Disable update calls for doors and victims in inactive world area
@@ -63,14 +81,14 @@ public class InteractableManager : MonoBehaviour {
     }
 
     /* Attempts to remove 'item' from the current world area's list of interactables. */
-    public void RemoveInteractable(Interactable item)
+    public bool RemoveInteractable(Interactable item)
     {
         bool success = worldMan.worldAreas[worldMan.currentWorldArea].interactables.Remove(item);
         print("Removed interactable " + success);
-
+        return success;
     }
 
-    /* Sets the inRangeInteractable to null. */
+    /* Sets inRangeInteractable to null. */
     public void ResetInRangeInteractable()
     {
         inRangeInteractable = null;
@@ -92,6 +110,8 @@ public class InteractableManager : MonoBehaviour {
         }
     }
 
+    /* Loops through the current WorldArea's list of Interactable:s to find a valid inRangeInteractable. 
+     If inRangeInteractable is set to an object, this object is the only one updated. */
     public void ExUpdate()
     {
         if (inRangeInteractable == null)
@@ -125,9 +145,9 @@ public class InteractableManager : MonoBehaviour {
     }
 
   
-    /* Returns the distance if other is in a certain range and in covers the center of the screen, otherwise 
+    /* Returns the distance if other is in a certain range and covers the center of the screen, otherwise 
        returns infinity. */
-    float Range (Interactable other)
+    private float Range (Interactable other)
     {
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

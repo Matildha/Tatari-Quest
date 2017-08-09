@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * PauseScreen inherits from MenuController and can be toggled by 
+ * Pause() and UnPause(). A call to Continue() is required to actually
+ * UnPause() through GameController. This function is associated with 
+ * a menu item. 
+ * 
+ * PauseScreen can also toggle a help display (gameObject "helpInfo"). 
+*/
+
 public class PauseScreen : MenuController {
 
     public GameObject PauseMenu;
@@ -10,7 +19,8 @@ public class PauseScreen : MenuController {
     public GameObject helpInfo;
     bool helpIsDisplay;
 
-	void Start () {
+
+	private void Start () {
         Init();
         helpIsDisplay = false;
 
@@ -18,27 +28,26 @@ public class PauseScreen : MenuController {
         actions.Add(Continue);
         actions.Add(ToggleHelp);
         actions.Add(Exit);
-
     }
 	
-	int Continue()
+	private int Continue()
     {
         Deselect();
         GameController.instance.UnPause();
         return 0;
     }
 
-    int ToggleHelp()
+    private int ToggleHelp()
     {
         helpIsDisplay = !helpIsDisplay;
         menu.SetActive(!helpIsDisplay);
         helpInfo.SetActive(helpIsDisplay);
-        if (helpIsDisplay) Init();  // Reset menu when returning to it
+        Deselect();
+        //if (helpIsDisplay) Init();  // Reset menu when returning to it
         return 0;
     }
 
-
-    void Update()
+    private void Update()
     {
         if (helpIsDisplay)
         {
@@ -79,5 +88,4 @@ public class PauseScreen : MenuController {
         background.SetActive(false);
         this.enabled = false;
     }
-
 }

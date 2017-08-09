@@ -19,18 +19,14 @@ Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs
 Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.019 seconds
+- Completed reload, in  0.035 seconds
 Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Tildhanor YAY\Documents\Viktiga Skolsaker\Sommarkurs 2017 - Grundläggande spelprogrammering\Tatari-Quest\Tatari\TatariQuest_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 3.874954 ms
-start-screen
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
+UnloadTime: 1.004134 ms
 RGBA(0.749, 0.086, 0.086, 1.000) in Init
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -39,24 +35,20 @@ box height 5313.601
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-In active scene start in gamecontroller start
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 4234 -> priority: 1 
-  Thread -> id: af18 -> priority: 1 
-  Thread -> id: a570 -> priority: 1 
-  Thread -> id: b168 -> priority: 1 
+  Thread -> id: 3180 -> priority: 1 
+  Thread -> id: e38 -> priority: 1 
+  Thread -> id: 1018 -> priority: 1 
+  Thread -> id: 2ef4 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.874954 ms
+UnloadTime: 0.864291 ms
 In game controller scene loaded
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2585.
-Total: 1.147390 ms (FindLiveObjects: 0.122736 ms CreateObjectMapping: 0.043192 ms MarkObjects: 0.514892 ms  DeleteObjects: 0.466140 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 2576.
+Total: 1.118318 ms (FindLiveObjects: 0.130007 ms CreateObjectMapping: 0.053884 ms MarkObjects: 0.472986 ms  DeleteObjects: 0.461012 ms)
 
 Internal: JobTempAlloc has allocations that are more than 4 frames old - this is not allowed and likely a leak
  
@@ -89,30 +81,6 @@ Internal: JobTempAlloc has allocations that are more than 4 frames old - this is
 Internal: JobTempAlloc has allocations that are more than 4 frames old - this is not allowed and likely a leak
  
 (Filename:  Line: 371)
-
-Created victim symptom hallucinations, panic attacks at pos (5.5, 0.6, 9.0) in area 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Created victim symptom paranoia, hysteria at pos (8.5, 0.4, -6.4) in area 12
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Created victim symptom hallucinations, panic attacks at pos (17.7, 0.4, -16.6) in area 19
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Created victim symptom paranoia, hysteria at pos (-8.5, 0.4, -9.5) in area 17
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Created victim symptom blindness, hallucinations at pos (-3.5, 0.4, 8.5) in area 4
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Created victim symptom hallucinations, panic attacks at pos (-2.5, 0.4, -0.7) in area 0
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Start in worldmanager
  
@@ -122,11 +90,15 @@ Internal: JobTempAlloc has allocations that are more than 4 frames old - this is
  
 (Filename:  Line: 371)
 
-Pause input in player
+Invert chance 0.05
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-In Pause in game controller
+Invert chance 0.1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Pause input in player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

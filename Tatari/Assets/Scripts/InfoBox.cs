@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * InfoBox is used to display messages through a graphical component. 
+ * 
+ * Messages added to InfoBox are stacked by DisplayInfo() 
+ * and removed on call to Continue(). 
+ * 
+ * GameObject "background" is excpected to have child "Info". 
+*/
+
 public class InfoBox : MonoBehaviour {
 
     public InteractableManager intMan;
@@ -11,11 +20,10 @@ public class InfoBox : MonoBehaviour {
 
     public void Init()
     {
-        //background = gameObject.transform.Find("Background").gameObject;
-        //background.SetActive(false);
         messages = new List<string>();
     }
 
+    /* Stacks _messages to the internal list of messages and displays the first message in _messages. */
     public void DisplayInfo(string[] _messages)
     {
         if (_messages.Length == 0) return;

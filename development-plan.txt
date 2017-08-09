@@ -90,9 +90,9 @@ of correct chanting  OK
 63. Credit screen  OK
 64. Remove random player spawn positions  OK
 65. Change infobox to show newest first  OK
+66. Clean up code!  OK
 
-. Remove unused assets
 . Clean up a project folder without git files
-. Clean up code!
+
 
 

@@ -3,17 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Player manages user input that does not have to do with movement of the player character. 
+ * It contains references to player associated objects such as PlayerController,
+ * Inventory, FearMeter and Lantern. 
+ * 
+ * Player together with PlayerController and PlayerCollider are the central pieces
+ * making up the behaviour of the player character. 
+ * 
+ * Player keeps track of number of rescued victims and the start game time and
+ * controls the GUI component "victimStatIndicator". Player will also use its InfoBox
+ * reference to display messages during game play. 
+ * 
+ * Player is responsible for updating PlayerController. 
+*/
+
 public class Player : MonoBehaviour {
 
     public PlayerController playerController;
     public InteractableManager intMan;
-    //public GameObject ingameUI;
+    public Lantern lantern;
     public Inventory inventory;
     public FearMeter fearMeter;
     public GameObject victimStatIndicator;
     public InfoBox infoBox;
+
     const string VICTIM_INDICATOR_TEXT = "Victims saved: ";
-    public Lantern lantern;
 
     public int currentArea;
 
@@ -26,12 +41,10 @@ public class Player : MonoBehaviour {
     public int nrRescuedVictims;
     public int gamePlayStartTime;
 
-    bool normalReading;
-    bool cursorToggle;
+    bool normalReading;  // is the reading of type "read" or "chant"?
     
 
-    void Start () {
-        Cursor.lockState = CursorLockMode.Locked;
+    private void Start () {
         gamePlayStartTime = (int) Time.time;
         nrRescuedVictims = 0;
         hasEncounteredVictim = false;
@@ -42,9 +55,11 @@ public class Player : MonoBehaviour {
         infoBox.Init();
         infoBox.Close();
 
-        if (!GameController.instance.showIntro) InitMessages();
+        if (!GameController.instance.showIntro) InitMessages();  // If the InitMessages() has not already been called by InitSeq
     }
 
+    /* Increases the number of victims rescued and the GUI stat indicator. If this number
+     matches the max number of victims game over will be initiated. */
     public void IncreaseNrRescues()
     {
         nrRescuedVictims++;
@@ -57,6 +72,8 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /* Updated player currentArea varable and passes this on to child "Footstep Sound" of 
+     the gameObject this script is attached to. */
     public void SwitchArea(int area)
     {
         currentArea = area;
@@ -65,14 +82,12 @@ public class Player : MonoBehaviour {
 
     public void GameOver()
     {
-        /*GameController.instance.nrRescuedVictims = nrRescuedVictims;
-        GameController.instance.gameplayTime = (int) Time.time - gamePlayStartTime;
-        GameController.instance.gameSuccess = nrRescuedVictims == VictimFactory.MAX_VICTIMS;
-        GameController.instance.SwitchScene(GameController.GAME_OVER);*/
-        //nrRescuedVictims = VictimFactory.maxVictims[GameController.instance.diffLvl];
         GameController.instance.GameOver();
     }
 
+    /* Updates PlayerController and handles other non-movement related input. If player is reading
+     (inventory.isReading == true) no other input will be accepted and instead inventory.ReadSelected()
+     will be called until finished reading. */
     public void ExUpdate() {
 
         playerController.ExUpdate();
@@ -105,7 +120,6 @@ public class Player : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.E) && (intMan.inRangeInteractable != null))
         {
             intMan.inRangeInteractable.Interact();
-            //intMan.ToggleInteractionPrompt(false);
         }
         else if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -125,7 +139,6 @@ public class Player : MonoBehaviour {
             print("Pause input in player");
             GameController.instance.Pause();
         }
-
     }
 
     public void ExFixedUpdate()
@@ -133,10 +146,12 @@ public class Player : MonoBehaviour {
         playerController.ExFixedUpdate();
     }
 
+
+    /* -- InfoBox messages from player character -- */
+
+
     public void FirstVictimEncounter()
     {
-        //if (!hintInfo) return;
-
         string[] messages;
         if (demonsEncountered == 0)
         {
@@ -155,8 +170,6 @@ public class Player : MonoBehaviour {
 
     public void DemonEncounter()
     {
-        //if (!hintInfo) return;
-
         if (demonsEncountered == 1)
         {
             string[] message = { " 'WHAT THE HELL IS THAT?!' " };

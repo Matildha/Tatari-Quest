@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Threshhold contains a OnTriggerExit() implementaion
+ * to notify WorldManager that a collider tagged "Player" 
+ * has entered a new area of index "areaID". 
+*/
+
 public class Threshold : MonoBehaviour {
 
-    WorldManager worldMan;
     public int areaID;
+
+    WorldManager worldMan;
+
 
     private void Start()
     {

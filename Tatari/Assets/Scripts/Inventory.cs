@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Inventory manages the inventory and reading channel bar GUI components.
+ * Inventory also contains informaion about aquired scrolls and number of matches. 
+ * 
+ * Inventory contains functionality to read and display content from an aquired scroll.
+ * It will also display help messages through InfoBox if Player "hintInfo" is set, as well 
+ * as messages as reaction to the first scroll reading. 
+*/
+
 public class Inventory : MonoBehaviour {
 
     public const int MAX_NR_SCROLLS = 6;
@@ -39,7 +48,7 @@ public class Inventory : MonoBehaviour {
     int currentNrMatches;
 
     
-    void Start()
+    private void Start()
     {
         scrolls = new Scroll.ScrollInfo[MAX_NR_SCROLLS];
         scrollIcons = new GameObject[MAX_NR_SCROLLS];
@@ -73,16 +82,19 @@ public class Inventory : MonoBehaviour {
         return false;
     }
 
+    /* Adds the scroll ScrollInfo to Inventory's array of ScrollInfo. 
+     Special cases occur when the number of aquired scrolls reach 1 and 2 to display
+     messages. The newest added scroll is automatically selected. 
+        Selects the correct color sprite according to the given ScrollInfo. */
     public void AddScroll(Scroll.ScrollInfo scroll)
     {
         scrolls[currentNrScrolls] = scroll;
-        //print("Added scroll with index " + currentNrScrolls + " to inventory.");
         currentNrScrolls++;
-        selectedScroll = currentNrScrolls - 1;  // Automatically selects the newly added scroll
+        selectedScroll = currentNrScrolls - 1; 
         
-
         if(currentNrScrolls == 1)
         {
+            // Scroll sprite number 1 does not need to be positioned. 
             orgScrollBase.SetActive(true);
             orgScrollBase.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int)scroll.color];
             scrollSelect.GetComponent<RectTransform>().anchoredPosition = orgScrollBase.GetComponent<RectTransform>().anchoredPosition;
@@ -91,11 +103,6 @@ public class Inventory : MonoBehaviour {
             {
                 //infoBox.gameObject.SetActive(true);
                 string[] msg = { "Press 'R' to read scroll.\nYou can only read with light on." };
-                infoBox.DisplayInfo(msg);
-            }
-            else
-            {
-                string[] msg = { " 'WHAT'S THIS THING DOING HERE?' " };
                 infoBox.DisplayInfo(msg);
             }
         }
@@ -107,6 +114,7 @@ public class Inventory : MonoBehaviour {
                 infoBox.DisplayInfo(msg);
             }
 
+            // Position new scroll sprite
             GameObject newScroll = Instantiate(orgScrollBase) as GameObject;
             newScroll.transform.Find("Scroll Color").GetComponent<Image>().sprite = scrollColors[(int) scroll.color];
             newScroll.transform.SetParent(this.transform.Find("Scroll Holder").transform);
@@ -127,6 +135,8 @@ public class Inventory : MonoBehaviour {
             ReadSelected("Read");
     }
 
+    /* Increments selectedScroll and moves the selection sprite. selectedScroll is set
+     to 0 if the number exceeds the max index. */
     public void Browse()
     {
         if (selectedScroll == currentNrScrolls - 1) selectedScroll = 0;
@@ -144,7 +154,9 @@ public class Inventory : MonoBehaviour {
         return scrolls[selectedScroll].content;
     }
 
-    /* Needs to be called every frame to update read channel bar and to determine when channel time has ended. */
+    /* Given the reading type sets a reading time during the contents of the currently selected scroll 
+     will be displayed together with a readin channel bar to indicate the time passed. 
+     Needs to be called every frame to update read channel bar and to determine when channel time has ended. */
     public void ReadSelected(string type)
     {
         float readDuration;
