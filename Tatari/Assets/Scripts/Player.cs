@@ -82,6 +82,7 @@ public class Player : MonoBehaviour {
 
     public void GameOver()
     {
+        inventory.CloseReadDisplay();
         GameController.instance.GameOver();
     }
 

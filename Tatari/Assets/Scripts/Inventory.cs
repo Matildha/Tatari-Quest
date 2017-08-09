@@ -209,4 +209,10 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
+
+    public void CloseReadDisplay()
+    {
+        scrollDisplay.SetActive(false);
+        readChannelBarFill.transform.parent.gameObject.SetActive(false);
+    }
 }

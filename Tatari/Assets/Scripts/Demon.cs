@@ -94,7 +94,7 @@ public class Demon : MonoBehaviour {
         //print("Demon found player hitbox or environment obstacle in trigger, selfdestruct");
         isDying = true;
         demonSpawn.activeDemon = false;
-        demonSpawn.SetSafeStartTime();
+        demonSpawn.UpdateSafeStartTime();
         print("Sets active demon to false");
     }
 
@@ -104,7 +104,7 @@ public class Demon : MonoBehaviour {
         body.gameObject.SetActive(false);
         isDying = true;
         demonSpawn.activeDemon = false;
-        demonSpawn.SetSafeStartTime();
+        demonSpawn.UpdateSafeStartTime();
         print("Sets active demon to false");
     }
 }

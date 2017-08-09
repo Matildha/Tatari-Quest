@@ -14,6 +14,7 @@ using UnityEngine;
 public class Lantern : MonoBehaviour {
 
     public bool isLit;
+    public DemonSpawn demonSpawn;
 
     GameObject lanternLight;
     Material lanternGlow;
@@ -51,6 +52,7 @@ public class Lantern : MonoBehaviour {
             lanternLight.SetActive(true);
             //lanternLight.GetComponent<Light>().intensity = 2;
             lanternGlow.SetColor("_EmissionColor", defaultColor);
+            demonSpawn.UpdateSafeStartTime();
         }
         isLit ^= true;  // xor
     }

@@ -18,7 +18,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    const float SPEED = 3f;
+    const float SPEED = 2.5f;
     const float MOUSE_SENSITIVITY = 1.2f;
     const float FEAR_INCREASE = 0.75f;
 

@@ -11,12 +11,12 @@ public class DemonSpawn : MonoBehaviour {
     public int nrDemonSounds;
     public bool activeDemon;
 
-    float increaseChance = 0.05f;
+    float increaseChance = 0.04f;
     float invertChance;
 
     float[] baseSafeTimes = { 7f, 5f, 4f };  // seconds
     float safeTime;
-    float decreaseSafeTime = 0.002f;
+    float decreaseSafeTime = 0.0025f;
     float startTime;
 
     bool hasReset;
@@ -121,7 +121,7 @@ public class DemonSpawn : MonoBehaviour {
         }
 	}
 
-    public void SetSafeStartTime()
+    public void UpdateSafeStartTime()
     {
         startTime = Time.time;
     }
